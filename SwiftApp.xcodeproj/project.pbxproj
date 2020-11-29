@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F77DA9BA257348EF0095B6C3 /* melon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F77DA9B9257348EF0095B6C3 /* melon.jpg */; };
+		F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77DA9BB25734B200095B6C3 /* PostsList.swift */; };
+		F77DA9C22573D1470095B6C3 /* SwiftApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */; };
+		F77DA9C42573D3400095B6C3 /* PostsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77DA9C32573D3400095B6C3 /* PostsNew.swift */; };
 		F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477A925727F0D00499835 /* AppDelegate.swift */; };
 		F78477AC25727F0D00499835 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477AB25727F0D00499835 /* SceneDelegate.swift */; };
 		F78477AE25727F0D00499835 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477AD25727F0D00499835 /* ContentView.swift */; };
@@ -15,6 +19,13 @@
 		F78477B625727F1500499835 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78477B425727F1500499835 /* LaunchScreen.storyboard */; };
 		F78477C125727F1600499835 /* SwiftAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477C025727F1600499835 /* SwiftAppTests.swift */; };
 		F78477CC25727F1600499835 /* SwiftAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477CB25727F1600499835 /* SwiftAppUITests.swift */; };
+		F78477DA2572806E00499835 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477D92572806E00499835 /* CircleImage.swift */; };
+		F78477DC257280E700499835 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477DB257280E700499835 /* MapView.swift */; };
+		F78477DF2572A51900499835 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477DE2572A51900499835 /* Posts.swift */; };
+		F78477E12572A8CE00499835 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477E02572A8CE00499835 /* Data.swift */; };
+		F78477E32572AA7600499835 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477E22572AA7600499835 /* PostsView.swift */; };
+		F78477E92572C12900499835 /* postsData.json in Resources */ = {isa = PBXBuildFile; fileRef = F78477E82572C12900499835 /* postsData.json */; };
+		F7D416BF2573DE5700822D74 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D416BE2573DE5700822D74 /* PostEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F77DA9B9257348EF0095B6C3 /* melon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melon.jpg; path = ../../../../Downloads/melon.jpg; sourceTree = "<group>"; };
+		F77DA9BB25734B200095B6C3 /* PostsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsList.swift; sourceTree = "<group>"; };
+		F77DA9C12573D1470095B6C3 /* SwiftApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftApp.xcdatamodel; sourceTree = "<group>"; };
+		F77DA9C32573D3400095B6C3 /* PostsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsNew.swift; sourceTree = "<group>"; };
 		F78477A625727F0D00499835 /* SwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78477A925727F0D00499835 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F78477AB25727F0D00499835 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +64,13 @@
 		F78477C725727F1600499835 /* SwiftAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78477CB25727F1600499835 /* SwiftAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAppUITests.swift; sourceTree = "<group>"; };
 		F78477CD25727F1600499835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F78477D92572806E00499835 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		F78477DB257280E700499835 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		F78477DE2572A51900499835 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		F78477E02572A8CE00499835 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		F78477E22572AA7600499835 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
+		F78477E82572C12900499835 /* postsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = postsData.json; path = Resources/postsData.json; sourceTree = SOURCE_ROOT; };
+		F7D416BE2573DE5700822D74 /* PostEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +122,17 @@
 			isa = PBXGroup;
 			children = (
 				F78477A925727F0D00499835 /* AppDelegate.swift */,
+				F77DA9C32573D3400095B6C3 /* PostsNew.swift */,
 				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
 				F78477AD25727F0D00499835 /* ContentView.swift */,
+				F78477E22572AA7600499835 /* PostsView.swift */,
+				F77DA9BB25734B200095B6C3 /* PostsList.swift */,
+				F7D416BE2573DE5700822D74 /* PostEntity.swift */,
+				F78477E42572B5BF00499835 /* Resources */,
+				F78477DD2572A4EE00499835 /* Models */,
+				F78477D92572806E00499835 /* CircleImage.swift */,
+				F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */,
+				F78477DB257280E700499835 /* MapView.swift */,
 				F78477AF25727F1500499835 /* Assets.xcassets */,
 				F78477B425727F1500499835 /* LaunchScreen.storyboard */,
 				F78477B725727F1500499835 /* Info.plist */,
@@ -134,6 +165,24 @@
 				F78477CD25727F1600499835 /* Info.plist */,
 			);
 			path = SwiftAppUITests;
+			sourceTree = "<group>";
+		};
+		F78477DD2572A4EE00499835 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F78477DE2572A51900499835 /* Posts.swift */,
+				F78477E02572A8CE00499835 /* Data.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F78477E42572B5BF00499835 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F77DA9B9257348EF0095B6C3 /* melon.jpg */,
+				F78477E82572C12900499835 /* postsData.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,8 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F78477B625727F1500499835 /* LaunchScreen.storyboard in Resources */,
+				F78477E92572C12900499835 /* postsData.json in Resources */,
 				F78477B325727F1500499835 /* Preview Assets.xcassets in Resources */,
 				F78477B025727F1500499835 /* Assets.xcassets in Resources */,
+				F77DA9BA257348EF0095B6C3 /* melon.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,8 +318,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F77DA9C42573D3400095B6C3 /* PostsNew.swift in Sources */,
+				F78477E12572A8CE00499835 /* Data.swift in Sources */,
+				F77DA9C22573D1470095B6C3 /* SwiftApp.xcdatamodeld in Sources */,
 				F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */,
+				F78477DF2572A51900499835 /* Posts.swift in Sources */,
+				F78477DA2572806E00499835 /* CircleImage.swift in Sources */,
+				F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */,
+				F78477DC257280E700499835 /* MapView.swift in Sources */,
 				F78477AC25727F0D00499835 /* SceneDelegate.swift in Sources */,
+				F78477E32572AA7600499835 /* PostsView.swift in Sources */,
+				F7D416BF2573DE5700822D74 /* PostEntity.swift in Sources */,
 				F78477AE25727F0D00499835 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,6 +648,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F77DA9C12573D1470095B6C3 /* SwiftApp.xcdatamodel */,
+			);
+			currentVersion = F77DA9C12573D1470095B6C3 /* SwiftApp.xcdatamodel */;
+			path = SwiftApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F784779E25727F0D00499835 /* Project object */;
 }
