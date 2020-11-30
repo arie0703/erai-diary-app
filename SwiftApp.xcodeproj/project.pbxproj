@@ -25,7 +25,8 @@
 		F78477E12572A8CE00499835 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477E02572A8CE00499835 /* Data.swift */; };
 		F78477E32572AA7600499835 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477E22572AA7600499835 /* PostsView.swift */; };
 		F78477E92572C12900499835 /* postsData.json in Resources */ = {isa = PBXBuildFile; fileRef = F78477E82572C12900499835 /* postsData.json */; };
-		F7D416BF2573DE5700822D74 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D416BE2573DE5700822D74 /* PostEntity.swift */; };
+		F7A17DDE2575342700D167C6 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A17DDD2575342700D167C6 /* PostRow.swift */; };
+		F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +71,8 @@
 		F78477E02572A8CE00499835 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		F78477E22572AA7600499835 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		F78477E82572C12900499835 /* postsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = postsData.json; path = Resources/postsData.json; sourceTree = SOURCE_ROOT; };
-		F7D416BE2573DE5700822D74 /* PostEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEntity.swift; sourceTree = "<group>"; };
+		F7A17DDD2575342700D167C6 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
+		F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostEntity+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,13 +123,14 @@
 		F78477A825727F0D00499835 /* SwiftApp */ = {
 			isa = PBXGroup;
 			children = (
+				F7998C5125752D5700C35447 /* Extension */,
 				F78477A925727F0D00499835 /* AppDelegate.swift */,
 				F77DA9C32573D3400095B6C3 /* PostsNew.swift */,
 				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
 				F78477AD25727F0D00499835 /* ContentView.swift */,
 				F78477E22572AA7600499835 /* PostsView.swift */,
+				F7A17DDD2575342700D167C6 /* PostRow.swift */,
 				F77DA9BB25734B200095B6C3 /* PostsList.swift */,
-				F7D416BE2573DE5700822D74 /* PostEntity.swift */,
 				F78477E42572B5BF00499835 /* Resources */,
 				F78477DD2572A4EE00499835 /* Models */,
 				F78477D92572806E00499835 /* CircleImage.swift */,
@@ -183,6 +186,14 @@
 				F78477E82572C12900499835 /* postsData.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F7998C5125752D5700C35447 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,12 +334,13 @@
 				F77DA9C22573D1470095B6C3 /* SwiftApp.xcdatamodeld in Sources */,
 				F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */,
 				F78477DF2572A51900499835 /* Posts.swift in Sources */,
+				F7A17DDE2575342700D167C6 /* PostRow.swift in Sources */,
 				F78477DA2572806E00499835 /* CircleImage.swift in Sources */,
 				F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */,
 				F78477DC257280E700499835 /* MapView.swift in Sources */,
 				F78477AC25727F0D00499835 /* SceneDelegate.swift in Sources */,
 				F78477E32572AA7600499835 /* PostsView.swift in Sources */,
-				F7D416BF2573DE5700822D74 /* PostEntity.swift in Sources */,
+				F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */,
 				F78477AE25727F0D00499835 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
