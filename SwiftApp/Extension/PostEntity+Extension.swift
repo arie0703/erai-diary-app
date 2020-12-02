@@ -6,15 +6,14 @@ extension PostEntity {
     
     static func create(in managedObjectContext: NSManagedObjectContext,
                        content: String,
-                       detail: String,
-                       image: String){
+                       detail: String){
         let post = self.init(context: managedObjectContext)
         print(content)
         print(detail)
         post.detail = detail
         post.content = content
-        post.image = image
         post.id = UUID().uuidString
+        
         
         do {
             try  managedObjectContext.save()

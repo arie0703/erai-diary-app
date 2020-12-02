@@ -7,22 +7,90 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct PostsList: View {
+    @Environment(\.managedObjectContext) var viewContext
+    @State var addNewPost = false
+    
+    @FetchRequest(
+    sortDescriptors: [NSSortDescriptor(keyPath: \PostEntity.content,
+                                       ascending: false)],
+    animation: .default)
+    
+    var postList: FetchedResults<PostEntity>
+    
     var body: some View {
-        NavigationView{
-            List(postsData, id: \.id){ posts in
-                NavigationLink(destination: ContentView(posts: posts)){
-                    PostsView(posts: posts)
+        VStack(alignment: .leading) {
+            HStack{
+                Text("えらいタイムライン")
+                .font(.title)
+                .padding(10)
+                Button(action: {
+                    self.addNewPost = true
+                }) {
+                    Image(systemName: "plus")
+                    .font(.headline)
+                }.sheet(isPresented: $addNewPost) {
+                    PostsNew()
+                        .environment(\.managedObjectContext, self.viewContext)
+                }
+
+            }
+            ScrollView(.vertical, showsIndicators: false){
+                ForEach(postList){ post in
+                    VStack(alignment: .leading){
+                        HStack {
+                            Text(post.content ?? "no title")
+                            Spacer()
+                        }
+                            .font(.title)
+                        
+                        Text(post.detail ?? "no title")
+                        
+                    }
+                    .padding(20) //文字に対するpadding
+                    .frame(maxWidth: .infinity, minHeight: 100)
+                    .background(Color(red: 0.8, green: 1, blue: 0.8))
+                    .cornerRadius(10)
+                    .padding(8) //要素間の空白
+                    
                 }
             }
-            .navigationBarTitle(Text("タイムライン"))
+            
+            
         }
+        
     }
+
+        
 }
 
 struct PostsList_Previews: PreviewProvider {
+    
+
+    static let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    
+    static let context = container.viewContext
+    
     static var previews: some View {
-        PostsList()
+        // テストデータの全削除
+    let request = NSBatchDeleteRequest(
+       fetchRequest: NSFetchRequest(entityName: "PostEntity"))
+    try! container.persistentStoreCoordinator.execute(request, with: context)
+        
+    // データを追加
+    PostEntity.create(in: context,
+                     content: "筋トレをした！", detail: "腹筋10回")
+    PostEntity.create(in: context,
+    content: "バイトをした！!", detail: "一万円稼いだ")
+    PostEntity.create(in: context,
+    content: "運動した", detail: "ちょっと歩いた")
+    PostEntity.create(in: context,
+    content: "勉強した！", detail: "英検一級合格まで頑張ろう")
+        return PostsList()
+            .environment(\.managedObjectContext, context)
+            
+        
     }
 }
