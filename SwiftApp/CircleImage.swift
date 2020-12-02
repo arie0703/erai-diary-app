@@ -15,7 +15,10 @@ struct CircleImage: View {
         image
             .resizable()
             .scaledToFit()
-            .frame(width:100.0, height:100.0)
+            .clipShape(Circle())
+            .overlay(
+                Circle().stroke(Color.white, lineWidth: 4))
+            .frame(width:150.0, height:150.0)
             .shadow(radius: 2)
             
     }
@@ -23,6 +26,6 @@ struct CircleImage: View {
  
 struct CircleImage_Previews: PreviewProvider {
     static var previews: some View {
-        CircleImage(image: Image("melon"))
+        CircleImage(image: Image("noicon"))
     }
 }

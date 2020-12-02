@@ -10,40 +10,69 @@ import SwiftUI
 
 struct PostsNew: View {
     
-    @State var newPost: String = ""
+    @State var content: String = ""
+    @State var detail: String = ""
+    @Environment(\.managedObjectContext) var viewContext
     
-    fileprivate func addNewPost() {
-        self.newPost = ""
+    //モーダルの処理
+    @Environment(\.presentationMode) var presentationMode
+    
+    fileprivate func save() {
+        do {
+            try  self.viewContext.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
     
+    
+    
     fileprivate func cancelPost() {
-        self.newPost = ""
+        self.detail = ""
     }
     
     var body: some View {
-        HStack{
-            TextField("今日あったえらい出来事", text: $newPost){
-                self.addNewPost()
-            }
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            Button(action: {
-                self.addNewPost()
-            }) {
-                Text("Post")
-            }
+        NavigationView {
+            Form{
+                Section(header: Text("今日あったえらい出来事")){
+                    TextField("例: 三食しっかり食べた！", text: $content)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                Section(header: Text("ひとこと")){
+                    TextField("", text: $detail)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
             
-            Button(action: {
-                self.cancelPost()
-            }) {
-                Text("Cancel")
-                    .foregroundColor(Color.red)
+                Section(header: Text("今日もお疲れ様！")){
+                    Button(action: {
+                        PostEntity.create(in: self.viewContext,
+                        content: self.content,
+                        detail: self.detail)
+                        self.save()
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("投稿！")
+                    }
+                }
             }
+            .navigationBarTitle("投稿する")
+            .navigationBarItems(trailing: Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+                
+            }) {
+                Image(systemName: "trash")
+                .foregroundColor(Color.red)
+            })
         }
     }
 }
 
 struct PostsNew_Previews: PreviewProvider {
+    static let context = (UIApplication.shared.delegate as! AppDelegate)
+    .persistentContainer.viewContext
     static var previews: some View {
         PostsNew()
+        .environment(\.managedObjectContext, context)
     }
 }

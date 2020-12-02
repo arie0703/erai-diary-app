@@ -26,6 +26,7 @@
 		F78477E32572AA7600499835 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477E22572AA7600499835 /* PostsView.swift */; };
 		F78477E92572C12900499835 /* postsData.json in Resources */ = {isa = PBXBuildFile; fileRef = F78477E82572C12900499835 /* postsData.json */; };
 		F7A17DDE2575342700D167C6 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A17DDD2575342700D167C6 /* PostRow.swift */; };
+		F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB7EE2257769F9007CC57B /* MyPage.swift */; };
 		F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		F78477E22572AA7600499835 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		F78477E82572C12900499835 /* postsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = postsData.json; path = Resources/postsData.json; sourceTree = SOURCE_ROOT; };
 		F7A17DDD2575342700D167C6 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
+		F7CB7EE2257769F9007CC57B /* MyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPage.swift; sourceTree = "<group>"; };
 		F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostEntity+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				F77DA9C32573D3400095B6C3 /* PostsNew.swift */,
 				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
 				F78477AD25727F0D00499835 /* ContentView.swift */,
+				F7CB7EE2257769F9007CC57B /* MyPage.swift */,
 				F78477E22572AA7600499835 /* PostsView.swift */,
 				F7A17DDD2575342700D167C6 /* PostRow.swift */,
 				F77DA9BB25734B200095B6C3 /* PostsList.swift */,
@@ -335,6 +338,7 @@
 				F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */,
 				F78477DF2572A51900499835 /* Posts.swift in Sources */,
 				F7A17DDE2575342700D167C6 /* PostRow.swift in Sources */,
+				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
 				F78477DA2572806E00499835 /* CircleImage.swift in Sources */,
 				F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */,
 				F78477DC257280E700499835 /* MapView.swift in Sources */,
