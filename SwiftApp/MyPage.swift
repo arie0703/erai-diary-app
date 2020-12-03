@@ -11,18 +11,27 @@ import SwiftUI
 var userName: String = "user"
 struct MyPage: View {
     var body: some View {
+        
         VStack{
             CircleImage(image: Image("noicon"))
-                .padding(5)
+            .padding(5)
+           
             Text(userName)
                 .font(.title)
+            HStack{
+            Text("編集")
+                .padding(5)
+            Text("設定")
+                .padding(5)
+            }
+            
             HStack{
                 Text("こんにちは！")
                 Spacer()
             }
             .padding(15)
             .frame(maxWidth: .infinity, minHeight: 80)
-            .background(Color(red: 0.8, green: 1, blue: 0.8))
+            .background(Color(red: 1, green: 0.9, blue: 0.5))
             .cornerRadius(10)
             .padding(10)
             

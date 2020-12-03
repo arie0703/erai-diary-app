@@ -23,20 +23,24 @@ struct PostsList: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack{
-                Text("えらいタイムライン")
+                Text("タイムライン")
                 .font(.title)
-                .padding(10)
+                
+                Spacer()
                 Button(action: {
                     self.addNewPost = true
                 }) {
                     Image(systemName: "plus")
-                    .font(.headline)
+                    .font(.title)
                 }.sheet(isPresented: $addNewPost) {
                     PostsNew()
                         .environment(\.managedObjectContext, self.viewContext)
                 }
+                
 
             }
+            .padding(10)
+            
             ScrollView(.vertical, showsIndicators: false){
                 ForEach(postList){ post in
                     VStack(alignment: .leading){
@@ -48,10 +52,11 @@ struct PostsList: View {
                         
                         Text(post.detail ?? "no title")
                         
+                        
                     }
                     .padding(20) //文字に対するpadding
                     .frame(maxWidth: .infinity, minHeight: 100)
-                    .background(Color(red: 0.8, green: 1, blue: 0.8))
+                        .background(Color(red: 1, green: 0.7, blue: 0.4))
                     .cornerRadius(10)
                     .padding(8) //要素間の空白
                     

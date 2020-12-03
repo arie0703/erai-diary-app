@@ -12,6 +12,7 @@ struct PostsNew: View {
     
     @State var content: String = ""
     @State var detail: String = ""
+    @State var date = Date()
     @Environment(\.managedObjectContext) var viewContext
     
     //モーダルの処理
@@ -43,12 +44,18 @@ struct PostsNew: View {
                     TextField("", text: $detail)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
+                Section(header: Text("日時")) {
+                    
+                    DatePicker(selection: $date, label: {Text("日時") })
+                    
+                }
             
                 Section(header: Text("今日もお疲れ様！")){
                     Button(action: {
                         PostEntity.create(in: self.viewContext,
                         content: self.content,
-                        detail: self.detail)
+                        detail: self.detail,
+                        date: self.date)
                         self.save()
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
