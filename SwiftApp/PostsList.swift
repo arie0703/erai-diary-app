@@ -14,7 +14,7 @@ struct PostsList: View {
     @State var addNewPost = false
     
     @FetchRequest(
-    sortDescriptors: [NSSortDescriptor(keyPath: \PostEntity.content,
+    sortDescriptors: [NSSortDescriptor(keyPath: \PostEntity.date,
                                        ascending: false)],
     animation: .default)
     
@@ -23,22 +23,26 @@ struct PostsList: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack{
-                Text("えらいタイムライン")
+                Text("タイムライン")
                 .font(.title)
-                .padding(10)
+                
+                Spacer()
                 Button(action: {
                     self.addNewPost = true
                 }) {
                     Image(systemName: "plus")
-                    .font(.headline)
+                    .font(.title)
                 }.sheet(isPresented: $addNewPost) {
                     PostsNew()
                         .environment(\.managedObjectContext, self.viewContext)
                 }
+                
 
             }
+            .padding(10)
+            
             ScrollView(.vertical, showsIndicators: false){
-                ForEach(postList){ post in
+                ForEach(postList, id: \.self){ post in
                     VStack(alignment: .leading){
                         HStack {
                             Text(post.content ?? "no title")
@@ -48,10 +52,13 @@ struct PostsList: View {
                         
                         Text(post.detail ?? "no title")
                         
+                        
+                        
+                        
                     }
                     .padding(20) //文字に対するpadding
                     .frame(maxWidth: .infinity, minHeight: 100)
-                    .background(Color(red: 0.8, green: 1, blue: 0.8))
+                        .background(Color(red: 1, green: 0.7, blue: 0.4))
                     .cornerRadius(10)
                     .padding(8) //要素間の空白
                     

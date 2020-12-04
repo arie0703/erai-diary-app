@@ -12,6 +12,7 @@ struct PostsNew: View {
     
     @State var content: String = ""
     @State var detail: String = ""
+    @State var date = Date()
     @Environment(\.managedObjectContext) var viewContext
     
     //モーダルの処理
@@ -26,6 +27,25 @@ struct PostsNew: View {
         }
     }
     
+    //星の色　ボタンでチェンジ　デフォルトで星1は色がついてる
+    @State var starColor1 = Color.orange
+    @State var starColor2 = Color.gray
+    @State var starColor3 = Color.gray
+    
+    @State var rate: Int = 1
+    
+    func changeStar() {
+        if rate == 1 {
+            starColor2 = Color.gray
+            starColor3 = Color.gray
+        } else if rate == 2 {
+            starColor2 = Color.orange
+            starColor3 = Color.gray
+        } else {
+            starColor2 = Color.orange
+            starColor3 = Color.orange
+        }
+    }
     
     
     fileprivate func cancelPost() {
@@ -43,12 +63,69 @@ struct PostsNew: View {
                     TextField("", text: $detail)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
+                
+                Section(header: Text("えらい度")){
+                    VStack{
+                        HStack{
+                            Spacer()
+                        
+                            Image(systemName: "star.fill")
+                            .foregroundColor(starColor1)
+                            .font(.title)
+                            .padding(10)
+                        
+            
+                            Image(systemName: "star.fill")
+                            .foregroundColor(starColor2)
+                                .font(.title)
+                            .padding(10)
+                        
+                        
+                       
+                            Image(systemName: "star.fill")
+                            .foregroundColor(starColor3)
+                            .font(.title)
+                            .padding(10)
+                            
+                            Spacer()
+                        }
+                        Text(rate.description)
+                    }
+                }
+                Button(action: {
+                    self.rate = 1
+                    self.changeStar()
+                }){
+                    Text("ちょっとえらい")
+                }
+                Button(action: {
+                    self.rate = 2
+                    self.changeStar()
+                }){
+                    Text("えらい！")
+                }
+                Button(action: {
+                    self.rate = 3
+                    self.changeStar()
+                }){
+                    Text("スーパーえらい！！")
+                }
+                
+                    
+                
+                Section(header: Text("日時")) {
+                    
+                    DatePicker("日時", selection: $date, displayedComponents: .date)
+                    
+                }
+                
             
                 Section(header: Text("今日もお疲れ様！")){
                     Button(action: {
                         PostEntity.create(in: self.viewContext,
                         content: self.content,
-                        detail: self.detail)
+                        detail: self.detail,
+                        date: self.date)
                         self.save()
                         self.presentationMode.wrappedValue.dismiss()
                     }) {

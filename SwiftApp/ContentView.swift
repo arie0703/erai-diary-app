@@ -22,6 +22,14 @@ struct ContentView: View {
                         Text("タイムライン")
                     }
             }.tag(1)
+            GoalSheet()
+                .environment(\.managedObjectContext, self.viewContext)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "star.fill")
+                        Text("ごほうび")
+                    }
+            }.tag(2)
             MyPage()
                 .environment(\.managedObjectContext, self.viewContext)
                 .tabItem {
@@ -29,8 +37,9 @@ struct ContentView: View {
                         Image(systemName: "person")
                         Text("マイページ")
                     }
-            }.tag(2)
+            }.tag(3)
         }
+        .accentColor(Color.orange)
         
     }
 }

@@ -6,14 +6,16 @@ extension PostEntity {
     
     static func create(in managedObjectContext: NSManagedObjectContext,
                        content: String,
-                       detail: String){
+                       detail: String,
+                       date: Date? = Date()){
         let post = self.init(context: managedObjectContext)
+        
         print(content)
         print(detail)
         post.detail = detail
         post.content = content
         post.id = UUID().uuidString
-        
+        post.date = date
         
         do {
             try  managedObjectContext.save()
