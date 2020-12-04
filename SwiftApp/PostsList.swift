@@ -14,7 +14,7 @@ struct PostsList: View {
     @State var addNewPost = false
     
     @FetchRequest(
-    sortDescriptors: [NSSortDescriptor(keyPath: \PostEntity.content,
+    sortDescriptors: [NSSortDescriptor(keyPath: \PostEntity.date,
                                        ascending: false)],
     animation: .default)
     
@@ -42,7 +42,7 @@ struct PostsList: View {
             .padding(10)
             
             ScrollView(.vertical, showsIndicators: false){
-                ForEach(postList){ post in
+                ForEach(postList, id: \.self){ post in
                     VStack(alignment: .leading){
                         HStack {
                             Text(post.content ?? "no title")
@@ -51,6 +51,8 @@ struct PostsList: View {
                             .font(.title)
                         
                         Text(post.detail ?? "no title")
+                        
+                        
                         
                         
                     }
