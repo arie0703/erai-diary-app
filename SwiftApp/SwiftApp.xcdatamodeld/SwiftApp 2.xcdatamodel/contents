@@ -7,8 +7,8 @@
         <attribute name="id" optional="YES" attributeType="String"/>
     </entity>
     <entity name="RewardEntity" representedClassName="RewardEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="point" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="reward" optional="YES" attributeType="String"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="point" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
         <attribute name="goal" optional="YES" attributeType="String"/>
