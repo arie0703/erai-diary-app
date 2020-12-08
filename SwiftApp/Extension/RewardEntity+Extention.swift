@@ -1,18 +1,17 @@
 import CoreData
 import SwiftUI
 
-extension UserEntity: Identifiable{}
-extension UserEntity {
+extension RewardEntity: Identifiable{}
+extension RewardEntity {
     
     static func create(in managedObjectContext: NSManagedObjectContext,
-                       name: String,
-                       goal: String) {
-        let user = self.init(context: managedObjectContext)
+                       content: String,
+                       point: Int32) {
+        let reward = self.init(context: managedObjectContext)
         
-        user.name = name
-        user.goal = goal
-        user.point = 0
-        user.total_point = 0
+        reward.content = content
+        reward.point = point
+        
         
         do {
             try  managedObjectContext.save()

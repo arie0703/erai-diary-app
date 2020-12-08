@@ -22,7 +22,7 @@ struct ContentView: View {
                         Text("タイムライン")
                     }
             }.tag(1)
-            GoalSheet()
+            RewardSheet()
                 .environment(\.managedObjectContext, self.viewContext)
                 .tabItem {
                     VStack {

@@ -8,9 +8,6 @@
 
 import SwiftUI
 
-var userName: String = "user"
-
-
 //User defaultsを設定
 class UserProfile: ObservableObject {
 
@@ -35,24 +32,29 @@ class UserProfile: ObservableObject {
     /// 初期化処理
     init() {
         name = UserDefaults.standard.string(forKey: "name") ?? "ユーザー"
-        goal = UserDefaults.standard.string(forKey: "goal") ?? "目標を設定しよう！"
+        goal = UserDefaults.standard.string(forKey: "goal") ?? ""
         point = UserDefaults.standard.object(forKey: "point") as? Int ?? 0
     }
 }
+
+//編集画面で更新した値がすぐ反映されるようにグローバル変数を用意しておく
+var userName = UserProfile().name
+var userGoal = UserProfile().goal
 
 struct MyPage: View {
 
     @ObservedObject var user = UserProfile()
     @State var editProfile = false
     
+    
     var body: some View {
         VStack{
             CircleImage(image: Image("noicon"))
             .padding(5)
            
-            Text(user.name)
+            Text(userName)
                 .font(.title)
-            HStack{
+            
             Button(action: {
                 self.editProfile = true
             }) {
@@ -60,12 +62,15 @@ struct MyPage: View {
             }.sheet(isPresented: $editProfile) {
                 EditUser()
             }
-            Text("設定")
-                .padding(5)
-            }
+            .padding(10)
             
             HStack{
-                Text(user.goal)
+                if userGoal == "" {
+                    Text("目標を設定しよう！")
+                        .foregroundColor(Color.gray)
+                } else {
+                    Text(userGoal)
+                }
                 Spacer()
             }
             .padding(15)
