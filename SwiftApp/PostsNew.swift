@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct PostsNew: View {
+    @ObservedObject var user = UserProfile()
     
     @State var content: String = ""
     @State var detail: String = ""
@@ -127,6 +128,10 @@ struct PostsNew: View {
                         detail: self.detail,
                         date: self.date)
                         self.save()
+                        UserDefaults.standard.set(self.user.point + self.rate, forKey: "point")
+                        userPoint = self.user.point
+                        
+                        UserDefaults.standard.set(self.user.total_point + self.rate, forKey: "total_point")
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("投稿！")

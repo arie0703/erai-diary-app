@@ -29,17 +29,25 @@ class UserProfile: ObservableObject {
         }
     }
     
+    @Published var total_point: Int {
+        didSet {
+            UserDefaults.standard.set(point, forKey: "total_point")
+        }
+    }
+    
     /// 初期化処理
     init() {
         name = UserDefaults.standard.string(forKey: "name") ?? "ユーザー"
         goal = UserDefaults.standard.string(forKey: "goal") ?? ""
-        point = UserDefaults.standard.object(forKey: "point") as? Int ?? 0
+        point = UserDefaults.standard.integer(forKey: "point")
+        total_point = UserDefaults.standard.integer(forKey: "total_point")
     }
 }
 
 //編集画面で更新した値がすぐ反映されるようにグローバル変数を用意しておく
 var userName = UserProfile().name
 var userGoal = UserProfile().goal
+var userPoint = UserProfile().point
 
 struct MyPage: View {
 
@@ -75,7 +83,7 @@ struct MyPage: View {
             }
             .padding(15)
             .frame(maxWidth: .infinity, minHeight: 80)
-            .background(Color(red: 1, green: 0.9, blue: 0.5))
+            .background(Color(red: 1, green: 0.8, blue: 0.3))
             .cornerRadius(10)
             .padding(10)
             
@@ -87,19 +95,19 @@ struct MyPage: View {
                     Text("4")
                 }
                 .frame(maxWidth: .infinity, minHeight: 150)
-                .background(Color(red: 1, green: 0.7, blue: 0.6))
+                .background(Color(red: 1, green: 0.7, blue: 0.3))
                 .cornerRadius(10)
                 VStack{
                     Text("えらいポイント")
                     .font(.headline)
-                    Text(user.point.description)
+                    Text(userPoint.description)
                 }
                 .frame(maxWidth: .infinity, minHeight: 150)
-                .background(Color(red: 1, green: 0.6, blue: 0.8))
+                .background(Color(red: 1, green: 0.7, blue: 0.3))
                 .cornerRadius(10)
             }
         .padding(10)
-            
+            //手書きキャラクターとか入れたら面白いかも！
             Text("この調子で頑張ろう！")
             Spacer()
         }
