@@ -12,6 +12,7 @@ import CoreData
 struct PostsList: View {
     @Environment(\.managedObjectContext) var viewContext
     @State var addNewPost = false
+    @State var editPost = false
     
     @FetchRequest(
     sortDescriptors: [NSSortDescriptor(keyPath: \PostEntity.date,
@@ -43,14 +44,20 @@ struct PostsList: View {
             
             ScrollView(.vertical, showsIndicators: false){
                 ForEach(postList, id: \.self){ post in
+                    
+                    Button(action: {
+                       self.editPost = true
+                    }) {
                     VStack(alignment: .leading){
                         HStack {
                             Text(post.content ?? "no title")
+                            .foregroundColor(.black)
                             Spacer()
                         }
                             .font(.title)
                         
                         Text(post.detail ?? "no title")
+                        .foregroundColor(.black)
                         
                         
                         
@@ -61,6 +68,11 @@ struct PostsList: View {
                         .background(Color(red: 1, green: 0.7, blue: 0.4))
                     .cornerRadius(10)
                     .padding(8) //要素間の空白
+                        
+                    }.sheet(isPresented: self.$editPost) {
+                        PostsEdit(post:post)
+                            .environment(\.managedObjectContext, self.viewContext)
+                    }
                     
                 }
             }
