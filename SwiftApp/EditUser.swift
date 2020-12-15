@@ -24,17 +24,24 @@ struct EditUser: View {
                     
                 }
                 
+                Section (header: Text("えらいポイント")){
+                    Text(user.point.description)
+                }
+                
                 Section{
                     Button(action: {
                         UserDefaults.standard.set(self.user.name, forKey: "name")
                         UserDefaults.standard.set(self.user.goal, forKey: "goal")
                         userName = self.user.name
                         userGoal = self.user.goal
+                        userPoint = self.user.point
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("更新")
                     }
                 }
+                
+                
             
             }
             .navigationBarTitle("設定")
