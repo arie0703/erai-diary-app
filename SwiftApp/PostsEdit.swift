@@ -11,9 +11,8 @@ struct PostsEdit: View {
     @ObservedObject var user = UserProfile()
     @ObservedObject var post: PostEntity
     
-    @State var content: String = ""
-    @State var detail: String = ""
-    @State var date = Date()
+    @State var showingSheet = false
+    
     @Environment(\.managedObjectContext) var viewContext
     
     //モーダルの処理
@@ -54,19 +53,15 @@ struct PostsEdit: View {
     }
     
     
-    fileprivate func cancelPost() {
-        self.detail = ""
-    }
-    
     var body: some View {
         NavigationView {
             Form{
                 Section(header: Text("今日あったえらい出来事")){
-                    TextField("例: 三食しっかり食べた！", text: Binding($post.content)!)
+                    TextField("例: 三食しっかり食べた！", text: Binding($post.content, "content"))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 Section(header: Text("ひとこと")){
-                    TextField("", text: Binding($post.detail)!)
+                    TextField("", text: Binding($post.detail, "detail"))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 
@@ -120,9 +115,7 @@ struct PostsEdit: View {
                     
                 
                 Section(header: Text("日時")) {
-                    DatePicker("日時", selection: Binding($post.date)!, displayedComponents: .date)
-                    
-                    
+                    DatePicker(selection: Binding($post.date, Date()), label: { Text("日時") })
                 }
                 
             
@@ -137,7 +130,15 @@ struct PostsEdit: View {
                     }) {
                         Text("編集")
                     }
+                    
+                    Button(action: {
+                        self.showingSheet = true
+                    }) {
+                        Text("削除")
+                    }
+                    .foregroundColor(.red)
                 }
+                
             }
             .navigationBarTitle("編集する")
             .navigationBarItems(trailing: Button(action: {
@@ -147,6 +148,17 @@ struct PostsEdit: View {
                 Image(systemName: "trash")
                 .foregroundColor(Color.red)
             })
+            
+            .actionSheet(isPresented: $showingSheet) {
+            ActionSheet(title: Text("タスクの削除"), message: Text("このタスクを削除します。よろしいですか？"), buttons: [
+                .destructive(Text("削除")) {
+                    self.delete()
+                    self.presentationMode.wrappedValue.dismiss()
+                },
+                .cancel(Text("キャンセル"))
+            
+            ])
+            }
         }
     }
 }

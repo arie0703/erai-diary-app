@@ -24,4 +24,19 @@ extension PostEntity {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
+    
+    // データ個数を取得するメソッド
+    
+    static func count(in managedObjectContext: NSManagedObjectContext) -> Int {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PostEntity")
+        
+        
+        do {
+            let count = try managedObjectContext.count(for: fetchRequest)
+            return count
+        } catch  {
+            print("Error: \(error.localizedDescription)")
+            return 0
+        }
+    }
 }
