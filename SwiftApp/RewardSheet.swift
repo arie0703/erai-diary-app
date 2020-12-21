@@ -21,6 +21,26 @@ struct RewardSheet: View {
     
     var rewardList: FetchedResults<RewardEntity>
     
+    fileprivate func save() {
+        do {
+            try  self.viewContext.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    private func remove(indexSet: IndexSet) {
+        for index in indexSet {
+            viewContext.delete(rewardList[index])
+        }
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError()
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -42,17 +62,28 @@ struct RewardSheet: View {
             Text("えらいポイントを貯めて自分にご褒美！")
                 .padding(5)
             
-            
-            ForEach(rewardList, id: \.self){ reward in
-                HStack{
-                    Image(systemName: "star.fill")
-                        .foregroundColor(Color.orange)
-                    Text(reward.content ?? "no title")
-                    Spacer()
-                    Text(reward.point.description + " P")
-                }.padding(5)
+            List {
+                ForEach(rewardList){ reward in
+                    
+                    HStack{
+                        if UserProfile().point >= reward.point {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(Color.orange)
+                        } else {
+                            Image(systemName: "star")
+                            .foregroundColor(Color.orange)
+                        }
+                        Text(reward.content ?? "no title")
+                        Spacer()
+                        Text(reward.point.description + " P")
+                    }
+                    .padding(5)
+                    
+                }
+                .onDelete{ indexSet in
+                    self.remove(indexSet: indexSet)
+                }
             }
-            
             
             Spacer()
         }
