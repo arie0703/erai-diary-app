@@ -119,11 +119,10 @@ struct PostsEdit: View {
                 }
                 
             
-                Section(header: Text("今日もお疲れ様！")){
+                Section {
                     Button(action: {
                         self.save()
                         UserDefaults.standard.set(self.user.point + self.rate, forKey: "point")
-                        userPoint = self.user.point
                         
                         UserDefaults.standard.set(self.user.total_point + self.rate, forKey: "total_point")
                         self.presentationMode.wrappedValue.dismiss()

@@ -45,10 +45,6 @@ class UserProfile: ObservableObject {
     }
 }
 
-//編集画面で更新した値がすぐ反映されるようにグローバル変数を用意しておく
-var userName = UserProfile().name
-var userGoal = UserProfile().goal
-var userPoint = UserProfile().point
 
 struct MyPage: View {
 
@@ -56,14 +52,15 @@ struct MyPage: View {
     @State var editProfile = false
     @Environment(\.managedObjectContext) var viewContext
     @State var numberOfPosts = 0
+    @State var userName = ""
+    @State var userGoal = ""
     @State var point = 0
     
     fileprivate func update() {
         self.numberOfPosts = PostEntity.count(in: self.viewContext)
-    }
-    
-    func updatePoint() {
-        point = UserProfile().point
+        self.userName = UserProfile().name
+        self.userGoal = UserProfile().goal
+        self.point = UserProfile().point
     }
     
     var body: some View {
@@ -78,7 +75,7 @@ struct MyPage: View {
                 self.editProfile = true
             }) {
                 Text("編集")
-            }.sheet(isPresented: $editProfile) {
+            }.sheet(isPresented: $editProfile, onDismiss: {self.update()}) {
                 EditUser()
             }
             .padding(10)
@@ -108,9 +105,6 @@ struct MyPage: View {
                 .frame(maxWidth: .infinity, minHeight: 150)
                 .background(Color(red: 1, green: 0.7, blue: 0.3))
                 .cornerRadius(10)
-                .onAppear {
-                    self.update()
-                }
                 VStack{
                     Text("えらいポイント")
                     .font(.headline)
@@ -119,11 +113,12 @@ struct MyPage: View {
                 .frame(maxWidth: .infinity, minHeight: 150)
                 .background(Color(red: 1, green: 0.7, blue: 0.3))
                 .cornerRadius(10)
-                .onAppear {
-                    self.updatePoint()
-                }
             }
-        .padding(10)
+            //プロフィール情報の値が更新されるようにする。
+            .onAppear {
+                self.update()
+            }
+            .padding(10)
             //手書きキャラクターとか入れたら面白いかも！
             Text("この調子で頑張ろう！")
             Spacer()
