@@ -54,74 +54,81 @@ struct PostsNew: View {
     }
     
     var body: some View {
+        
         NavigationView {
-            Form{
-                Section(header: Text("今日あったえらい出来事")){
+            //背景色
+            Color(red: 0.95, green: 0.95, blue: 0.95)
+            .edgesIgnoringSafeArea(.all)
+            .overlay(
+                VStack{
+                    Text("今日あったえらい出来事")
                     TextField("例: 三食しっかり食べた！", text: $content)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
-                Section(header: Text("ひとこと")){
+                        .padding(.bottom, 30)
+                        .padding(.horizontal)
+                    
+                    Text("ひとこと")
                     TextField("", text: $detail)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
-                
-                Section(header: Text("えらい度")){
+                        .padding(.bottom, 30)
+                        .padding(.horizontal)
+                    
+                    
+                    
+                    
+                    
+                    Text("えらい度")
                     VStack{
                         HStack{
                             Spacer()
-                        
-                            Image(systemName: "star.fill")
-                            .foregroundColor(starColor1)
-                            .font(.title)
-                            .padding(10)
-                        
-            
-                            Image(systemName: "star.fill")
-                            .foregroundColor(starColor2)
+                            
+                            Button(action: {
+                                self.rate = 1
+                                self.changeStar()
+                            }){
+                                Image(systemName: "star.fill")
+                                .foregroundColor(starColor1)
                                 .font(.title)
-                            .padding(10)
+                                .padding(10)
+                            }
+                        
+                            Button(action: {
+                                self.rate = 2
+                                self.changeStar()
+                            }){
+                                Image(systemName: "star.fill")
+                                .foregroundColor(starColor2)
+                                    .font(.title)
+                                .padding(10)
+                            }
                         
                         
-                       
-                            Image(systemName: "star.fill")
-                            .foregroundColor(starColor3)
-                            .font(.title)
-                            .padding(10)
+                            Button(action: {
+                                self.rate = 3
+                                self.changeStar()
+                            }){
+                                Image(systemName: "star.fill")
+                                .foregroundColor(starColor3)
+                                .font(.title)
+                                .padding(10)
+                            }
                             
                             Spacer()
                         }
-                        Text(rate.description)
+                        .padding(10)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        
+                        
                     }
-                }
-                Button(action: {
-                    self.rate = 1
-                    self.changeStar()
-                }){
-                    Text("ちょっとえらい")
-                }
-                Button(action: {
-                    self.rate = 2
-                    self.changeStar()
-                }){
-                    Text("えらい！")
-                }
-                Button(action: {
-                    self.rate = 3
-                    self.changeStar()
-                }){
-                    Text("スーパーえらい！！")
-                }
-                
+                    
                     
                 
-                Section(header: Text("日時")) {
+                    Text("今日もお疲れ様！")
+                    .padding(30)
                     
-                    DatePicker("日時", selection: $date, displayedComponents: .date)
                     
-                }
-                
-            
-                Section(header: Text("今日もお疲れ様！")){
                     Button(action: {
                         PostEntity.create(in: self.viewContext,
                         content: self.content,
@@ -133,10 +140,21 @@ struct PostsNew: View {
                         UserDefaults.standard.set(self.user.total_point + self.rate, forKey: "total_point")
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
-                        Text("投稿！")
+                        Text(" 投稿！ ")
+                        .foregroundColor(Color.white)
+                        .padding()
+                        .background(Color.orange)
+                        .cornerRadius(10)
+    
                     }
+                    
+                    
+                    
+                    
                 }
-            }
+            )
+            
+            
             .navigationBarTitle("投稿する")
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
@@ -145,8 +163,11 @@ struct PostsNew: View {
                 Image(systemName: "trash")
                 .foregroundColor(Color.red)
             })
+            
         }
+        
     }
+    
 }
 
 struct PostsNew_Previews: PreviewProvider {
