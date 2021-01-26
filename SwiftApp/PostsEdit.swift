@@ -55,90 +55,103 @@ struct PostsEdit: View {
     
     var body: some View {
         NavigationView {
-            Form{
-                Section(header: Text("今日あったえらい出来事")){
+            Color(red: 0.95, green: 0.95, blue: 0.95)
+            .edgesIgnoringSafeArea(.all)
+            .overlay(
+                VStack{
+                    Text("今日あったえらい出来事")
                     TextField("例: 三食しっかり食べた！", text: Binding($post.content, "content"))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
-                Section(header: Text("ひとこと")){
+                        .padding(.bottom, 30)
+                        .padding(.horizontal)
+                
+                    Text("ひとこと")
                     TextField("", text: Binding($post.detail, "detail"))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
-                
-                Section(header: Text("えらい度")){
-                    VStack{
-                        HStack{
-                            Spacer()
-                        
-                            Image(systemName: "star.fill")
-                            .foregroundColor(starColor1)
-                            .font(.title)
-                            .padding(10)
-                        
-            
-                            Image(systemName: "star.fill")
-                            .foregroundColor(starColor2)
-                                .font(.title)
-                            .padding(10)
-                        
-                        
-                       
-                            Image(systemName: "star.fill")
-                            .foregroundColor(starColor3)
-                            .font(.title)
-                            .padding(10)
+                        .padding(.bottom, 30)
+                        .padding(.horizontal)
+                    
+                    
+                    Text("えらい度")
+                        VStack{
+                            HStack{
+                                Spacer()
                             
-                            Spacer()
+                                Button(action: {
+                                    self.rate = 1
+                                    self.changeStar()
+                                }){
+                                    Image(systemName: "star.fill")
+                                    .foregroundColor(starColor1)
+                                    .font(.title)
+                                    .padding(10)
+                                }
+                            
+                                Button(action: {
+                                    self.rate = 2
+                                    self.changeStar()
+                                }){
+                                    Image(systemName: "star.fill")
+                                    .foregroundColor(starColor2)
+                                        .font(.title)
+                                    .padding(10)
+                                }
+                            
+                            
+                                Button(action: {
+                                    self.rate = 3
+                                    self.changeStar()
+                                }){
+                                    Image(systemName: "star.fill")
+                                    .foregroundColor(starColor3)
+                                    .font(.title)
+                                    .padding(10)
+                                }
+                                
+                                Spacer()
+                            }
+                            .padding(10)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .padding(.horizontal)
                         }
-                        Text(rate.description)
-                    }
-                }
-                Button(action: {
-                    self.rate = 1
-                    self.changeStar()
-                }){
-                    Text("ちょっとえらい")
-                }
-                Button(action: {
-                    self.rate = 2
-                    self.changeStar()
-                }){
-                    Text("えらい！")
-                }
-                Button(action: {
-                    self.rate = 3
-                    self.changeStar()
-                }){
-                    Text("スーパーえらい！！")
-                }
-                
+                        .padding(.bottom, 30)
                     
-                
-                Section(header: Text("日時")) {
-                    DatePicker(selection: Binding($post.date, Date()), label: { Text("日時") })
-                }
-                
             
-                Section {
-                    Button(action: {
-                        self.save()
-                        UserDefaults.standard.set(self.user.point + self.rate, forKey: "point")
-                        
-                        UserDefaults.standard.set(self.user.total_point + self.rate, forKey: "total_point")
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("編集")
-                    }
                     
-                    Button(action: {
-                        self.showingSheet = true
-                    }) {
-                        Text("削除")
-                    }
-                    .foregroundColor(.red)
-                }
+                        
                 
-            }
+                
+                        Button(action: {
+                            self.save()
+                            UserDefaults.standard.set(self.user.point + self.rate, forKey: "point")
+                            
+                            UserDefaults.standard.set(self.user.total_point + self.rate, forKey: "total_point")
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("編集")
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .padding(.horizontal, 50)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                        }.padding(.bottom)
+                        
+                        Button(action: {
+                            self.showingSheet = true
+                        }) {
+                            Text("削除")
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .padding(.horizontal, 50)
+                            .background(Color.red)
+                            .cornerRadius(10)
+                        }
+                        
+                    
+                    
+                }
+            )//背景色
             .navigationBarTitle("編集する")
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
