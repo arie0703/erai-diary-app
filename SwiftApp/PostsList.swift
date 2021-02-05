@@ -100,13 +100,13 @@ struct PostsList_Previews: PreviewProvider {
         
     // データを追加
     PostEntity.create(in: context,
-                     content: "筋トレをした！", detail: "腹筋10回")
+                     content: "筋トレをした！", detail: "腹筋10回", rate: 3)
     PostEntity.create(in: context,
-    content: "バイトをした！!", detail: "一万円稼いだ")
+    content: "バイトをした！!", detail: "一万円稼いだ", rate: 3)
     PostEntity.create(in: context,
-    content: "運動した", detail: "ちょっと歩いた")
+                      content: "運動した", detail: "ちょっと歩いた", rate: 3)
     PostEntity.create(in: context,
-    content: "勉強した！", detail: "英検一級合格まで頑張ろう")
+    content: "勉強した！", detail: "英検一級合格まで頑張ろう", rate: 3)
         return PostsList()
             .environment(\.managedObjectContext, context)
             

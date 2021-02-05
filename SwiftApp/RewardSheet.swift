@@ -10,13 +10,14 @@ import SwiftUI
 import CoreData
 
 struct RewardSheet: View {
-    
+    @ObservedObject var user = UserProfile()
     @Environment(\.managedObjectContext) var viewContext
     @State var addNewReward = false
     
     @FetchRequest(
     sortDescriptors: [NSSortDescriptor(keyPath: \RewardEntity.point,
                                        ascending: true)],
+    predicate: NSPredicate(format:"isDone == false"),
     animation: .default)
     
     var rewardList: FetchedResults<RewardEntity>
@@ -40,6 +41,10 @@ struct RewardSheet: View {
             fatalError()
         }
     }
+    
+    //アラート表示用プロパティ
+    @State private var showingAlert = false
+    @State private var showingNotEnough = false
     
     var body: some View {
         VStack(alignment: .leading){
@@ -65,24 +70,50 @@ struct RewardSheet: View {
             List {
                 ForEach(rewardList){ reward in
                     
-                    HStack{
+                    // ご褒美シート
+                    Button(action: {
                         if UserProfile().point >= reward.point {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(Color.orange)
+                            self.showingAlert = true
                         } else {
-                            Image(systemName: "star")
-                            .foregroundColor(Color.orange)
+                            print("ポイントが足りません")
                         }
-                        Text(reward.content ?? "no title")
-                        Spacer()
-                        Text(reward.point.description + " P")
+                    }) {
+                        HStack{
+                            //ポイントが足りているときは、星の色がオレンジになる。
+                            if UserProfile().point >= reward.point {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(Color.orange)
+                            } else {
+                                Image(systemName: "star")
+                                .foregroundColor(Color.orange)
+                            }
+                            Text(reward.content ?? "no title")
+                            Spacer()
+                            Text(reward.point.description + " P")
+                        }
+                        .padding(5)
                     }
-                    .padding(5)
+                    .alert(isPresented: self.$showingAlert) {
+                            Alert(
+                                  title: Text("ごほうび"),
+                                  message: Text("ごほうびを使いますか？"),
+                                  primaryButton: .cancel(Text("キャンセル")),
+                                  secondaryButton: .default(Text("はい"),
+                                  action:
+                                  {
+                                    UserDefaults.standard.set(self.user.point - Int(reward.point), forKey: "point")
+                                        reward.isDone = true
+                                  })
+                            )
+                    }
+                    
                     
                 }
+                
                 .onDelete{ indexSet in
                     self.remove(indexSet: indexSet)
                 }
+                 
             }
             
             Spacer()
@@ -104,9 +135,9 @@ struct RewardSheet_Previews: PreviewProvider {
         
     // データを追加
     RewardEntity.create(in: context,
-                     content: "プリン", point: 5)
+                     content: "プリン", point: 5, isDone: false)
     RewardEntity.create(in: context,
-    content: "大盛りパフェ", point: 10)
+                        content: "大盛りパフェ", point: 10, isDone: false)
         return RewardSheet()
             .environment(\.managedObjectContext, context)
             

@@ -77,6 +77,7 @@
 		F78477D92572806E00499835 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		F78477DE2572A51900499835 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		F78477E02572A8CE00499835 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 3.xcdatamodel"; sourceTree = "<group>"; };
 		F7CB7EE2257769F9007CC57B /* MyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPage.swift; sourceTree = "<group>"; };
 		F7D139DE2579274F00230F51 /* SwiftApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 2.xcdatamodel"; sourceTree = "<group>"; };
 		F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostEntity+Extension.swift"; sourceTree = "<group>"; };
@@ -134,13 +135,13 @@
 				F78477A925727F0D00499835 /* AppDelegate.swift */,
 				F72593552588DA4000E3079D /* PostsEdit.swift */,
 				F77DA9C32573D3400095B6C3 /* PostsNew.swift */,
+				F77DA9BB25734B200095B6C3 /* PostsList.swift */,
 				F75E7015257D51A000C4E6D9 /* RewardNew.swift */,
 				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
 				F78477AD25727F0D00499835 /* ContentView.swift */,
 				F72205E22577B3FB003DE067 /* RewardSheet.swift */,
 				F7CB7EE2257769F9007CC57B /* MyPage.swift */,
 				F77F7E8A257A62C700DAA12B /* EditUser.swift */,
-				F77DA9BB25734B200095B6C3 /* PostsList.swift */,
 				F78477E42572B5BF00499835 /* Resources */,
 				F78477DD2572A4EE00499835 /* Models */,
 				F78477D92572806E00499835 /* CircleImage.swift */,
@@ -678,10 +679,11 @@
 		F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */,
 				F7D139DE2579274F00230F51 /* SwiftApp 2.xcdatamodel */,
 				F77DA9C12573D1470095B6C3 /* SwiftApp.xcdatamodel */,
 			);
-			currentVersion = F7D139DE2579274F00230F51 /* SwiftApp 2.xcdatamodel */;
+			currentVersion = F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */;
 			path = SwiftApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
