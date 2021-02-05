@@ -36,8 +36,7 @@ struct PostsEdit: View {
     @State var starColor1 = Color.orange
     @State var starColor2 = Color.gray
     @State var starColor3 = Color.gray
-    
-    @State var rate: Int = 1
+    @State var rate: Int32 = 1
     
     func changeStar() {
         if rate == 1 {
@@ -123,10 +122,11 @@ struct PostsEdit: View {
                 
                 
                         Button(action: {
-                            self.save()
-                            UserDefaults.standard.set(self.user.point + self.rate, forKey: "point")
                             
-                            UserDefaults.standard.set(self.user.total_point + self.rate, forKey: "total_point")
+                            UserDefaults.standard.set(self.user.point +  (Int(self.rate) - Int(self.post.rate)) , forKey: "point")
+                            UserDefaults.standard.set(self.user.total_point + (Int(self.rate) - Int(self.post.rate)), forKey: "total_point")
+                            self.post.rate = self.rate
+                            self.save()
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("編集")
@@ -162,8 +162,10 @@ struct PostsEdit: View {
             })
             
             .actionSheet(isPresented: $showingSheet) {
-            ActionSheet(title: Text("タスクの削除"), message: Text("このタスクを削除します。よろしいですか？"), buttons: [
+            ActionSheet(title: Text("投稿を削除"), message: Text("この投稿を削除します。よろしいですか？"), buttons: [
                 .destructive(Text("削除")) {
+                    UserDefaults.standard.set(self.user.point - Int(self.post.rate) , forKey: "point")
+                    UserDefaults.standard.set(self.user.total_point - Int(self.post.rate), forKey: "total_point")
                     self.delete()
                     self.presentationMode.wrappedValue.dismiss()
                 },

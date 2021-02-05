@@ -33,7 +33,7 @@ struct PostsNew: View {
     @State var starColor2 = Color.gray
     @State var starColor3 = Color.gray
     
-    @State var rate: Int = 1
+    @State var rate: Int32 = 1
     
     func changeStar() {
         if rate == 1 {
@@ -133,11 +133,12 @@ struct PostsNew: View {
                         PostEntity.create(in: self.viewContext,
                         content: self.content,
                         detail: self.detail,
+                        rate: self.rate,
                         date: self.date)
                         self.save()
-                        UserDefaults.standard.set(self.user.point + self.rate, forKey: "point")
+                        UserDefaults.standard.set(self.user.point + Int(self.rate), forKey: "point")
                         
-                        UserDefaults.standard.set(self.user.total_point + self.rate, forKey: "total_point")
+                        UserDefaults.standard.set(self.user.total_point + Int(self.rate), forKey: "total_point")
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text(" 投稿！ ")

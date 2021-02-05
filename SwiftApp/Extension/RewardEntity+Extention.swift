@@ -6,11 +6,13 @@ extension RewardEntity {
     
     static func create(in managedObjectContext: NSManagedObjectContext,
                        content: String,
-                       point: Int32) {
+                       point: Int32,
+                       isDone: Bool) {
         let reward = self.init(context: managedObjectContext)
         
         reward.content = content
         reward.point = point
+        reward.isDone = false
         
         
         do {

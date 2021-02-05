@@ -56,7 +56,8 @@ struct RewardNew: View {
                         self.point = Int32(self.point_double)
                         RewardEntity.create(in: self.viewContext,
                         content: self.content,
-                        point: self.point)
+                        point: self.point,
+                        isDone: false)
                         self.save()
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
