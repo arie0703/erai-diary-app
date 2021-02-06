@@ -36,12 +36,19 @@ class UserProfile: ObservableObject {
         }
     }
     
+    @Published var image: Data {
+        didSet {
+            UserDefaults.standard.set(image, forKey: "image")
+        }
+    }
+    
     /// 初期化処理
     init() {
         name = UserDefaults.standard.string(forKey: "name") ?? "ユーザー"
         goal = UserDefaults.standard.string(forKey: "goal") ?? ""
         point = UserDefaults.standard.integer(forKey: "point")
         total_point = UserDefaults.standard.integer(forKey: "total_point")
+        image = UserDefaults.standard.data(forKey: "image") ?? Data([0])
     }
 }
 
@@ -65,7 +72,7 @@ struct MyPage: View {
     
     var body: some View {
         VStack{
-            CircleImage(image: Image("noicon"))
+            CircleImage()
             .padding(5)
            
             Text(userName)

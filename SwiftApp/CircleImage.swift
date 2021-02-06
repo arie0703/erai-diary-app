@@ -9,23 +9,50 @@
 import SwiftUI
 
 struct CircleImage: View {
-    var image: Image
+    
+    @State private var image = UIImage()
+    
+
+    
+    @State private var isShowPhotoLibrary = false
     
     var body: some View {
-        image
-            .resizable()
-            .scaledToFit()
-            .clipShape(Circle())
-            .overlay(
-                Circle().stroke(Color.white, lineWidth: 4))
-            .frame(width:150.0, height:150.0)
-            .shadow(radius: 2)
+        VStack {
+            if UserProfile().total_point >= 20 {
+                Image("hiyoko")
+                .resizable()
+                //.scaledToFit()
+                .clipShape(Circle())
+                .overlay(
+                    Circle().stroke(Color.white, lineWidth: 4))
+                .frame(width:150.0, height:150.0)
+                .shadow(radius: 2)
+            } else {
+                Image("Chicken")
+                .resizable()
+                //.scaledToFit()
+                .clipShape(Circle())
+                .overlay(
+                    Circle().stroke(Color.white, lineWidth: 4))
+                .frame(width:150.0, height:150.0)
+                .shadow(radius: 2)
+            }
             
+                
+                /*
+                .onTapGesture {
+                    self.isShowPhotoLibrary = true
+                }*/
+            Text(UserProfile().image.description)
+        }
+        .sheet(isPresented: $isShowPhotoLibrary, content: {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+        })
     }
 }
  
 struct CircleImage_Previews: PreviewProvider {
     static var previews: some View {
-        CircleImage(image: Image("noicon"))
+        CircleImage()
     }
 }
