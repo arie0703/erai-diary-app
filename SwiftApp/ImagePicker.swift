@@ -40,9 +40,9 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
         
         
-        
-        
         /*
+         
+        // documentsディレクトリに画像を保存するやり方
         func saveImage(image:UIImage,fileName:String)->Bool{
             //pngで保存する場合
             let pngImageData = image.pngData()
@@ -67,6 +67,8 @@ struct ImagePicker: UIViewControllerRepresentable {
             }
             
             //saveImage(image: parent.selectedImage, fileName: "user_image")
+            
+            //UIImageをData型として保存
             UserDefaults.standard.setUIImageToData(image: parent.selectedImage, forKey: "image")
             parent.presentationMode.wrappedValue.dismiss()
         }

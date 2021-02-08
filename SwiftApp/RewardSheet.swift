@@ -12,6 +12,8 @@ import CoreData
 struct RewardSheet: View {
     @ObservedObject var user = UserProfile()
     @Environment(\.managedObjectContext) var viewContext
+    
+    @State var showDones = false
     @State var addNewReward = false
     
     @FetchRequest(
@@ -44,13 +46,23 @@ struct RewardSheet: View {
     
     //アラート表示用プロパティ
     @State private var showingAlert = false
-    @State private var showingNotEnough = false
     
     var body: some View {
         VStack(alignment: .leading){
             HStack{
                 Text("ごほうびシート")
                 .font(.title)
+                
+                
+                Button(action: {
+                    self.showDones = true
+                }) {
+                    Text("履歴")
+                }.sheet(isPresented: $showDones) {
+                    RewardDone()
+                        .environment(\.managedObjectContext, self.viewContext)
+                }
+                
                 Spacer()
                 
                 Button(action: {
@@ -103,6 +115,7 @@ struct RewardSheet: View {
                                   {
                                     UserDefaults.standard.set(self.user.point - Int(reward.point), forKey: "point")
                                         reward.isDone = true
+                                        self.save()
                                   })
                             )
                     }
@@ -138,6 +151,8 @@ struct RewardSheet_Previews: PreviewProvider {
                      content: "プリン", point: 5, isDone: false)
     RewardEntity.create(in: context,
                         content: "大盛りパフェ", point: 10, isDone: false)
+    RewardEntity.create(in: context,
+                        content: "焼肉", point: 15, isDone: true)
         return RewardSheet()
             .environment(\.managedObjectContext, context)
             
