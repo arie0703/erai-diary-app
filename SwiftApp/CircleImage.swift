@@ -10,39 +10,23 @@ import SwiftUI
 
 struct CircleImage: View {
     
-    @State private var image = UIImage()
-    
-
-    
+    // Data型で保存された画像をUIImage型に再変換。
+    @State var image = UIImage(data: UserProfile().image)!
     @State private var isShowPhotoLibrary = false
     
     var body: some View {
         VStack {
-            if UserProfile().total_point >= 20 {
-                Image("hiyoko")
-                .resizable()
-                //.scaledToFit()
-                .clipShape(Circle())
-                .overlay(
-                    Circle().stroke(Color.white, lineWidth: 4))
-                .frame(width:150.0, height:150.0)
-                .shadow(radius: 2)
-            } else {
-                Image("Chicken")
-                .resizable()
-                //.scaledToFit()
-                .clipShape(Circle())
-                .overlay(
-                    Circle().stroke(Color.white, lineWidth: 4))
-                .frame(width:150.0, height:150.0)
-                .shadow(radius: 2)
-            }
             
-                
-                /*
-                .onTapGesture {
-                    self.isShowPhotoLibrary = true
-                }*/
+            Image(uiImage: self.image)
+            .resizable()
+            .clipShape(Circle())
+            .overlay(
+                Circle().stroke(Color.white, lineWidth: 4))
+            .frame(width:150.0, height:150.0)
+            .shadow(radius: 2)
+            .onTapGesture {
+                self.isShowPhotoLibrary = true
+            }
             Text(UserProfile().image.description)
         }
         .sheet(isPresented: $isShowPhotoLibrary, content: {

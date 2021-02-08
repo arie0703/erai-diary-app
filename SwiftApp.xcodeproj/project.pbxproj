@@ -11,9 +11,9 @@
 		F72205E32577B3FB003DE067 /* RewardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72205E22577B3FB003DE067 /* RewardSheet.swift */; };
 		F72593562588DA4000E3079D /* PostsEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72593552588DA4000E3079D /* PostsEdit.swift */; };
 		F749BDEE25CE654100229985 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDED25CE654100229985 /* ImagePicker.swift */; };
-		F749BDF225CE671800229985 /* ImagePickAndDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDF125CE671800229985 /* ImagePickAndDisplayView.swift */; };
 		F749BDF425CEBB0A00229985 /* UserDefault+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */; };
 		F75E7016257D51A000C4E6D9 /* RewardNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E7015257D51A000C4E6D9 /* RewardNew.swift */; };
+		F77C09E625D1481600D0F7A7 /* RewardDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77C09E525D1481600D0F7A7 /* RewardDone.swift */; };
 		F77DA9BA257348EF0095B6C3 /* melon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F77DA9B9257348EF0095B6C3 /* melon.jpg */; };
 		F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77DA9BB25734B200095B6C3 /* PostsList.swift */; };
 		F77DA9C22573D1470095B6C3 /* SwiftApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */; };
@@ -57,9 +57,9 @@
 		F72205E22577B3FB003DE067 /* RewardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardSheet.swift; sourceTree = "<group>"; };
 		F72593552588DA4000E3079D /* PostsEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEdit.swift; sourceTree = "<group>"; };
 		F749BDED25CE654100229985 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		F749BDF125CE671800229985 /* ImagePickAndDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickAndDisplayView.swift; sourceTree = "<group>"; };
 		F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extention.swift"; sourceTree = "<group>"; };
 		F75E7015257D51A000C4E6D9 /* RewardNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardNew.swift; sourceTree = "<group>"; };
+		F77C09E525D1481600D0F7A7 /* RewardDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardDone.swift; sourceTree = "<group>"; };
 		F77DA9B9257348EF0095B6C3 /* melon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melon.jpg; path = ../../../../Downloads/melon.jpg; sourceTree = "<group>"; };
 		F77DA9BB25734B200095B6C3 /* PostsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsList.swift; sourceTree = "<group>"; };
 		F77DA9C12573D1470095B6C3 /* SwiftApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftApp.xcdatamodel; sourceTree = "<group>"; };
@@ -142,17 +142,17 @@
 				F72593552588DA4000E3079D /* PostsEdit.swift */,
 				F77DA9C32573D3400095B6C3 /* PostsNew.swift */,
 				F77DA9BB25734B200095B6C3 /* PostsList.swift */,
-				F75E7015257D51A000C4E6D9 /* RewardNew.swift */,
 				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
 				F78477AD25727F0D00499835 /* ContentView.swift */,
 				F72205E22577B3FB003DE067 /* RewardSheet.swift */,
+				F75E7015257D51A000C4E6D9 /* RewardNew.swift */,
+				F77C09E525D1481600D0F7A7 /* RewardDone.swift */,
 				F7CB7EE2257769F9007CC57B /* MyPage.swift */,
 				F77F7E8A257A62C700DAA12B /* EditUser.swift */,
 				F749BDED25CE654100229985 /* ImagePicker.swift */,
-				F749BDF125CE671800229985 /* ImagePickAndDisplayView.swift */,
+				F78477D92572806E00499835 /* CircleImage.swift */,
 				F78477E42572B5BF00499835 /* Resources */,
 				F78477DD2572A4EE00499835 /* Models */,
-				F78477D92572806E00499835 /* CircleImage.swift */,
 				F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */,
 				F78477AF25727F1500499835 /* Assets.xcassets */,
 				F78477B425727F1500499835 /* LaunchScreen.storyboard */,
@@ -362,7 +362,7 @@
 				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
 				F72593562588DA4000E3079D /* PostsEdit.swift in Sources */,
 				F78477DA2572806E00499835 /* CircleImage.swift in Sources */,
-				F749BDF225CE671800229985 /* ImagePickAndDisplayView.swift in Sources */,
+				F77C09E625D1481600D0F7A7 /* RewardDone.swift in Sources */,
 				F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */,
 				F77F7E8B257A62C700DAA12B /* EditUser.swift in Sources */,
 				F78477AC25727F0D00499835 /* SceneDelegate.swift in Sources */,
@@ -534,6 +534,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 8JPRQQP7VB;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -553,6 +554,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 8JPRQQP7VB;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
