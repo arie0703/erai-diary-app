@@ -51,10 +51,17 @@ struct PostsList: View {
                     VStack(alignment: .leading){
                         HStack {
                             Text(post.content ?? "no title")
-                            .foregroundColor(.black)
+                                .foregroundColor(.black)
+                                .font(.title)
                             Spacer()
+                            Group {
+                                Image(systemName: "star.fill")
+                                Text(post.rate.description)
+                            }.foregroundColor(.orange)
+                            
                         }
-                            .font(.title)
+                        
+                            
                         
                         Text(post.detail ?? "no title")
                         .foregroundColor(.black)
@@ -65,7 +72,7 @@ struct PostsList: View {
                     }
                     .padding(20) //文字に対するpadding
                     .frame(maxWidth: .infinity, minHeight: 100)
-                        .background(Color(red: 1, green: 0.7, blue: 0.4))
+                        .background(Color(red: 1, green: 0.87, blue: 0.62))
                     .cornerRadius(10)
                     .padding(8) //要素間の空白
                         

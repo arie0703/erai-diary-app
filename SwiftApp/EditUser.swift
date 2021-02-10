@@ -28,6 +28,10 @@ struct EditUser: View {
                     Text(user.point.description)
                 }
                 
+                Section (header: Text("トータル えらいポイント")){
+                    Text(user.total_point.description)
+                }
+                
                 Section{
                     Button(action: {
                         UserDefaults.standard.set(self.user.name, forKey: "name")

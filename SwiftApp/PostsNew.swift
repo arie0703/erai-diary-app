@@ -48,6 +48,17 @@ struct PostsNew: View {
         }
     }
     
+    func messages(rate: Int) -> String {
+        if rate == 1 {
+            return "えらい！"
+        } else if rate == 2 {
+            return "すごくえらい！"
+        } else {
+            return "ウルトラえらい！"
+        }
+        
+    }
+    
     
     fileprivate func cancelPost() {
         self.detail = ""
@@ -113,18 +124,21 @@ struct PostsNew: View {
                                 .padding(10)
                             }
                             
+                            
                             Spacer()
                         }
-                        .padding(10)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                        
+                        Text(messages(rate: Int(rate)))
                         
                         
                     }
+                    .padding(10)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
                     
                     
-                
+                    
                     Text("今日もお疲れ様！")
                     .padding(30)
                     
