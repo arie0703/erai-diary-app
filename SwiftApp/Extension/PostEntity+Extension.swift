@@ -1,7 +1,6 @@
 import CoreData
 import SwiftUI
 
-extension PostEntity: Identifiable{}
 extension PostEntity {
     
     static func create(in managedObjectContext: NSManagedObjectContext,

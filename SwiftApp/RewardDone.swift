@@ -44,7 +44,7 @@ struct RewardDone: View {
                 
             }) {
                 Image(systemName: "xmark")
-                .foregroundColor(Color.red)
+                .foregroundColor(Color.gray)
             })
 
             

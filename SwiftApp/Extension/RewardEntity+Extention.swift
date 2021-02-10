@@ -1,7 +1,6 @@
 import CoreData
 import SwiftUI
 
-extension RewardEntity: Identifiable{}
 extension RewardEntity {
     
     static func create(in managedObjectContext: NSManagedObjectContext,

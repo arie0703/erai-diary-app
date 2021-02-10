@@ -51,6 +51,17 @@ struct PostsEdit: View {
         }
     }
     
+    func messages(rate: Int) -> String {
+        if rate == 1 {
+            return "えらい！"
+        } else if rate == 2 {
+            return "すごくえらい！"
+        } else {
+            return "ウルトラえらい！"
+        }
+        
+    }
+    
     
     var body: some View {
         NavigationView {
@@ -109,18 +120,21 @@ struct PostsEdit: View {
                                 
                                 Spacer()
                             }
-                            .padding(10)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .padding(.horizontal)
+                            
+                            Text(messages(rate: Int(rate)))
+                            
                         }
+                        .padding(10)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                         .padding(.bottom, 30)
                     
             
                     
                         
                 
-                
+                    Group{
                         Button(action: {
                             
                             UserDefaults.standard.set(self.user.point +  (Int(self.rate) - Int(self.post.rate)) , forKey: "point")
@@ -130,23 +144,25 @@ struct PostsEdit: View {
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("編集")
-                            .foregroundColor(Color.white)
-                            .padding()
-                            .padding(.horizontal, 50)
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                        }.padding(.bottom)
+                                .padding()
+                                .padding(.horizontal, 30)
+                                .background(Color.blue)
+                        }
                         
                         Button(action: {
                             self.showingSheet = true
                         }) {
                             Text("削除")
-                            .foregroundColor(Color.white)
-                            .padding()
-                            .padding(.horizontal, 50)
-                            .background(Color.red)
-                            .cornerRadius(10)
+                                .padding()
+                                .padding(.horizontal, 30)
+                                .background(Color.red)
                         }
+                    }
+                    .foregroundColor(Color.white)
+                    
+                    
+                    
+                    .cornerRadius(10)
                         
                     
                     

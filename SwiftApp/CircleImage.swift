@@ -27,7 +27,6 @@ struct CircleImage: View {
             .onTapGesture {
                 self.isShowPhotoLibrary = true
             }
-            Text(UserProfile().image.description)
         }
         .sheet(isPresented: $isShowPhotoLibrary, content: {
             ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
