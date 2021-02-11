@@ -45,41 +45,7 @@ struct PostsList: View {
             ScrollView(.vertical, showsIndicators: false){
                 ForEach(postList, id: \.self){ post in
                     
-                    Button(action: {
-                       self.editPost = true
-                    }) {
-                    VStack(alignment: .leading){
-                        HStack {
-                            Text(post.content ?? "no title")
-                                .foregroundColor(.black)
-                                .font(.title)
-                            Spacer()
-                            Group {
-                                Image(systemName: "star.fill")
-                                Text(post.rate.description)
-                            }.foregroundColor(.orange)
-                            
-                        }
-                        
-                            
-                        
-                        Text(post.detail ?? "no title")
-                        .foregroundColor(.black)
-                        
-                        
-                        
-                        
-                    }
-                    .padding(20) //文字に対するpadding
-                    .frame(maxWidth: .infinity, minHeight: 100)
-                        .background(Color(red: 1, green: 0.87, blue: 0.62))
-                    .cornerRadius(10)
-                    .padding(8) //要素間の空白
-                        
-                    }.sheet(isPresented: self.$editPost) {
-                        PostsEdit(post:post)
-                            .environment(\.managedObjectContext, self.viewContext)
-                    }
+                    PostRow(post: post)
                     
                 }
             }

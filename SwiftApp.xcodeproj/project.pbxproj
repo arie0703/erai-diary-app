@@ -10,6 +10,9 @@
 		F7199B50258BA83400CCC3C2 /* Binding+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7199B4F258BA83300CCC3C2 /* Binding+Extention.swift */; };
 		F72205E32577B3FB003DE067 /* RewardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72205E22577B3FB003DE067 /* RewardSheet.swift */; };
 		F72593562588DA4000E3079D /* PostsEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72593552588DA4000E3079D /* PostsEdit.swift */; };
+		F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B2125D430A200B209C9 /* UserProfile.swift */; };
+		F7342B2D25D44AD300B209C9 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B2C25D44AD300B209C9 /* PostRow.swift */; };
+		F7342B3225D44CC500B209C9 /* RewardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B3125D44CC500B209C9 /* RewardRow.swift */; };
 		F749BDEE25CE654100229985 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDED25CE654100229985 /* ImagePicker.swift */; };
 		F749BDF425CEBB0A00229985 /* UserDefault+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */; };
 		F75E7016257D51A000C4E6D9 /* RewardNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E7015257D51A000C4E6D9 /* RewardNew.swift */; };
@@ -28,8 +31,6 @@
 		F78477C125727F1600499835 /* SwiftAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477C025727F1600499835 /* SwiftAppTests.swift */; };
 		F78477CC25727F1600499835 /* SwiftAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477CB25727F1600499835 /* SwiftAppUITests.swift */; };
 		F78477DA2572806E00499835 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477D92572806E00499835 /* CircleImage.swift */; };
-		F78477DF2572A51900499835 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477DE2572A51900499835 /* Posts.swift */; };
-		F78477E12572A8CE00499835 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477E02572A8CE00499835 /* Data.swift */; };
 		F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB7EE2257769F9007CC57B /* MyPage.swift */; };
 		F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,9 @@
 		F7199B4F258BA83300CCC3C2 /* Binding+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extention.swift"; sourceTree = "<group>"; };
 		F72205E22577B3FB003DE067 /* RewardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardSheet.swift; sourceTree = "<group>"; };
 		F72593552588DA4000E3079D /* PostsEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEdit.swift; sourceTree = "<group>"; };
+		F7342B2125D430A200B209C9 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		F7342B2C25D44AD300B209C9 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
+		F7342B3125D44CC500B209C9 /* RewardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardRow.swift; sourceTree = "<group>"; };
 		F749BDED25CE654100229985 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extention.swift"; sourceTree = "<group>"; };
 		F75E7015257D51A000C4E6D9 /* RewardNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardNew.swift; sourceTree = "<group>"; };
@@ -79,8 +83,6 @@
 		F78477CB25727F1600499835 /* SwiftAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAppUITests.swift; sourceTree = "<group>"; };
 		F78477CD25727F1600499835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F78477D92572806E00499835 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
-		F78477DE2572A51900499835 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
-		F78477E02572A8CE00499835 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 3.xcdatamodel"; sourceTree = "<group>"; };
 		F7CB7EE2257769F9007CC57B /* MyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPage.swift; sourceTree = "<group>"; };
 		F7D139DE2579274F00230F51 /* SwiftApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -112,6 +114,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F759D74B25D57485003301BC /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				F7342B2C25D44AD300B209C9 /* PostRow.swift */,
+				F77DA9BB25734B200095B6C3 /* PostsList.swift */,
+				F77DA9C32573D3400095B6C3 /* PostsNew.swift */,
+				F72593552588DA4000E3079D /* PostsEdit.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		F75B349E25D5761B00F06DEB /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				F77C09E525D1481600D0F7A7 /* RewardDone.swift */,
+				F75E7015257D51A000C4E6D9 /* RewardNew.swift */,
+				F7342B3125D44CC500B209C9 /* RewardRow.swift */,
+				F72205E22577B3FB003DE067 /* RewardSheet.swift */,
+			);
+			path = Rewards;
+			sourceTree = "<group>";
+		};
+		F75B34A225D5764000F06DEB /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F77F7E8A257A62C700DAA12B /* EditUser.swift */,
+				F7342B2125D430A200B209C9 /* UserProfile.swift */,
+				F7CB7EE2257769F9007CC57B /* MyPage.swift */,
+				F78477D92572806E00499835 /* CircleImage.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		F784779D25727F0D00499835 = {
 			isa = PBXGroup;
 			children = (
@@ -137,20 +172,12 @@
 			children = (
 				F7998C5125752D5700C35447 /* Extension */,
 				F78477A925727F0D00499835 /* AppDelegate.swift */,
-				F72593552588DA4000E3079D /* PostsEdit.swift */,
-				F77DA9C32573D3400095B6C3 /* PostsNew.swift */,
-				F77DA9BB25734B200095B6C3 /* PostsList.swift */,
-				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
 				F78477AD25727F0D00499835 /* ContentView.swift */,
-				F72205E22577B3FB003DE067 /* RewardSheet.swift */,
-				F75E7015257D51A000C4E6D9 /* RewardNew.swift */,
-				F77C09E525D1481600D0F7A7 /* RewardDone.swift */,
-				F7CB7EE2257769F9007CC57B /* MyPage.swift */,
-				F77F7E8A257A62C700DAA12B /* EditUser.swift */,
 				F749BDED25CE654100229985 /* ImagePicker.swift */,
-				F78477D92572806E00499835 /* CircleImage.swift */,
-				F78477E42572B5BF00499835 /* Resources */,
-				F78477DD2572A4EE00499835 /* Models */,
+				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
+				F759D74B25D57485003301BC /* Posts */,
+				F75B349E25D5761B00F06DEB /* Rewards */,
+				F75B34A225D5764000F06DEB /* User */,
 				F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */,
 				F78477AF25727F1500499835 /* Assets.xcassets */,
 				F78477B425727F1500499835 /* LaunchScreen.storyboard */,
@@ -184,22 +211,6 @@
 				F78477CD25727F1600499835 /* Info.plist */,
 			);
 			path = SwiftAppUITests;
-			sourceTree = "<group>";
-		};
-		F78477DD2572A4EE00499835 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				F78477DE2572A51900499835 /* Posts.swift */,
-				F78477E02572A8CE00499835 /* Data.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		F78477E42572B5BF00499835 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		F7998C5125752D5700C35447 /* Extension */ = {
@@ -276,7 +287,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Kaisei Arimura";
 				TargetAttributes = {
 					F78477A525727F0D00499835 = {
@@ -344,22 +355,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7342B3225D44CC500B209C9 /* RewardRow.swift in Sources */,
 				F77F7E8D257A630800DAA12B /* RewardEntity+Extention.swift in Sources */,
 				F77DA9C42573D3400095B6C3 /* PostsNew.swift in Sources */,
-				F78477E12572A8CE00499835 /* Data.swift in Sources */,
 				F749BDEE25CE654100229985 /* ImagePicker.swift in Sources */,
 				F7199B50258BA83400CCC3C2 /* Binding+Extention.swift in Sources */,
 				F72205E32577B3FB003DE067 /* RewardSheet.swift in Sources */,
+				F7342B2D25D44AD300B209C9 /* PostRow.swift in Sources */,
 				F77DA9C22573D1470095B6C3 /* SwiftApp.xcdatamodeld in Sources */,
 				F749BDF425CEBB0A00229985 /* UserDefault+Extention.swift in Sources */,
 				F75E7016257D51A000C4E6D9 /* RewardNew.swift in Sources */,
 				F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */,
-				F78477DF2572A51900499835 /* Posts.swift in Sources */,
 				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
 				F72593562588DA4000E3079D /* PostsEdit.swift in Sources */,
 				F78477DA2572806E00499835 /* CircleImage.swift in Sources */,
 				F77C09E625D1481600D0F7A7 /* RewardDone.swift in Sources */,
 				F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */,
+				F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */,
 				F77F7E8B257A62C700DAA12B /* EditUser.swift in Sources */,
 				F78477AC25727F0D00499835 /* SceneDelegate.swift in Sources */,
 				F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */,
@@ -436,6 +448,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -496,6 +509,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
