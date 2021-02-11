@@ -44,8 +44,7 @@ struct RewardSheet: View {
         }
     }
     
-    //アラート表示用プロパティ
-    @State private var showingAlert = false
+    
     
     var body: some View {
         VStack(alignment: .leading){
@@ -83,42 +82,7 @@ struct RewardSheet: View {
                 ForEach(rewardList){ reward in
                     
                     // ご褒美シート
-                    Button(action: {
-                        if UserProfile().point >= reward.point {
-                            self.showingAlert = true
-                        } else {
-                            print("ポイントが足りません")
-                        }
-                    }) {
-                        HStack{
-                            //ポイントが足りているときは、星の色がオレンジになる。
-                            if UserProfile().point >= reward.point {
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(Color.orange)
-                            } else {
-                                Image(systemName: "star")
-                                .foregroundColor(Color.orange)
-                            }
-                            Text(reward.content ?? "no title")
-                            Spacer()
-                            Text(reward.point.description + " P")
-                        }
-                        .padding(5)
-                    }
-                    .alert(isPresented: self.$showingAlert) {
-                            Alert(
-                                  title: Text("ごほうび"),
-                                  message: Text("ごほうびを使いますか？"),
-                                  primaryButton: .cancel(Text("キャンセル")),
-                                  secondaryButton: .default(Text("はい"),
-                                  action:
-                                  {
-                                    UserDefaults.standard.set(self.user.point - Int(reward.point), forKey: "point")
-                                        reward.isDone = true
-                                        self.save()
-                                  })
-                            )
-                    }
+                    RewardRow(reward: reward)
                     
                     
                 }

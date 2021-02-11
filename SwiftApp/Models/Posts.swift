@@ -16,7 +16,7 @@ struct Posts: Hashable, Codable, Identifiable{
     
 }
 
-extension Posts{
+extension Posts {
     var image: Image {
         ImageStore.shared.image(name: imageName)
     }

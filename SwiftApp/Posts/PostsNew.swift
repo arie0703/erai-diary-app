@@ -1,18 +1,19 @@
 //
-//  PostsEdit.swift
+//  PostsNew.swift
 //  SwiftApp
 //
-//  Created by 有村海星 on 2020/12/15.
+//  Created by 有村海星 on 2020/11/29.
 //  Copyright © 2020 Kaisei Arimura. All rights reserved.
 //
+
 import SwiftUI
 
-struct PostsEdit: View {
+struct PostsNew: View {
     @ObservedObject var user = UserProfile()
-    @ObservedObject var post: PostEntity
     
-    @State var showingSheet = false
-    
+    @State var content: String = ""
+    @State var detail: String = ""
+    @State var date = Date()
     @Environment(\.managedObjectContext) var viewContext
     
     //モーダルの処理
@@ -27,15 +28,11 @@ struct PostsEdit: View {
         }
     }
     
-    fileprivate func delete() {
-        viewContext.delete(post)
-        save()
-    }
-    
     //星の色　ボタンでチェンジ　デフォルトで星1は色がついてる
     @State var starColor1 = Color.orange
     @State var starColor2 = Color.gray
     @State var starColor3 = Color.gray
+    
     @State var rate: Int32 = 1
     
     func changeStar() {
@@ -63,30 +60,40 @@ struct PostsEdit: View {
     }
     
     
+    fileprivate func cancelPost() {
+        self.detail = ""
+    }
+    
     var body: some View {
+        
         NavigationView {
+            //背景色
             Color(red: 0.95, green: 0.95, blue: 0.95)
             .edgesIgnoringSafeArea(.all)
             .overlay(
-                VStack{
-                    Text("今日あったえらい出来事")
-                    TextField("例: 三食しっかり食べた！", text: Binding($post.content, "content"))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.bottom, 30)
-                        .padding(.horizontal)
-                
-                    Text("ひとこと")
-                    TextField("", text: Binding($post.detail, "detail"))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.bottom, 30)
-                        .padding(.horizontal)
-                    
-                    
-                    Text("えらい度")
+                ScrollView{
+                    VStack{
+                        Text("今日あったえらい出来事")
+                        TextField("例: 三食しっかり食べた！", text: $content)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.bottom, 30)
+                            .padding(.horizontal)
+                        
+                        Text("ひとこと")
+                        TextField("", text: $detail)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.bottom, 30)
+                            .padding(.horizontal)
+                        
+                        
+                        
+                        
+                        
+                        Text("えらい度")
                         VStack{
                             HStack{
                                 Spacer()
-                            
+                                
                                 Button(action: {
                                     self.rate = 1
                                     self.changeStar()
@@ -118,57 +125,56 @@ struct PostsEdit: View {
                                     .padding(10)
                                 }
                                 
+                                
                                 Spacer()
                             }
                             
                             Text(messages(rate: Int(rate)))
+                            
                             
                         }
                         .padding(10)
                         .background(Color.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
-                        .padding(.bottom, 30)
-                    
-            
-                    
                         
-                
-                    Group{
+                        
+                        
+                        Text("今日もお疲れ様！")
+                        .padding(30)
+                        
+                        
                         Button(action: {
-                            
-                            UserDefaults.standard.set(self.user.point +  (Int(self.rate) - Int(self.post.rate)) , forKey: "point")
-                            UserDefaults.standard.set(self.user.total_point + (Int(self.rate) - Int(self.post.rate)), forKey: "total_point")
-                            self.post.rate = self.rate
+                            PostEntity.create(in: self.viewContext,
+                            content: self.content,
+                            detail: self.detail,
+                            rate: self.rate,
+                            date: self.date)
                             self.save()
+                            UserDefaults.standard.set(self.user.point + Int(self.rate), forKey: "point")
+                            
+                            UserDefaults.standard.set(self.user.total_point + Int(self.rate), forKey: "total_point")
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
-                            Text("編集")
-                                .padding()
-                                .padding(.horizontal, 30)
-                                .background(Color.blue)
+                            Text(" 投稿！ ")
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .background(Color.orange)
+                            .cornerRadius(10)
+        
                         }
+                        Spacer(minLength: 10)
                         
-                        Button(action: {
-                            self.showingSheet = true
-                        }) {
-                            Text("削除")
-                                .padding()
-                                .padding(.horizontal, 30)
-                                .background(Color.red)
-                        }
-                    }
-                    .foregroundColor(Color.white)
-                    
-                    
-                    
-                    .cornerRadius(10)
                         
-                    
-                    
-                }
-            )//背景色
-            .navigationBarTitle("編集する")
+                        
+                        
+                    } // VStack
+                }//Scroll View
+                
+            )//.overlay
+            
+            
+            .navigationBarTitle("投稿する")
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
                 
@@ -177,30 +183,17 @@ struct PostsEdit: View {
                 .foregroundColor(Color.red)
             })
             
-            .actionSheet(isPresented: $showingSheet) {
-            ActionSheet(title: Text("投稿を削除"), message: Text("この投稿を削除します。よろしいですか？"), buttons: [
-                .destructive(Text("削除")) {
-                    UserDefaults.standard.set(self.user.point - Int(self.post.rate) , forKey: "point")
-                    UserDefaults.standard.set(self.user.total_point - Int(self.post.rate), forKey: "total_point")
-                    self.delete()
-                    self.presentationMode.wrappedValue.dismiss()
-                },
-                .cancel(Text("キャンセル"))
-            
-            ])
-            }
         }
+        
     }
+    
 }
 
-struct PostsEdit_Previews: PreviewProvider {
+struct PostsNew_Previews: PreviewProvider {
     static let context = (UIApplication.shared.delegate as! AppDelegate)
     .persistentContainer.viewContext
     static var previews: some View {
-        let newPost = PostEntity(context: context)
-        return NavigationView {
-            PostsEdit(post: newPost)
-            .environment(\.managedObjectContext, context)
-        }
+        PostsNew()
+        .environment(\.managedObjectContext, context)
     }
 }
