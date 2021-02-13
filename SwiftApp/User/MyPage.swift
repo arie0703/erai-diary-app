@@ -47,11 +47,11 @@ struct MyPage: View {
             .padding(8)
             
             HStack{
-                if user.goal == "" {
+                if userGoal == "" {
                     Text("目標を設定しよう！")
                         .foregroundColor(Color.gray)
                 } else {
-                    Text(user.goal)
+                    Text(userGoal)
                 }
                 Spacer()
             }
@@ -73,7 +73,7 @@ struct MyPage: View {
                     VStack{
                         Text("えらいポイント")
                         .font(.headline)
-                        Text(user.point.description)
+                        Text(point.description)
                     }
                 }
                 .frame(maxWidth: .infinity, minHeight: 100)
