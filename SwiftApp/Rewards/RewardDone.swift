@@ -23,6 +23,26 @@ struct RewardDone: View {
     
     var rewardList: FetchedResults<RewardEntity>
     
+    fileprivate func save() {
+        do {
+            try  self.viewContext.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    private func remove(indexSet: IndexSet) {
+        for index in indexSet {
+            viewContext.delete(rewardList[index])
+        }
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError()
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -35,6 +55,9 @@ struct RewardDone: View {
                         Text(reward.point.description + " P")
                     }
                     .padding(5)
+                }
+                .onDelete{ indexSet in
+                    self.remove(indexSet: indexSet)
                 }
                  
             }
