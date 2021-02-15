@@ -15,6 +15,7 @@
 		F7342B3225D44CC500B209C9 /* RewardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B3125D44CC500B209C9 /* RewardRow.swift */; };
 		F749BDEE25CE654100229985 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDED25CE654100229985 /* ImagePicker.swift */; };
 		F749BDF425CEBB0A00229985 /* UserDefault+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */; };
+		F75E164C25D8F3E000FAC2A2 /* Calender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E164B25D8F3E000FAC2A2 /* Calender.swift */; };
 		F75E7016257D51A000C4E6D9 /* RewardNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E7015257D51A000C4E6D9 /* RewardNew.swift */; };
 		F77C09E625D1481600D0F7A7 /* RewardDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77C09E525D1481600D0F7A7 /* RewardDone.swift */; };
 		F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77DA9BB25734B200095B6C3 /* PostsList.swift */; };
@@ -33,6 +34,7 @@
 		F78477DA2572806E00499835 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477D92572806E00499835 /* CircleImage.swift */; };
 		F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB7EE2257769F9007CC57B /* MyPage.swift */; };
 		F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */; };
+		F7FB2EB425D962F0007BDA98 /* PostsSortedByDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FB2EB325D962F0007BDA98 /* PostsSortedByDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,7 @@
 		F7342B3125D44CC500B209C9 /* RewardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardRow.swift; sourceTree = "<group>"; };
 		F749BDED25CE654100229985 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extention.swift"; sourceTree = "<group>"; };
+		F75E164B25D8F3E000FAC2A2 /* Calender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calender.swift; sourceTree = "<group>"; };
 		F75E7015257D51A000C4E6D9 /* RewardNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardNew.swift; sourceTree = "<group>"; };
 		F77C09E525D1481600D0F7A7 /* RewardDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardDone.swift; sourceTree = "<group>"; };
 		F77DA9BB25734B200095B6C3 /* PostsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsList.swift; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		F7CB7EE2257769F9007CC57B /* MyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPage.swift; sourceTree = "<group>"; };
 		F7D139DE2579274F00230F51 /* SwiftApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 2.xcdatamodel"; sourceTree = "<group>"; };
 		F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostEntity+Extension.swift"; sourceTree = "<group>"; };
+		F7FB2EB325D962F0007BDA98 /* PostsSortedByDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsSortedByDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +121,12 @@
 		F759D74B25D57485003301BC /* Posts */ = {
 			isa = PBXGroup;
 			children = (
+				F75E164B25D8F3E000FAC2A2 /* Calender.swift */,
 				F7342B2C25D44AD300B209C9 /* PostRow.swift */,
 				F77DA9BB25734B200095B6C3 /* PostsList.swift */,
 				F77DA9C32573D3400095B6C3 /* PostsNew.swift */,
 				F72593552588DA4000E3079D /* PostsEdit.swift */,
+				F7FB2EB325D962F0007BDA98 /* PostsSortedByDate.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = F784779D25727F0D00499835;
 			productRefGroup = F78477A725727F0D00499835 /* Products */;
@@ -362,9 +369,11 @@
 				F7199B50258BA83400CCC3C2 /* Binding+Extention.swift in Sources */,
 				F72205E32577B3FB003DE067 /* RewardSheet.swift in Sources */,
 				F7342B2D25D44AD300B209C9 /* PostRow.swift in Sources */,
+				F7FB2EB425D962F0007BDA98 /* PostsSortedByDate.swift in Sources */,
 				F77DA9C22573D1470095B6C3 /* SwiftApp.xcdatamodeld in Sources */,
 				F749BDF425CEBB0A00229985 /* UserDefault+Extention.swift in Sources */,
 				F75E7016257D51A000C4E6D9 /* RewardNew.swift in Sources */,
+				F75E164C25D8F3E000FAC2A2 /* Calender.swift in Sources */,
 				F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */,
 				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
 				F72593562588DA4000E3079D /* PostsEdit.swift in Sources */,
