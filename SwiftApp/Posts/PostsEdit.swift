@@ -62,6 +62,13 @@ struct PostsEdit: View {
         
     }
     
+    func getDate(date: Date!) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = .current
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        return date == nil ? "" : formatter.string(from: date)
+    }
+    
     
     var body: some View {
         NavigationView {
