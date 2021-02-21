@@ -4,13 +4,6 @@ struct Calender: View {
     
     @State var sheetPresented = false
     
-
-    var day1 = Calendar(identifier: .gregorian).startOfDay(for: Date())
-    var day2 = Calendar(identifier: .gregorian).date(bySettingHour: 23, minute: 59, second: 59, of: Date())
-
-    
-
-    
     var clManagerX = CLManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*365), maximumDate: Date())
     
 
@@ -128,14 +121,27 @@ struct CLViewController: View {
     @ObservedObject var clManager: CLManager
     
     var clManagerX = CLManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*365), maximumDate: Date())
+    
+    let red: Double = ColorSetting().red
+    let green: Double = ColorSetting().green
+    let blue: Double = ColorSetting().blue
 
     var body: some View {
-        Group {
-            List {
-                ForEach((0...numberOfMonths() - 1).reversed(), id: \.self) { index in
-                CLMonth(isPresented: self.$isPresented, clManager: self.clManager, monthOffset: index)
+        ZStack {
+            Color(red: red, green: green, blue: blue)
+                .edgesIgnoringSafeArea(.all)
+            Group {
+                List {
+                    ForEach((0...numberOfMonths() - 1).reversed(), id: \.self) { index in
+                    CLMonth(isPresented: self.$isPresented, clManager: self.clManager, monthOffset: index)
+                        .listRowBackground(Color(red: red, green: green, blue: blue))
+                    }
+                    Divider()
                 }
-                Divider()
+                .onAppear {
+                    //ここはCGFloat型なのでカラー変数は使えない
+                    UITableView.appearance().backgroundColor = UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 230.0 / 255.0, alpha: 1.0)
+                }
             }
         }
     }
@@ -200,6 +206,10 @@ struct CLMonth: View {
 
     @State var showTime = false
     @State var searchList = false
+    
+    let red: Double = ColorSetting().red
+    let green: Double = ColorSetting().green
+    let blue: Double = ColorSetting().blue
 
     var body: some View {
         VStack(alignment: HorizontalAlignment.center, spacing: 10){
@@ -219,8 +229,11 @@ struct CLMonth: View {
                                     isSelected: self.isSpecialDate(date: column)
                                     ),                            cellWidth: self.cellWidth)
                                     .onTapGesture {
-                                        self.dateTapped(date: column)
-                                        self.searchList = true
+                                        if CLDate(date: column, clManager: self.clManager, isToday: self.isToday(date: column), isSelected: self.isSpecialDate(date: column)
+                                        ).isSelected == false {
+                                            self.dateTapped(date: column)
+                                            self.searchList = true
+                                        }
                                     }
                                 } else {
                                     Text("").frame(width: 25, height: 25)
@@ -233,7 +246,12 @@ struct CLMonth: View {
             }
         }
         .sheet(isPresented: $searchList, content: {
-            PostsSortedByDate(selectedDate: clManager.selectedDate)
+            ZStack {
+                Color(red: red, green: green, blue: blue)
+                    .edgesIgnoringSafeArea(.all)
+                //選択した日付の投稿を表示
+                PostsSortedByDate(selectedDate: clManager.selectedDate)
+            }
         })
     }
 

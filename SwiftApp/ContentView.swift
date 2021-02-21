@@ -12,31 +12,60 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var viewContext
     
+    //color これを変更したら、RewardSheetのListの背景色も変える。
+    let red: Double = ColorSetting().red
+    let green: Double = ColorSetting().green
+    let blue: Double = ColorSetting().blue
+    
+    
+    init() {
+            // 背景色を指定
+            UITabBar.appearance().barTintColor = UIColor(red: 255.0 / 255.0, green: 235.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)
+            UITabBar.appearance().unselectedItemTintColor = UIColor(red: 190.0 / 255.0, green: 155.0 / 255.0, blue: 112.0 / 255.0, alpha: 1.0)
+        
+                
+    }
+    
     var body: some View {
+        
         TabView {
-            PostsList()
-                .environment(\.managedObjectContext, self.viewContext)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "pencil")
-                        Text("タイムライン")
-                    }
+            ZStack {
+                Color(red: red, green: green, blue: blue)
+                    .edgesIgnoringSafeArea(.all)
+                PostsList()
+                    .environment(\.managedObjectContext, self.viewContext)
+            }
+            .tabItem {
+                VStack {
+                    Image(systemName: "pencil")
+                    Text("えらいリスト")
+                }
             }.tag(1)
-            RewardSheet()
-                .environment(\.managedObjectContext, self.viewContext)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "star.fill")
-                        Text("ごほうび")
-                    }
+            
+            ZStack {
+                Color(red: red, green: green, blue: blue)
+                    .edgesIgnoringSafeArea(.all)
+                RewardSheet()
+                    .environment(\.managedObjectContext, self.viewContext)
+            }
+            .tabItem {
+                VStack {
+                    Image(systemName: "star.fill")
+                    Text("ごほうび")
+                }
             }.tag(2)
-            MyPage()
-                .environment(\.managedObjectContext, self.viewContext)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "person")
-                        Text("マイページ")
-                    }
+            
+            ZStack {
+                Color(red: red, green: green, blue: blue)
+                    .edgesIgnoringSafeArea(.all)
+                MyPage()
+                    .environment(\.managedObjectContext, self.viewContext)
+            }
+            .tabItem {
+                VStack {
+                    Image(systemName: "person")
+                    Text("マイページ")
+                }
             }.tag(3)
         }
         .accentColor(Color.orange)

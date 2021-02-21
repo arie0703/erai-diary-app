@@ -69,16 +69,25 @@ struct PostsEdit: View {
         return date == nil ? "" : formatter.string(from: date)
     }
     
+    let formRed: Double = ColorSetting().formRed
+    let formGreen: Double = ColorSetting().formGreen
+    let formBlue: Double = ColorSetting().formBlue
+    
+    let red: Double = ColorSetting().red
+    let green: Double = ColorSetting().green
+    let blue: Double = ColorSetting().blue
+    
     
     var body: some View {
         NavigationView {
-            Color(red: 0.95, green: 0.95, blue: 0.95)
+            Color(red: formRed, green: formGreen, blue: formBlue)
             .edgesIgnoringSafeArea(.all)
             .overlay(
                 ScrollView{
                     VStack{
                         Text("今日あったえらい出来事")
                         TextField("例: 三食しっかり食べた！", text: Binding($post.content, "content"))
+                            .background(Color(red: red, green: green, blue: blue))
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding(.bottom, 30)
                             .padding(.horizontal)

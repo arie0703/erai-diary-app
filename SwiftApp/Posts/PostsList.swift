@@ -9,33 +9,7 @@
 import SwiftUI
 import CoreData
 
-class dates {
-    static var day1 : Date  {
-        let day1 = Calendar(identifier: .gregorian).startOfDay(for: Date())
-        return day1
-    }
-    
-    static var day2 : Date {
-        let day2 = Calendar(identifier: .gregorian).date(bySettingHour: 23, minute: 59, second: 59, of: Date())!
-        return day2
-    }
-}
-
-func date1(date: Date) -> Date {
-    let day1 = Calendar(identifier: .gregorian).startOfDay(for: date)
-    
-    return day1
-}
-
-
-func date2(date: Date) -> Date {
-    let day2 = Calendar(identifier: .gregorian).date(bySettingHour: 23, minute: 59, second: 59, of: date)!
-    return day2
-}
-
 struct PostsList: View {
-    
-    var sele = Calender().clManagerX.selectedDate
     @Environment(\.managedObjectContext) var viewContext
     @State var addNewPost = false
     @State var editPost = false
@@ -50,7 +24,7 @@ struct PostsList: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack{
-                Text("タイムライン")
+                Text("えらいリスト")
                 .font(.title)
                 
                 Calender()

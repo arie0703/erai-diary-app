@@ -43,6 +43,10 @@ struct RewardDone: View {
         }
     }
     
+    let red: Double = ColorSetting().red
+    let green: Double = ColorSetting().green
+    let blue: Double = ColorSetting().blue
+    
     var body: some View {
         NavigationView {
             List {
@@ -55,6 +59,7 @@ struct RewardDone: View {
                         Text(reward.point.description + " P")
                     }
                     .padding(5)
+                    .listRowBackground(Color(red: red, green: green, blue: blue))
                 }
                 .onDelete{ indexSet in
                     self.remove(indexSet: indexSet)
