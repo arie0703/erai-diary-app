@@ -65,51 +65,67 @@ struct EditUser: View {
     //警告画面
     @State var showingSheet = false
     
+    init(){
+        //formの背景色を設定できるように
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
+    
+    let red: Double = ColorSetting().red
+    let green: Double = ColorSetting().green
+    let blue: Double = ColorSetting().blue
+    
+    let formRed: Double = ColorSetting().formRed
+    let formGreen: Double = ColorSetting().formGreen
+    let formBlue: Double = ColorSetting().formBlue
+    
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("ユーザー名")) {
-                    TextField("", text: $user.name)
-                    
-                }
-                
-                Section(header: Text("目標")) {
-                    TextField("例: 一日一回投稿する！", text: $user.goal)
-                    
-                }
-                
-                Section (header: Text("えらいポイント")){
-                    Text(user.point.description)
-                }
-                
-                Section (header: Text("トータル えらいポイント")){
-                    Text(user.total_point.description)
-                }
-                
-                Section{
-                    Button(action: {
-                        UserDefaults.standard.set(self.user.name, forKey: "name")
-                        UserDefaults.standard.set(self.user.goal, forKey: "goal")
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("更新")
+            Color(red: formRed, green: formGreen, blue: formBlue)
+            .edgesIgnoringSafeArea(.all)
+            .overlay(
+                Form {
+                    Section(header: Text("ユーザー名")) {
+                        TextField("", text: $user.name)
                     }
-                }
-                
-                Section{
-                    Button(action: {
-                        self.showingSheet = true
-                    }) {
-                        Text("初期化")
-                            .foregroundColor(Color.red)
+                    
+                    Section(header: Text("目標")) {
+                        TextField("例: 一日一回投稿する！", text: $user.goal)
                     }
+                    
+                    Section (header: Text("えらいポイント")){
+                        Text(user.point.description)
+                    }
+                    
+                    Section (header: Text("トータル えらいポイント")){
+                        Text(user.total_point.description)
+                    }
+                    
+                    Section{
+                        Button(action: {
+                            UserDefaults.standard.set(self.user.name, forKey: "name")
+                            UserDefaults.standard.set(self.user.goal, forKey: "goal")
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("更新")
+                        }
+                    }
+                    
+                    Section{
+                        Button(action: {
+                            self.showingSheet = true
+                        }) {
+                            Text("初期化")
+                                .foregroundColor(Color.red)
+                        }
+                    }
+                    
+                    
+                    
+                    
+                
                 }
-                
-                
-                
-                
-            
-            }
+            )
             .navigationBarTitle("設定")
             
             //警告画面

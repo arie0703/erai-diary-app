@@ -44,6 +44,10 @@ struct RewardSheet: View {
         }
     }
     
+    let red: Double = ColorSetting().red
+    let green: Double = ColorSetting().green
+    let blue: Double = ColorSetting().blue
+    
     
     
     var body: some View {
@@ -70,8 +74,12 @@ struct RewardSheet: View {
                     Image(systemName: "plus")
                     .font(.title)
                 }.sheet(isPresented: $addNewReward) {
-                    RewardNew()
-                        .environment(\.managedObjectContext, self.viewContext)
+                    ZStack{
+                        Color(red: red, green: green, blue: blue)
+                            .edgesIgnoringSafeArea(.all)
+                        RewardNew()
+                            .environment(\.managedObjectContext, self.viewContext)
+                    }
                 }
             }
             
@@ -83,6 +91,7 @@ struct RewardSheet: View {
                     
                     // ご褒美シート
                     RewardRow(reward: reward)
+                        .listRowBackground(Color(red: red, green: green, blue: blue))
                     
                     
                 }
@@ -91,6 +100,10 @@ struct RewardSheet: View {
                     self.remove(indexSet: indexSet)
                 }
                  
+            }
+            .onAppear {
+                //ここはCGFloat型なのでカラー変数は使えない
+                UITableView.appearance().backgroundColor = UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 230.0 / 255.0, alpha: 1.0)
             }
             
             Spacer()

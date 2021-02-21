@@ -64,11 +64,15 @@ struct PostsNew: View {
         self.detail = ""
     }
     
+    let formRed: Double = ColorSetting().formRed
+    let formGreen: Double = ColorSetting().formGreen
+    let formBlue: Double = ColorSetting().formBlue
+    
     var body: some View {
         
         NavigationView {
             //背景色
-            Color(red: 0.95, green: 0.95, blue: 0.95)
+            Color(red: formRed, green: formGreen, blue: formBlue)
             .edgesIgnoringSafeArea(.all)
             .overlay(
                 ScrollView{

@@ -32,6 +32,7 @@
 		F78477C125727F1600499835 /* SwiftAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477C025727F1600499835 /* SwiftAppTests.swift */; };
 		F78477CC25727F1600499835 /* SwiftAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477CB25727F1600499835 /* SwiftAppUITests.swift */; };
 		F78477DA2572806E00499835 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477D92572806E00499835 /* CircleImage.swift */; };
+		F78D28FC25E00A2B002024E4 /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D28FB25E00A2A002024E4 /* ColorSetting.swift */; };
 		F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB7EE2257769F9007CC57B /* MyPage.swift */; };
 		F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */; };
 		F7FB2EB425D962F0007BDA98 /* PostsSortedByDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FB2EB325D962F0007BDA98 /* PostsSortedByDate.swift */; };
@@ -86,6 +87,7 @@
 		F78477CB25727F1600499835 /* SwiftAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAppUITests.swift; sourceTree = "<group>"; };
 		F78477CD25727F1600499835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F78477D92572806E00499835 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		F78D28FB25E00A2A002024E4 /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
 		F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 3.xcdatamodel"; sourceTree = "<group>"; };
 		F7CB7EE2257769F9007CC57B /* MyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPage.swift; sourceTree = "<group>"; };
 		F7D139DE2579274F00230F51 /* SwiftApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				F7998C5125752D5700C35447 /* Extension */,
 				F78477A925727F0D00499835 /* AppDelegate.swift */,
+				F78D28FB25E00A2A002024E4 /* ColorSetting.swift */,
 				F78477AD25727F0D00499835 /* ContentView.swift */,
 				F749BDED25CE654100229985 /* ImagePicker.swift */,
 				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
@@ -367,6 +370,7 @@
 				F77DA9C42573D3400095B6C3 /* PostsNew.swift in Sources */,
 				F749BDEE25CE654100229985 /* ImagePicker.swift in Sources */,
 				F7199B50258BA83400CCC3C2 /* Binding+Extention.swift in Sources */,
+				F78D28FC25E00A2B002024E4 /* ColorSetting.swift in Sources */,
 				F72205E32577B3FB003DE067 /* RewardSheet.swift in Sources */,
 				F7342B2D25D44AD300B209C9 /* PostRow.swift in Sources */,
 				F7FB2EB425D962F0007BDA98 /* PostsSortedByDate.swift in Sources */,

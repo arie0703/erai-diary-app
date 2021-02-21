@@ -28,43 +28,55 @@ struct RewardNew: View {
         }
     }
     
+    init(){
+        //formの背景色を設定できるように
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
+    let formRed: Double = ColorSetting().formRed
+    let formGreen: Double = ColorSetting().formGreen
+    let formBlue: Double = ColorSetting().formBlue
+    
     var body: some View {
         NavigationView {
-            Form{
-                Section(header: Text("ごほうび内容")){
-                    TextField("例: プリンを食べる", text: $content)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
+            Color(red: formRed, green: formGreen, blue: formBlue)
+            .edgesIgnoringSafeArea(.all)
+            .overlay(
+                Form{
+                    Section(header: Text("ごほうび内容")){
+                        TextField("例: プリンを食べる", text: $content)
+                    }
 
+                    
+                    Section(header: Text("消費ポイント")){
+                        Slider(value: $point_double, in: 1...100)
+                        Stepper(value: $point_double, in: 1...100) {
+                            Text("\(point_double, specifier: "%.0f") ポイント")
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 
-                Section(header: Text("消費ポイント")){
-                    Slider(value: $point_double, in: 1...100)
-                    Stepper(value: $point_double, in: 1...100) {
-                        Text("\(point_double, specifier: "%.0f") ポイント")
+                    Section{
+                        Button(action: {
+                            self.point = Int32(self.point_double)
+                            RewardEntity.create(in: self.viewContext,
+                            content: self.content,
+                            point: self.point,
+                            isDone: false)
+                            self.save()
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("追加！")
+                        }
                     }
                 }
-                
-                
-                
-                
-                
-                
-                
-            
-                Section{
-                    Button(action: {
-                        self.point = Int32(self.point_double)
-                        RewardEntity.create(in: self.viewContext,
-                        content: self.content,
-                        point: self.point,
-                        isDone: false)
-                        self.save()
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("追加！")
-                    }
-                }
-            }
+            )
             .navigationBarTitle("ごほうびを追加")
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
