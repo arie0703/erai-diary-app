@@ -13,6 +13,13 @@ struct PostRow: View {
     @State var editPost = false
     @Environment(\.managedObjectContext) var viewContext
     
+    func getTextFromDate(date: Date!) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = .current
+        formatter.dateFormat = "yyyy/MM/dd(EEE) hh:mm"
+        return date == nil ? "" : formatter.string(from: date)
+    }
+    
     var body: some View {
         Button(action: {
            self.editPost = true
@@ -33,13 +40,17 @@ struct PostRow: View {
                 
             
             Text(post.detail ?? "no title")
+            .padding(0.1)
             .foregroundColor(.black)
+            Text(getTextFromDate(date: post.date ?? Date()))
+            .font(.footnote)
+                .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
             
             
             
             
         }
-        .padding(20) //文字に対するpadding
+        .padding(15) //文字に対するpadding
         .frame(maxWidth: .infinity, minHeight: 100)
             .background(Color(red: 1, green: 0.87, blue: 0.62))
         .cornerRadius(10)
