@@ -37,6 +37,11 @@ struct RewardSheet: View {
         for index in indexSet {
             viewContext.delete(rewardList[index])
         }
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError()
+        }
     }
     
     let red: Double = ColorSetting().red
