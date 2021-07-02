@@ -33,6 +33,8 @@
 		F78477CC25727F1600499835 /* SwiftAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477CB25727F1600499835 /* SwiftAppUITests.swift */; };
 		F78477DA2572806E00499835 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477D92572806E00499835 /* CircleImage.swift */; };
 		F78D28FC25E00A2B002024E4 /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D28FB25E00A2A002024E4 /* ColorSetting.swift */; };
+		F7AEB385268F5DD9009C4025 /* PointInt32toFloat.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB384268F5DD8009C4025 /* PointInt32toFloat.xcmappingmodel */; };
+		F7AEB38D268F61DF009C4025 /* ResetData.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB38C268F61DF009C4025 /* ResetData.xcmappingmodel */; };
 		F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB7EE2257769F9007CC57B /* MyPage.swift */; };
 		F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */; };
 		F7FB2EB425D962F0007BDA98 /* PostsSortedByDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FB2EB325D962F0007BDA98 /* PostsSortedByDate.swift */; };
@@ -89,6 +91,10 @@
 		F78477D92572806E00499835 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		F78D28FB25E00A2A002024E4 /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
 		F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 3.xcdatamodel"; sourceTree = "<group>"; };
+		F7AEB383268F5C84009C4025 /* SwiftApp 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 4.xcdatamodel"; sourceTree = "<group>"; };
+		F7AEB384268F5DD8009C4025 /* PointInt32toFloat.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = PointInt32toFloat.xcmappingmodel; sourceTree = "<group>"; };
+		F7AEB38C268F61DF009C4025 /* ResetData.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = ResetData.xcmappingmodel; sourceTree = "<group>"; };
+		F7AEB394268F630F009C4025 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F7CB7EE2257769F9007CC57B /* MyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPage.swift; sourceTree = "<group>"; };
 		F7D139DE2579274F00230F51 /* SwiftApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 2.xcdatamodel"; sourceTree = "<group>"; };
 		F7D416BE2573DE5700822D74 /* PostEntity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostEntity+Extension.swift"; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 		F784779D25727F0D00499835 = {
 			isa = PBXGroup;
 			children = (
+				F7AEB394268F630F009C4025 /* README.md */,
 				F78477A825727F0D00499835 /* SwiftApp */,
 				F78477BF25727F1600499835 /* SwiftAppTests */,
 				F78477CA25727F1600499835 /* SwiftAppUITests */,
@@ -188,6 +195,8 @@
 				F75B349E25D5761B00F06DEB /* Rewards */,
 				F75B34A225D5764000F06DEB /* User */,
 				F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */,
+				F7AEB38C268F61DF009C4025 /* ResetData.xcmappingmodel */,
+				F7AEB384268F5DD8009C4025 /* PointInt32toFloat.xcmappingmodel */,
 				F78477AF25727F1500499835 /* Assets.xcassets */,
 				F78477B425727F1500499835 /* LaunchScreen.storyboard */,
 				F78477B725727F1500499835 /* Info.plist */,
@@ -382,6 +391,7 @@
 				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
 				F72593562588DA4000E3079D /* PostsEdit.swift in Sources */,
 				F78477DA2572806E00499835 /* CircleImage.swift in Sources */,
+				F7AEB38D268F61DF009C4025 /* ResetData.xcmappingmodel in Sources */,
 				F77C09E625D1481600D0F7A7 /* RewardDone.swift in Sources */,
 				F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */,
 				F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */,
@@ -389,6 +399,7 @@
 				F78477AC25727F0D00499835 /* SceneDelegate.swift in Sources */,
 				F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */,
 				F78477AE25727F0D00499835 /* ContentView.swift in Sources */,
+				F7AEB385268F5DD9009C4025 /* PointInt32toFloat.xcmappingmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +575,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hitodeface.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -585,7 +596,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hitodeface.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -718,6 +729,7 @@
 		F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F7AEB383268F5C84009C4025 /* SwiftApp 4.xcdatamodel */,
 				F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */,
 				F7D139DE2579274F00230F51 /* SwiftApp 2.xcdatamodel */,
 				F77DA9C12573D1470095B6C3 /* SwiftApp.xcdatamodel */,

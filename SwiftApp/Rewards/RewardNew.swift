@@ -49,7 +49,7 @@ struct RewardNew: View {
 
                     
                     Section(header: Text("消費ポイント")){
-                        Slider(value: $point_double, in: 1...100)
+                        Slider(value: $point_double, in: 1...100, step: 1)
                         Stepper(value: $point_double, in: 1...100) {
                             Text("\(point_double, specifier: "%.0f") ポイント")
                         }
