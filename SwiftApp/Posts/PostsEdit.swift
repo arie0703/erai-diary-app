@@ -153,10 +153,19 @@ struct PostsEdit: View {
                     
                         
                         Button(action: {
-                            
+                            if(self.user.point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
+                                UserDefaults.standard.set(0 , forKey: "point")
+                            } else {
                             UserDefaults.standard.set(self.user.point +  (Int(self.rate) - Int(self.post.rate)) , forKey: "point")
-                            UserDefaults.standard.set(self.user.total_point + (Int(self.rate) - Int(self.post.rate)), forKey: "total_point")
-                            avoidMinusPoint(point: Int32(UserProfile().point)) //　投稿削除・編集などによりえらいポイントが負の数になるのを防ぐ
+                            }
+                            
+                            if(self.user.total_point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
+                                UserDefaults.standard.set(0 , forKey: "total_point")
+                            } else {
+                                UserDefaults.standard.set(self.user.total_point + (Int(self.rate) - Int(self.post.rate)), forKey: "total_point")
+                            }
+                            
+                            //avoidMinusPoint(point: Int32(UserProfile().point)) //　投稿削除・編集などによりえらいポイントが負の数になるのを防ぐ
                             self.post.rate = self.rate
                             self.save()
                             self.presentationMode.wrappedValue.dismiss()
@@ -197,9 +206,19 @@ struct PostsEdit: View {
             .actionSheet(isPresented: $showingSheet) {
             ActionSheet(title: Text("投稿を削除"), message: Text("この投稿を削除します。よろしいですか？"), buttons: [
                 .destructive(Text("削除")) {
-                    UserDefaults.standard.set(self.user.point - Int(self.post.rate) , forKey: "point")
-                    UserDefaults.standard.set(self.user.total_point - Int(self.post.rate), forKey: "total_point")
-                    avoidMinusPoint(point: Int32(UserProfile().point)) //　投稿削除・編集などによりえらいポイントが負の数になるのを防ぐ
+                    
+                    //avoidMinusPoint(point: Int32(UserProfile().point))
+                    //　投稿削除・編集などによりえらいポイントが負の数になるのを防ぐ
+                    if(self.user.point - Int(self.post.rate) < 0) {
+                        UserDefaults.standard.set(0 , forKey: "point")
+                    } else {
+                        UserDefaults.standard.set(self.user.point - Int(self.post.rate) , forKey: "point")
+                    }
+                    if(self.user.total_point - Int(self.post.rate) < 0) {
+                        UserDefaults.standard.set(0 , forKey: "total_point")
+                    } else {
+                        UserDefaults.standard.set(self.user.total_point - Int(self.post.rate), forKey: "total_point")
+                    }
                     self.delete()
                     self.presentationMode.wrappedValue.dismiss()
                 },
