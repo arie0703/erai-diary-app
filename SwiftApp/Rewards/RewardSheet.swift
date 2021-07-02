@@ -33,6 +33,7 @@ struct RewardSheet: View {
         }
     }
     
+    //NavigationViewじゃないとエラーでる
     private func remove(indexSet: IndexSet) {
         for index in indexSet {
             viewContext.delete(rewardList[index])
@@ -82,31 +83,32 @@ struct RewardSheet: View {
                     }
                 }
             }
-            
             Text("えらいポイントを貯めて自分にご褒美！")
                 .padding(5)
-            
-            List {
-                ForEach(rewardList){ reward in
+            NavigationView {
+                List {
+                    ForEach(rewardList){ reward in
+                        
+                        // ご褒美シート
+                        RewardRow(reward: reward)
+                            .listRowBackground(Color(red: red, green: green, blue: blue))
+                        
+                        
+                    }
                     
-                    // ご褒美シート
-                    RewardRow(reward: reward)
-                        .listRowBackground(Color(red: red, green: green, blue: blue))
-                    
-                    
+                    .onDelete{ indexSet in
+                        self.remove(indexSet: indexSet)
+                    }
+                     
+                }
+                .navigationBarHidden(true) //NavigationViewの上部空白を隠す
+                .onAppear {
+                    //ここはCGFloat型なのでカラー変数は使えない
+                    UITableView.appearance().backgroundColor = UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 230.0 / 255.0, alpha: 1.0)
                 }
                 
-                .onDelete{ indexSet in
-                    self.remove(indexSet: indexSet)
-                }
-                 
+                Spacer()
             }
-            .onAppear {
-                //ここはCGFloat型なのでカラー変数は使えない
-                UITableView.appearance().backgroundColor = UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 230.0 / 255.0, alpha: 1.0)
-            }
-            
-            Spacer()
         }
         .padding(10)
     }

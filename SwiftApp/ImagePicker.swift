@@ -65,16 +65,21 @@ struct ImagePicker: UIViewControllerRepresentable {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
                 //選択された画像が横向きになるなどたまに挙動がおかしくなるのを修正する
-                UIGraphicsBeginImageContextWithOptions(parent.selectedImage.size, false, 0.0)
-                parent.selectedImage.draw(in: CGRect(x: 0,y: 0,width: parent.selectedImage.size.width,height: parent.selectedImage.size.height))
-                parent.selectedImage = UIGraphicsGetImageFromCurrentImageContext() ?? image
-                UIGraphicsEndImageContext()
+//                UIGraphicsBeginImageContextWithOptions(parent.selectedImage.size, false, 0.0)
+//                parent.selectedImage.draw(in: CGRect(x: 0,y: 0,width: parent.selectedImage.size.width,height: parent.selectedImage.size.height))
+//                parent.selectedImage = UIGraphicsGetImageFromCurrentImageContext() ?? image
+//                UIGraphicsEndImageContext()
+                
+                //機種によってはすごく重くなる処理なのでコメントアウト
             }
             
             //saveImage(image: parent.selectedImage, fileName: "user_image")
             
             //UIImageをData型として保存
-            UserDefaults.standard.setUIImageToData(image: parent.selectedImage, forKey: "image")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {//遅延実行処理
+                UserDefaults.standard.setUIImageToData(image: self.parent.selectedImage, forKey: "image")
+            }
+            
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
