@@ -30,7 +30,7 @@ struct MyPage: View {
     }
     
     var body: some View {
-        VStack{
+        ScrollView{
             CircleImage()
             .padding(5)
            
@@ -90,6 +90,7 @@ struct MyPage: View {
             .onAppear {
                 self.update()
             }
+            BarGraph()
         }
     }
 }
