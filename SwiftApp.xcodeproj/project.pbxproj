@@ -10,6 +10,8 @@
 		F7199B50258BA83400CCC3C2 /* Binding+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7199B4F258BA83300CCC3C2 /* Binding+Extention.swift */; };
 		F72205E32577B3FB003DE067 /* RewardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72205E22577B3FB003DE067 /* RewardSheet.swift */; };
 		F72593562588DA4000E3079D /* PostsEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72593552588DA4000E3079D /* PostsEdit.swift */; };
+		F72D24B2269BAD2800D9715A /* BarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72D24B1269BAD2700D9715A /* BarGraph.swift */; };
+		F72D24B7269BAD8100D9715A /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72D24B6269BAD8100D9715A /* BarView.swift */; };
 		F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B2125D430A200B209C9 /* UserProfile.swift */; };
 		F7342B2D25D44AD300B209C9 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B2C25D44AD300B209C9 /* PostRow.swift */; };
 		F7342B3225D44CC500B209C9 /* RewardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B3125D44CC500B209C9 /* RewardRow.swift */; };
@@ -61,6 +63,8 @@
 		F7199B4F258BA83300CCC3C2 /* Binding+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extention.swift"; sourceTree = "<group>"; };
 		F72205E22577B3FB003DE067 /* RewardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardSheet.swift; sourceTree = "<group>"; };
 		F72593552588DA4000E3079D /* PostsEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEdit.swift; sourceTree = "<group>"; };
+		F72D24B1269BAD2700D9715A /* BarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
+		F72D24B6269BAD8100D9715A /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		F7342B2125D430A200B209C9 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		F7342B2C25D44AD300B209C9 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		F7342B3125D44CC500B209C9 /* RewardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardRow.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				F7998C5125752D5700C35447 /* Extension */,
 				F78477A925727F0D00499835 /* AppDelegate.swift */,
 				F78D28FB25E00A2A002024E4 /* ColorSetting.swift */,
+				F72D24B1269BAD2700D9715A /* BarGraph.swift */,
+				F72D24B6269BAD8100D9715A /* BarView.swift */,
 				F78477AD25727F0D00499835 /* ContentView.swift */,
 				F749BDED25CE654100229985 /* ImagePicker.swift */,
 				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
@@ -374,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72D24B7269BAD8100D9715A /* BarView.swift in Sources */,
 				F7342B3225D44CC500B209C9 /* RewardRow.swift in Sources */,
 				F77F7E8D257A630800DAA12B /* RewardEntity+Extention.swift in Sources */,
 				F77DA9C42573D3400095B6C3 /* PostsNew.swift in Sources */,
@@ -395,6 +402,7 @@
 				F77C09E625D1481600D0F7A7 /* RewardDone.swift in Sources */,
 				F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */,
 				F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */,
+				F72D24B2269BAD2800D9715A /* BarGraph.swift in Sources */,
 				F77F7E8B257A62C700DAA12B /* EditUser.swift in Sources */,
 				F78477AC25727F0D00499835 /* SceneDelegate.swift in Sources */,
 				F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */,
@@ -575,7 +583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2.1;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hitodeface.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -596,7 +604,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2.1;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hitodeface.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
