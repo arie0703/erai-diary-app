@@ -53,7 +53,7 @@ func start_of_week(num: Int) -> Date {
 func end_of_week(num: Int) -> Date {
     let thisWeekDay = Calendar.current.dateComponents([.weekday], from: Date()).weekday! //今日の曜日を数値で取得（日から土で1~7）
     let n = 7 - thisWeekDay
-    let end_of_thisweek = Calendar.current.date(byAdding: .day, value: -n, to: Date())! //今週の土曜日を取得
+    let end_of_thisweek = Calendar.current.date(byAdding: .day, value: n, to: Date())! //今週の土曜日を取得
     let week = Calendar.current.date(byAdding: .weekOfMonth, value: num-6, to: end_of_thisweek)! //ここで今日の日付から任意の週巻き戻した日時を取得
     let end_of_date = Calendar(identifier: .gregorian).date(bySettingHour: 23, minute: 59, second: 59, of: week)! //weekで取得した日付の23:59:59を取得
     return end_of_date
@@ -166,7 +166,7 @@ struct BarView: View{
             }
             switch pickerSelection {
             case 0:
-                Text(getTextFromDate(num: value)) //棒グラフに対応する日付を表示
+                Text(getMonthFromDate(num: value)) //棒グラフに対応する日付を表示
                     .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
             
             case 1:
@@ -174,7 +174,7 @@ struct BarView: View{
                     .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
             
             case 2:
-                Text(getMonthFromDate(num: value)) //棒グラフに対応する月を表示
+                Text(getTextFromDate(num: value)) //棒グラフに対応する月を表示
                     .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
             
             default:
