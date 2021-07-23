@@ -83,7 +83,7 @@ struct MyPage: View {
             .padding(EdgeInsets(
                 top: 2,
                 leading: 5,
-                bottom: 2,
+                bottom: 8,
                 trailing: 5
             ))
             //プロフィール情報の値が更新されるようにする。
@@ -91,6 +91,7 @@ struct MyPage: View {
                 self.update()
             }
             BarGraph()
+                .padding(15)
         }
     }
 }
