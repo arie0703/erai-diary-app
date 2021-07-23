@@ -22,7 +22,7 @@ struct CircleImage: View {
             .clipShape(Circle())
             .overlay(
                 Circle().stroke(Color.white, lineWidth: 4))
-            .frame(width:150.0, height:150.0)
+            .frame(width:130.0, height:130.0)
             .shadow(radius: 2)
             .onTapGesture {
                 self.isShowPhotoLibrary = true

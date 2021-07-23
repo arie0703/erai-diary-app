@@ -12,30 +12,46 @@ import CoreData
 
 
 
+
 struct BarGraph: View {
     
     @State var pickerSelection = 2
+    
+    init() { // Pickerの色を指定する。
+        UISegmentedControl.appearance().backgroundColor = UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0) //背景色
+        UISegmentedControl.appearance().selectedSegmentTintColor = .orange //選択された時の背景色
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected) //選択された時の文字色
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(red:0.64, green:0.5, blue: 0.33, alpha: 1.0)], for: .normal) //選択されてない文字の色
+    }
 
     var body: some View {
         ZStack{
 
             VStack{
-                Text("Daily Posts")
-                    .font(.largeTitle)
+                Text("レポート")
+                    .font(.title)
+                    .padding(5)
+                Text("月・週・日ごとの投稿数を表示します")
+                    .font(.body)
                 Picker(selection: $pickerSelection, label: Text("Picker"))
                                     {
-                                    Text("Month").tag(0)
-                                    Text("Week").tag(1)
-                                    Text("Day").tag(2)
+                                    Text("月").tag(0)
+                                    Text("週").tag(1)
+                                    Text("日").tag(2)
                                 }.pickerStyle(SegmentedPickerStyle())
                                     .padding(.horizontal, 10)
 
                 HStack(alignment: .center, spacing: 10)
                 {
-                    ForEach(0..<7){ //六日前から今日までの投稿数を表示させる。
-                        num in
-                        
-                        BarView(value: num, pickerSelection: pickerSelection)
+                    switch pickerSelection {
+                    case 0:
+                        BarViewPerMonth()
+                    case 1:
+                        BarViewPerWeek()
+                    case 2:
+                        BarViewPerDay()
+                    default:
+                        BarViewPerDay()
                     }
                 }.padding(.top, 23).animation(.default)
             }
@@ -43,11 +59,7 @@ struct BarGraph: View {
     }
 
 
-    init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = .darkGray
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-    }
+    
 }
 
 struct BarGraph_Previews: PreviewProvider {

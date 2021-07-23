@@ -11,12 +11,13 @@
 		F72205E32577B3FB003DE067 /* RewardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72205E22577B3FB003DE067 /* RewardSheet.swift */; };
 		F72593562588DA4000E3079D /* PostsEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72593552588DA4000E3079D /* PostsEdit.swift */; };
 		F72D24B2269BAD2800D9715A /* BarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72D24B1269BAD2700D9715A /* BarGraph.swift */; };
-		F72D24B7269BAD8100D9715A /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72D24B6269BAD8100D9715A /* BarView.swift */; };
 		F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B2125D430A200B209C9 /* UserProfile.swift */; };
 		F7342B2D25D44AD300B209C9 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B2C25D44AD300B209C9 /* PostRow.swift */; };
 		F7342B3225D44CC500B209C9 /* RewardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B3125D44CC500B209C9 /* RewardRow.swift */; };
 		F749BDEE25CE654100229985 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDED25CE654100229985 /* ImagePicker.swift */; };
 		F749BDF425CEBB0A00229985 /* UserDefault+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */; };
+		F74F8A1726AA8078001B47CD /* BarViewPerMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F8A1626AA8078001B47CD /* BarViewPerMonth.swift */; };
+		F74F8A1C26AA8165001B47CD /* BarViewPerDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F8A1B26AA8165001B47CD /* BarViewPerDay.swift */; };
 		F75E164C25D8F3E000FAC2A2 /* Calender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E164B25D8F3E000FAC2A2 /* Calender.swift */; };
 		F75E7016257D51A000C4E6D9 /* RewardNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E7015257D51A000C4E6D9 /* RewardNew.swift */; };
 		F77C09E625D1481600D0F7A7 /* RewardDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77C09E525D1481600D0F7A7 /* RewardDone.swift */; };
@@ -34,6 +35,7 @@
 		F78477C125727F1600499835 /* SwiftAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477C025727F1600499835 /* SwiftAppTests.swift */; };
 		F78477CC25727F1600499835 /* SwiftAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477CB25727F1600499835 /* SwiftAppUITests.swift */; };
 		F78477DA2572806E00499835 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477D92572806E00499835 /* CircleImage.swift */; };
+		F785E83D26A9C362003043B7 /* BarViewPerWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785E83C26A9C362003043B7 /* BarViewPerWeek.swift */; };
 		F78D28FC25E00A2B002024E4 /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D28FB25E00A2A002024E4 /* ColorSetting.swift */; };
 		F7AEB385268F5DD9009C4025 /* PointInt32toFloat.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB384268F5DD8009C4025 /* PointInt32toFloat.xcmappingmodel */; };
 		F7AEB38D268F61DF009C4025 /* ResetData.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB38C268F61DF009C4025 /* ResetData.xcmappingmodel */; };
@@ -64,12 +66,13 @@
 		F72205E22577B3FB003DE067 /* RewardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardSheet.swift; sourceTree = "<group>"; };
 		F72593552588DA4000E3079D /* PostsEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEdit.swift; sourceTree = "<group>"; };
 		F72D24B1269BAD2700D9715A /* BarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
-		F72D24B6269BAD8100D9715A /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		F7342B2125D430A200B209C9 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		F7342B2C25D44AD300B209C9 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		F7342B3125D44CC500B209C9 /* RewardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardRow.swift; sourceTree = "<group>"; };
 		F749BDED25CE654100229985 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extention.swift"; sourceTree = "<group>"; };
+		F74F8A1626AA8078001B47CD /* BarViewPerMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarViewPerMonth.swift; sourceTree = "<group>"; };
+		F74F8A1B26AA8165001B47CD /* BarViewPerDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarViewPerDay.swift; sourceTree = "<group>"; };
 		F75E164B25D8F3E000FAC2A2 /* Calender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calender.swift; sourceTree = "<group>"; };
 		F75E7015257D51A000C4E6D9 /* RewardNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardNew.swift; sourceTree = "<group>"; };
 		F77C09E525D1481600D0F7A7 /* RewardDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardDone.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 		F78477CB25727F1600499835 /* SwiftAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAppUITests.swift; sourceTree = "<group>"; };
 		F78477CD25727F1600499835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F78477D92572806E00499835 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		F785E83C26A9C362003043B7 /* BarViewPerWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarViewPerWeek.swift; sourceTree = "<group>"; };
 		F78D28FB25E00A2A002024E4 /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
 		F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 3.xcdatamodel"; sourceTree = "<group>"; };
 		F7AEB383268F5C84009C4025 /* SwiftApp 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 4.xcdatamodel"; sourceTree = "<group>"; };
@@ -130,6 +134,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F74F8A2326AA8C8E001B47CD /* BarView */ = {
+			isa = PBXGroup;
+			children = (
+				F72D24B1269BAD2700D9715A /* BarGraph.swift */,
+				F785E83C26A9C362003043B7 /* BarViewPerWeek.swift */,
+				F74F8A1626AA8078001B47CD /* BarViewPerMonth.swift */,
+				F74F8A1B26AA8165001B47CD /* BarViewPerDay.swift */,
+			);
+			path = BarView;
+			sourceTree = "<group>";
+		};
 		F759D74B25D57485003301BC /* Posts */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,11 +207,10 @@
 				F7998C5125752D5700C35447 /* Extension */,
 				F78477A925727F0D00499835 /* AppDelegate.swift */,
 				F78D28FB25E00A2A002024E4 /* ColorSetting.swift */,
-				F72D24B1269BAD2700D9715A /* BarGraph.swift */,
-				F72D24B6269BAD8100D9715A /* BarView.swift */,
 				F78477AD25727F0D00499835 /* ContentView.swift */,
 				F749BDED25CE654100229985 /* ImagePicker.swift */,
 				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
+				F74F8A2326AA8C8E001B47CD /* BarView */,
 				F759D74B25D57485003301BC /* Posts */,
 				F75B349E25D5761B00F06DEB /* Rewards */,
 				F75B34A225D5764000F06DEB /* User */,
@@ -380,7 +394,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F72D24B7269BAD8100D9715A /* BarView.swift in Sources */,
 				F7342B3225D44CC500B209C9 /* RewardRow.swift in Sources */,
 				F77F7E8D257A630800DAA12B /* RewardEntity+Extention.swift in Sources */,
 				F77DA9C42573D3400095B6C3 /* PostsNew.swift in Sources */,
@@ -395,6 +408,7 @@
 				F75E7016257D51A000C4E6D9 /* RewardNew.swift in Sources */,
 				F75E164C25D8F3E000FAC2A2 /* Calender.swift in Sources */,
 				F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */,
+				F74F8A1726AA8078001B47CD /* BarViewPerMonth.swift in Sources */,
 				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
 				F72593562588DA4000E3079D /* PostsEdit.swift in Sources */,
 				F78477DA2572806E00499835 /* CircleImage.swift in Sources */,
@@ -404,10 +418,12 @@
 				F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */,
 				F72D24B2269BAD2800D9715A /* BarGraph.swift in Sources */,
 				F77F7E8B257A62C700DAA12B /* EditUser.swift in Sources */,
+				F74F8A1C26AA8165001B47CD /* BarViewPerDay.swift in Sources */,
 				F78477AC25727F0D00499835 /* SceneDelegate.swift in Sources */,
 				F7D416BF2573DE5700822D74 /* PostEntity+Extension.swift in Sources */,
 				F78477AE25727F0D00499835 /* ContentView.swift in Sources */,
 				F7AEB385268F5DD9009C4025 /* PointInt32toFloat.xcmappingmodel in Sources */,
+				F785E83D26A9C362003043B7 /* BarViewPerWeek.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
