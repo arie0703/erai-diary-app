@@ -14,8 +14,11 @@ import SwiftUI
 struct TodaysPoint: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @State var tex = "aa"
     @State var sum: Int = 0
+    
+    fileprivate func update() {
+        self.sum = todaysPointSum(in: viewContext)
+    }
     
     func start_of_date() -> Date {
         let start_of_date = Calendar(identifier: .gregorian).startOfDay(for: Date())
@@ -65,12 +68,15 @@ struct TodaysPoint: View {
     
     var body: some View {
         VStack {
-            Text("今日は" + todaysPointSum(in: viewContext).description + "ポイント獲得しました！")
+            Text("今日は" + sum.description + "ポイント獲得しました！")
         }.padding()
         .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(red:0.95, green:0.75, blue: 0.48), lineWidth: 2)
         )
+        .onAppear {
+            self.update()
+        }
     }
 }
 
