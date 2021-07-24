@@ -92,6 +92,8 @@ struct MyPage: View {
             }
             BarGraph()
                 .padding(15)
+            TodaysPoint()
+                .padding(15)
         }
     }
 }

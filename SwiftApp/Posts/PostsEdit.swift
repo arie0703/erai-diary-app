@@ -152,7 +152,7 @@ struct PostsEdit: View {
                                 .resizable()
                                 .frame(width: 25.0, height: 25.0, alignment: .leading)
                                 .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
-                            DatePicker("日時", selection: Binding($post.date)!) //$post.dateだとBinding<Date>?型になってしまう
+                            DatePicker("日時", selection: Binding<Date>(get: {self.post.date ?? Date()}, set: {self.post.date = $0}) )  //$post.dateだとBinding<Date>?型になってしまう
                                 .labelsHidden()
                                 .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
                         }.padding(.bottom, 30)

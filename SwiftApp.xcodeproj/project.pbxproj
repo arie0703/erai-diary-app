@@ -37,6 +37,7 @@
 		F78477DA2572806E00499835 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477D92572806E00499835 /* CircleImage.swift */; };
 		F785E83D26A9C362003043B7 /* BarViewPerWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785E83C26A9C362003043B7 /* BarViewPerWeek.swift */; };
 		F78D28FC25E00A2B002024E4 /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D28FB25E00A2A002024E4 /* ColorSetting.swift */; };
+		F7A2E33A26ABAF9200FC20AB /* TodaysPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2E33926ABAF9200FC20AB /* TodaysPoint.swift */; };
 		F7AEB385268F5DD9009C4025 /* PointInt32toFloat.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB384268F5DD8009C4025 /* PointInt32toFloat.xcmappingmodel */; };
 		F7AEB38D268F61DF009C4025 /* ResetData.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB38C268F61DF009C4025 /* ResetData.xcmappingmodel */; };
 		F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB7EE2257769F9007CC57B /* MyPage.swift */; };
@@ -98,6 +99,7 @@
 		F78477D92572806E00499835 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		F785E83C26A9C362003043B7 /* BarViewPerWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarViewPerWeek.swift; sourceTree = "<group>"; };
 		F78D28FB25E00A2A002024E4 /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
+		F7A2E33926ABAF9200FC20AB /* TodaysPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysPoint.swift; sourceTree = "<group>"; };
 		F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 3.xcdatamodel"; sourceTree = "<group>"; };
 		F7AEB383268F5C84009C4025 /* SwiftApp 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 4.xcdatamodel"; sourceTree = "<group>"; };
 		F7AEB384268F5DD8009C4025 /* PointInt32toFloat.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = PointInt32toFloat.xcmappingmodel; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				F7342B2125D430A200B209C9 /* UserProfile.swift */,
 				F7CB7EE2257769F9007CC57B /* MyPage.swift */,
 				F78477D92572806E00499835 /* CircleImage.swift */,
+				F7A2E33926ABAF9200FC20AB /* TodaysPoint.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				F749BDF425CEBB0A00229985 /* UserDefault+Extention.swift in Sources */,
 				F75E7016257D51A000C4E6D9 /* RewardNew.swift in Sources */,
 				F75E164C25D8F3E000FAC2A2 /* Calender.swift in Sources */,
+				F7A2E33A26ABAF9200FC20AB /* TodaysPoint.swift in Sources */,
 				F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */,
 				F74F8A1726AA8078001B47CD /* BarViewPerMonth.swift in Sources */,
 				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
