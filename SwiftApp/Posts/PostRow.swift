@@ -16,7 +16,7 @@ struct PostRow: View {
     func getTextFromDate(date: Date!) -> String {
         let formatter = DateFormatter()
         formatter.locale = .current
-        formatter.dateFormat = "yyyy/MM/dd(EEE) hh:mm"
+        formatter.dateFormat = "yyyy/MM/dd(EEE) HH:mm"
         return date == nil ? "" : formatter.string(from: date)
     }
     
