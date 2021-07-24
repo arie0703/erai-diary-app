@@ -147,6 +147,15 @@ struct PostsEdit: View {
                             .padding(.horizontal)
                             .padding(.bottom, 30)
                         
+                        HStack {
+                            Image(systemName: "calendar")
+                                .resizable()
+                                .frame(width: 25.0, height: 25.0, alignment: .leading)
+                                .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
+                            DatePicker("日時", selection: Binding($post.date)!) //$post.dateだとBinding<Date>?型になってしまう
+                                .labelsHidden()
+                                .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
+                        }.padding(.bottom, 30)
                 
                         
                             
@@ -186,8 +195,7 @@ struct PostsEdit: View {
                                 .foregroundColor(Color.red)
                         }
                         
-                        
-                        Spacer(minLength: 10)
+
                             
                         
                         

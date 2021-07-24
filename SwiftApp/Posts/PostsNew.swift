@@ -141,6 +141,17 @@ struct PostsNew: View {
                         .background(Color.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        .padding(.bottom, 30)
+                        
+                        HStack {
+                            Image(systemName: "calendar")
+                                .resizable()
+                                .frame(width: 25.0, height: 25.0, alignment: .leading)
+                                .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
+                            DatePicker("日時", selection: $date)
+                                .labelsHidden()
+                                .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
+                        }
                         
                         
                         
@@ -167,7 +178,6 @@ struct PostsNew: View {
                             .cornerRadius(10)
         
                         }
-                        Spacer(minLength: 10)
                         
                         
                         
