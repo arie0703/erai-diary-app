@@ -22,6 +22,9 @@ struct BarViewPerDay: View{
     var postsRequest6 : FetchRequest<PostEntity>
     var postsRequest7 : FetchRequest<PostEntity>
     
+    var width: Int
+    var height: Int
+    
     
     func getTextFromDate(num: Int) -> String {
         let date = Calendar.current.date(byAdding: .day, value: -6+num, to: Date())
@@ -37,7 +40,7 @@ struct BarViewPerDay: View{
         return height
     }
     
-    init(){
+    init(width: Int, height: Int){
         
         func start_of_date(num: Int) -> Date {
             let date = Calendar.current.date(byAdding: .day, value: -num, to: Date())
@@ -51,6 +54,9 @@ struct BarViewPerDay: View{
             let end_of_date = Calendar(identifier: .gregorian).date(bySettingHour: 23, minute: 59, second: 59, of: date!)!
             return end_of_date
         }
+        
+        self.width = width
+        self.height = height
         
         self.postsRequest1 = FetchRequest(entity: PostEntity.entity(),
                              sortDescriptors: [NSSortDescriptor(keyPath: \PostEntity.date,
@@ -123,13 +129,13 @@ struct BarViewPerDay: View{
                 VStack {
                     ZStack (alignment: .bottom) {
                         RoundedRectangle(cornerRadius: 2)
-                            .frame(width: 30, height: 200).foregroundColor(Color(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 235.0 / 255.0))
+                            .frame(width: CGFloat(width), height: CGFloat(height)).foregroundColor(Color(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 235.0 / 255.0))
                         if(arr.max()! > 0) { //投稿数が全部ゼロだと全部heightが百八十になってしまう
                             RoundedRectangle(cornerRadius: 2)
-                                .frame(width: 30, height: CGFloat(getHeightOfBar(num: arr[i], scope: scope))).foregroundColor(.orange)
+                                .frame(width: CGFloat(width), height: CGFloat(getHeightOfBar(num: arr[i], scope: scope))).foregroundColor(.orange)
                         } else {
                             RoundedRectangle(cornerRadius: 2)
-                                .frame(width: 30, height: CGFloat(getHeightOfBar(num: arr[i], scope: 0))).foregroundColor(.orange)
+                                .frame(width: CGFloat(width), height: CGFloat(getHeightOfBar(num: arr[i], scope: 0))).foregroundColor(.orange)
                         }
                         Text(arr[i].description).font(.footnote).foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
                         
@@ -138,6 +144,7 @@ struct BarViewPerDay: View{
                 }
                 
                 Text(getTextFromDate(num: i)) //棒グラフに対応する週の開始日を表示
+                    .font(.footnote)
                     .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
                 
             }

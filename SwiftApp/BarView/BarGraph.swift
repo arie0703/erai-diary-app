@@ -45,22 +45,24 @@ struct BarGraph: View {
                 {
                     switch pickerSelection {
                     case 0:
-                        BarViewPerMonth()
+                        BarViewPerMonth(width: 30, height: 180)
                     case 1:
-                        BarViewPerWeek()
+                        BarViewPerWeek(width: 30, height: 180)
                     case 2:
-                        BarViewPerDay()
+                        BarViewPerDay(width: 30, height: 180)
                     default:
-                        BarViewPerDay()
+                        BarViewPerDay(width: 30, height: 180)
                     }
                 }.padding(.top, 23).animation(.default)
             }
+            
         }
     }
 
 
     
 }
+
 
 struct BarGraph_Previews: PreviewProvider {
     
