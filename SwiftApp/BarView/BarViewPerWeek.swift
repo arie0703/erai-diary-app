@@ -43,7 +43,8 @@ struct BarViewPerWeek: View{
     var postsRequest6 : FetchRequest<PostEntity>
     var postsRequest7 : FetchRequest<PostEntity>
     
-    
+    var width: Int
+    var height: Int
     
     
     
@@ -65,7 +66,7 @@ struct BarViewPerWeek: View{
     }
     
     //6週間前から今週まで週ごとの投稿をそれぞれ取得する
-    init(){
+    init(width: Int, height: Int){
         
         func start_of_week(num: Int) -> Date {
             let thisWeekDay = Calendar.current.dateComponents([.weekday], from: Date()).weekday! //今日の曜日を数値で取得（日から土で1~7）
@@ -85,6 +86,9 @@ struct BarViewPerWeek: View{
             let end_of_date = Calendar(identifier: .gregorian).date(bySettingHour: 23, minute: 59, second: 59, of: week)! //weekで取得した日付の23:59:59を取得
             return end_of_date
         }
+        
+        self.width = width
+        self.height = height
         
         self.postsRequest1 = FetchRequest(entity: PostEntity.entity(),
                              sortDescriptors: [NSSortDescriptor(keyPath: \PostEntity.date,
@@ -157,13 +161,13 @@ struct BarViewPerWeek: View{
                 VStack {
                     ZStack (alignment: .bottom) {
                         RoundedRectangle(cornerRadius: 2)
-                            .frame(width: 30, height: 200).foregroundColor(Color(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 235.0 / 255.0))
+                            .frame(width: CGFloat(width), height: CGFloat(height)).foregroundColor(Color(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 235.0 / 255.0))
                         if(arr.max()! > 0) {
                         RoundedRectangle(cornerRadius: 2)
-                            .frame(width: 30, height: CGFloat(getHeightOfBar(num: arr[i], scope: scope))).foregroundColor(.orange)
+                            .frame(width: CGFloat(width), height: CGFloat(getHeightOfBar(num: arr[i], scope: scope))).foregroundColor(.orange)
                         } else {
                             RoundedRectangle(cornerRadius: 2)
-                                .frame(width: 30, height: CGFloat(getHeightOfBar(num: arr[i], scope: 0))).foregroundColor(.orange)
+                                .frame(width: CGFloat(width), height: CGFloat(getHeightOfBar(num: arr[i], scope: 0))).foregroundColor(.orange)
                         }
                         Text(arr[i].description).font(.footnote).foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
                         
@@ -172,6 +176,7 @@ struct BarViewPerWeek: View{
                 }
                 
                 Text(getWeekFromDate(num: i)) //棒グラフに対応する週の開始日を表示
+                    .font(.footnote)
                     .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
                 
             }

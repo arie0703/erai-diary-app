@@ -22,6 +22,9 @@ struct BarViewPerMonth: View{
     var postsRequest6 : FetchRequest<PostEntity>
     var postsRequest7 : FetchRequest<PostEntity>
     
+    var width: Int
+    var height: Int
+    
     
     
     func getMonthFromDate(num: Int) -> String {
@@ -38,7 +41,7 @@ struct BarViewPerMonth: View{
         return height
     }
     
-    init(){ //初期化処理に各月の初日0:00:00と最終日23:59:59を取得する関数と、各月の投稿を取得するFetchRequestを記述する。
+    init(width: Int, height: Int){ //初期化処理に各月の初日0:00:00と最終日23:59:59を取得する関数と、各月の投稿を取得するFetchRequestを記述する。
         
         func start_of_month(num: Int) -> Date {
             let date = Calendar.current.date(byAdding: .month, value: -num, to: Date()) // nヶ月前の今日の日付を取得
@@ -57,6 +60,9 @@ struct BarViewPerMonth: View{
             
             return end_of_month
         }
+        
+        self.width = width
+        self.height = height
         
         self.postsRequest1 = FetchRequest(entity: PostEntity.entity(),
                              sortDescriptors: [NSSortDescriptor(keyPath: \PostEntity.date,
@@ -129,13 +135,13 @@ struct BarViewPerMonth: View{
                 VStack {
                     ZStack (alignment: .bottom) {
                         RoundedRectangle(cornerRadius: 2)
-                            .frame(width: 30, height: 200).foregroundColor(Color(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 235.0 / 255.0))
+                            .frame(width: CGFloat(width), height: CGFloat(height)).foregroundColor(Color(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 235.0 / 255.0))
                         if(arr.max()! > 0) {
                         RoundedRectangle(cornerRadius: 2)
-                            .frame(width: 30, height: CGFloat(getHeightOfBar(num: arr[i], scope: scope))).foregroundColor(.orange)
+                            .frame(width: CGFloat(width), height: CGFloat(getHeightOfBar(num: arr[i], scope: scope))).foregroundColor(.orange)
                         } else {
                             RoundedRectangle(cornerRadius: 2)
-                                .frame(width: 30, height: CGFloat(getHeightOfBar(num: arr[i], scope: 0))).foregroundColor(.orange)
+                                .frame(width: CGFloat(width), height: CGFloat(getHeightOfBar(num: arr[i], scope: 0))).foregroundColor(.orange)
                         }
                         Text(arr[i].description).font(.footnote).foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
                         
@@ -144,6 +150,7 @@ struct BarViewPerMonth: View{
                 }
                 
                 Text(getMonthFromDate(num: i) + "月") //棒グラフに対応する週の開始日を表示
+                    .font(.footnote)
                     .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
                 
             }
