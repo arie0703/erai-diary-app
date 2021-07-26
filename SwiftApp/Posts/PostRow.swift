@@ -62,7 +62,7 @@ struct PostRow: View {
         ))
             
         }.sheet(isPresented: self.$editPost) {
-            PostsEdit(post:post)
+            PostsEdit(post:post, content: post.content ?? "", detail: post.detail ?? "", rate: post.rate, date: post.date ?? Date())
                 .environment(\.managedObjectContext, self.viewContext)
         }
         

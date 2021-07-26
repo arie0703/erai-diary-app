@@ -164,15 +164,15 @@ class CLManager : ObservableObject {
     @Published var minimumDate: Date = Date()
     @Published var maximumDate: Date = Date()
     @Published var selectedDates: [Date] = [Date]()
-    @Published var selectedDate: Date! = nil
+    @Published var selectedDate: Date! = Date()
 
 
 
-    init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date]()) {
+    init(calendar: Calendar, minimumDate: Date, maximumDate: Date) {
         self.calendar = calendar
         self.minimumDate = minimumDate
         self.maximumDate = maximumDate
-        self.selectedDates = selectedDates
+
     }
 
     func selectedDatesContains(date: Date) -> Bool {
@@ -205,7 +205,8 @@ struct CLMonth: View {
     let cellWidth = CGFloat(25)
 
     @State var showTime = false
-    @State var searchList = false
+    @State var isPresentedPostList = false
+    @State var selectedDate: Date = Date() //初期値は本日の日付としておく
     
     let red: Double = ColorSetting().red
     let green: Double = ColorSetting().green
@@ -229,11 +230,8 @@ struct CLMonth: View {
                                     isSelected: self.isSpecialDate(date: column)
                                     ),                            cellWidth: self.cellWidth)
                                     .onTapGesture {
-                                        if CLDate(date: column, clManager: self.clManager, isToday: self.isToday(date: column), isSelected: self.isSpecialDate(date: column)
-                                        ).isSelected == false {
-                                            self.dateTapped(date: column)
-                                            self.searchList = true
-                                        }
+                                        selectedDate = column
+                                        isPresentedPostList = true
                                     }
                                 } else {
                                     Text("").frame(width: 25, height: 25)
@@ -245,12 +243,12 @@ struct CLMonth: View {
                 }
             }
         }
-        .sheet(isPresented: $searchList, content: {
+        .sheet(isPresented: $isPresentedPostList, content: {
             ZStack {
                 Color(red: red, green: green, blue: blue)
                     .edgesIgnoringSafeArea(.all)
                 //選択した日付の投稿を表示
-                PostsSortedByDate(selectedDate: clManager.selectedDate)
+                PostsSortedByDate(selectedDate: selectedDate)
             }
         })
     }
@@ -259,16 +257,6 @@ struct CLMonth: View {
         return self.clManager.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
     }
 
-    func dateTapped(date: Date) {
-        if self.clManager.selectedDate != nil &&
-            self.clManager.calendar.isDate(self.clManager.selectedDate, inSameDayAs: date) {
-            self.clManager.selectedDate = nil
-
-        } else {
-            self.clManager.selectedDate = date
-        }
-        //self.isPresented = false
-    }
 
     func monthArray() -> [[Date]] {
         var rowArray = [[Date]]()
@@ -348,10 +336,11 @@ struct CLMonth: View {
 
 
     func isSelectedDate(date: Date) -> Bool {
-        if clManager.selectedDate == nil {
+        if date == selectedDate {
+            return true
+        } else {
             return false
         }
-        return CLFormatAndCompareDate(date: date, referenceDate: clManager.selectedDate)
     }
 
 }
