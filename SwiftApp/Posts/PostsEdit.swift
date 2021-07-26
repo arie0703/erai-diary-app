@@ -10,6 +10,10 @@ import SwiftUI
 struct PostsEdit: View {
     @ObservedObject var user = UserProfile()
     @ObservedObject var post: PostEntity
+    @State var content: String
+    @State var detail: String
+    @State var rate: Int32
+    @State var date: Date
     
     @State var showingSheet = false
     
@@ -36,7 +40,6 @@ struct PostsEdit: View {
     @State var starColor1 = Color.orange
     @State var starColor2 = Color.gray
     @State var starColor3 = Color.gray
-    @State var rate: Int32 = 1
     
     func changeStar() {
         if rate == 1 {
@@ -86,14 +89,14 @@ struct PostsEdit: View {
                 ScrollView{
                     VStack{
                         Text("今日あったえらい出来事")
-                        TextField("例: 三食しっかり食べた！", text: Binding($post.content, "content"))
+                        TextField("例: 三食しっかり食べた！", text: $content)
                             .background(Color(red: red, green: green, blue: blue))
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding(.bottom, 30)
                             .padding(.horizontal)
                     
                         Text("ひとこと")
-                        TextField("", text: Binding($post.detail, "detail"))
+                        TextField("", text: $detail)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding(.bottom, 30)
                             .padding(.horizontal)
@@ -136,7 +139,8 @@ struct PostsEdit: View {
                                     }
                                     
                                     Spacer()
-                                }
+                                }.onAppear{changeStar()}//編集画面が開かれたときに、星の状態が編集対象データのえらい度を反映するようにする
+                                
                                 
                                 Text(messages(rate: Int(rate)))
                                 
@@ -152,7 +156,7 @@ struct PostsEdit: View {
                                 .resizable()
                                 .frame(width: 25.0, height: 25.0, alignment: .leading)
                                 .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
-                            DatePicker("日時", selection: Binding<Date>(get: {self.post.date ?? Date()}, set: {self.post.date = $0}) )  //$post.dateだとBinding<Date>?型になってしまう
+                            DatePicker("日時", selection: $date)  //$post.dateだとBinding<Date>?型になってしまう
                                 .labelsHidden()
                                 .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
                         }.padding(.bottom, 30)
@@ -174,6 +178,9 @@ struct PostsEdit: View {
                                 UserDefaults.standard.set(self.user.total_point + (Int(self.rate) - Int(self.post.rate)), forKey: "total_point")
                             }
                             
+                            self.post.content = self.content
+                            self.post.detail = self.detail
+                            self.post.date = self.date
                             //avoidMinusPoint(point: Int32(UserProfile().point)) //　投稿削除・編集などによりえらいポイントが負の数になるのを防ぐ
                             self.post.rate = self.rate
                             self.save()
@@ -244,7 +251,7 @@ struct PostsEdit_Previews: PreviewProvider {
     static var previews: some View {
         let newPost = PostEntity(context: context)
         return NavigationView {
-            PostsEdit(post: newPost)
+            PostsEdit(post: newPost, content: "preview", detail: "test", rate: 1, date: Date())
             .environment(\.managedObjectContext, context)
         }
     }
