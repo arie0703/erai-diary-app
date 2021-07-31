@@ -31,7 +31,7 @@ struct BarGraph: View {
                 Text("レポート")
                     .font(.title)
                     .padding(5)
-                Text("月・週・日ごとの投稿数を表示します")
+                Text("月・週・日ごとの獲得ポイント")
                     .font(.body)
                 Picker(selection: $pickerSelection, label: Text("Picker"))
                                     {
