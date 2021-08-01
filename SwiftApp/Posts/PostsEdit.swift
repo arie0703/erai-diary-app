@@ -65,6 +65,23 @@ struct PostsEdit: View {
         
     }
     
+    func shareOnTwitter(text: String) {
+
+        let text = text
+        let hashTag = "#私のえらい日記"
+        let appUrl = "https://apps.apple.com/app/id1574659017"
+        let completedText = text + "\n" + hashTag + "\n" + appUrl
+
+        //作成したテキストをエンコード
+        let encodedText = completedText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+
+        //エンコードしたテキストをURLに繋げ、URLを開いてツイート画面を表示させる
+        if let encodedText = encodedText,
+            let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
     func getDate(date: Date!) -> String {
         let formatter = DateFormatter()
         formatter.locale = .current
@@ -161,45 +178,55 @@ struct PostsEdit: View {
                                 .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
                         }.padding(.bottom, 30)
                 
+                        Group {
+                            Button(action:{
+                                shareOnTwitter(text: content)
+                            }) {
+                                Text("Twitterでシェア")
+                                    .padding(.vertical, 12)
+                                    .padding(.horizontal, 30)
+                                    .background(Color.blue)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(2)
+                            }.padding(3)
                         
                             
-                    
-                        
-                        Button(action: {
-                            if(self.user.point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
-                                UserDefaults.standard.set(0 , forKey: "point")
-                            } else {
-                            UserDefaults.standard.set(self.user.point +  (Int(self.rate) - Int(self.post.rate)) , forKey: "point")
+                            Button(action: {
+                                if(self.user.point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
+                                    UserDefaults.standard.set(0 , forKey: "point")
+                                } else {
+                                UserDefaults.standard.set(self.user.point +  (Int(self.rate) - Int(self.post.rate)) , forKey: "point")
+                                }
+                                
+                                if(self.user.total_point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
+                                    UserDefaults.standard.set(0 , forKey: "total_point")
+                                } else {
+                                    UserDefaults.standard.set(self.user.total_point + (Int(self.rate) - Int(self.post.rate)), forKey: "total_point")
+                                }
+                                
+                                self.post.content = self.content
+                                self.post.detail = self.detail
+                                self.post.date = self.date
+                                //avoidMinusPoint(point: Int32(UserProfile().point)) //　投稿削除・編集などによりえらいポイントが負の数になるのを防ぐ
+                                self.post.rate = self.rate
+                                self.save()
+                                self.presentationMode.wrappedValue.dismiss()
+                            }) {
+                                Text("編集")
+                                    .padding(.vertical, 12)
+                                    .padding(.horizontal, 73)
+                                    .background(Color.orange)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(2)
                             }
+                            Spacer(minLength: 15)
                             
-                            if(self.user.total_point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
-                                UserDefaults.standard.set(0 , forKey: "total_point")
-                            } else {
-                                UserDefaults.standard.set(self.user.total_point + (Int(self.rate) - Int(self.post.rate)), forKey: "total_point")
-                            }
-                            
-                            self.post.content = self.content
-                            self.post.detail = self.detail
-                            self.post.date = self.date
-                            //avoidMinusPoint(point: Int32(UserProfile().point)) //　投稿削除・編集などによりえらいポイントが負の数になるのを防ぐ
-                            self.post.rate = self.rate
-                            self.save()
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Text("編集")
-                                .padding()
-                                .padding(.horizontal, 30)
-                                .background(Color.orange)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(10)
-                        }
-                        Spacer(minLength: 15)
-                        
-                        Button(action: {
-                            self.showingSheet = true
-                        }) {
-                            Text("削除")
-                                .foregroundColor(Color.red)
+                            Button(action: {
+                                self.showingSheet = true
+                            }) {
+                                Text("削除")
+                                    .foregroundColor(Color.red)
+                            }.padding(.bottom, 10)
                         }
                         
 

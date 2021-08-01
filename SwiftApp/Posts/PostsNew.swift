@@ -59,6 +59,23 @@ struct PostsNew: View {
         
     }
     
+    func shareOnTwitter(text: String) {
+
+        let text = text
+        let hashTag = "#私のえらい日記"
+        let appUrl = "https://apps.apple.com/app/id1574659017"
+        let completedText = text + "\n" + hashTag + "\n" + appUrl
+
+        //作成したテキストをエンコード
+        let encodedText = completedText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+
+        //エンコードしたテキストをURLに繋げ、URLを開いてツイート画面を表示させる
+        if let encodedText = encodedText,
+            let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
     
     fileprivate func cancelPost() {
         self.detail = ""
@@ -156,9 +173,18 @@ struct PostsNew: View {
                         
                         
                         Text("今日もお疲れ様！")
-                        .padding(30)
+                        .padding(20)
                         
-                        
+                        Button(action: {
+                            shareOnTwitter(text: content)
+                        }) {
+                            Text("Twitterでシェア")
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 30)
+                                .background(Color.blue)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(2)
+                        }.padding(.bottom, 3)
                         Button(action: {
                             PostEntity.create(in: self.viewContext,
                             content: self.content,
@@ -173,11 +199,12 @@ struct PostsNew: View {
                         }) {
                             Text(" 投稿！ ")
                             .foregroundColor(Color.white)
-                            .padding()
+                            .padding(.vertical, 12)
+                            .padding(.horizontal, 60)
                             .background(Color.orange)
-                            .cornerRadius(10)
+                            .cornerRadius(2)
         
-                        }
+                        }.padding(.bottom, 10)
                         
                         
                         
