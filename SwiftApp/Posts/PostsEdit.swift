@@ -179,18 +179,7 @@ struct PostsEdit: View {
                         }.padding(.bottom, 30)
                 
                         Group {
-                            Button(action:{
-                                shareOnTwitter(text: content)
-                            }) {
-                                Text("Twitterでシェア")
-                                    .padding(.vertical, 12)
-                                    .padding(.horizontal, 30)
-                                    .background(Color.blue)
-                                    .foregroundColor(Color.white)
-                                    .cornerRadius(2)
-                            }.padding(3)
                         
-                            
                             Button(action: {
                                 if(self.user.point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
                                     UserDefaults.standard.set(0 , forKey: "point")
@@ -219,6 +208,13 @@ struct PostsEdit: View {
                                     .foregroundColor(Color.white)
                                     .cornerRadius(2)
                             }
+                            Button(action:{
+                                shareOnTwitter(text: content)
+                            }) {
+                                Text("Twitterでシェア")
+                                    .foregroundColor(Color.blue)
+                                    .fontWeight(.bold)
+                            }.padding(15)
                             Spacer(minLength: 15)
                             
                             Button(action: {

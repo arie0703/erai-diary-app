@@ -14,6 +14,9 @@ struct PostsNew: View {
     @State var content: String = ""
     @State var detail: String = ""
     @State var date = Date()
+    @State var showTemplate: Bool = false
+    @State var showModal: Bool = false
+    
     @Environment(\.managedObjectContext) var viewContext
     
     //モーダルの処理
@@ -86,144 +89,187 @@ struct PostsNew: View {
     let formBlue: Double = ColorSetting().formBlue
     
     var body: some View {
-        
-        NavigationView {
-            //背景色
-            Color(red: formRed, green: formGreen, blue: formBlue)
-            .edgesIgnoringSafeArea(.all)
-            .overlay(
-                ScrollView{
-                    VStack{
-                        Text("今日あったえらい出来事")
-                        TextField("例: 三食しっかり食べた！", text: $content)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.bottom, 30)
-                            .padding(.horizontal)
-                        
-                        Text("ひとこと")
-                        TextField("", text: $detail)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.bottom, 30)
-                            .padding(.horizontal)
-                        
-                        
-                        
-                        
-                        
-                        Text("えらい度")
+        ZStack {
+            NavigationView {
+                //背景色
+                Color(red: formRed, green: formGreen, blue: formBlue)
+                .edgesIgnoringSafeArea(.all)
+                .overlay(
+                    ScrollView{
                         VStack{
-                            HStack{
-                                Spacer()
+                            HStack {
+                                
                                 
                                 Button(action: {
-                                    self.rate = 1
-                                    self.changeStar()
-                                }){
-                                    Image(systemName: "star.fill")
-                                    .foregroundColor(starColor1)
-                                    .font(.title)
-                                    .padding(10)
-                                }
-                            
+                                    self.showTemplate = true
+                                    
+                                }) {
+                                    Text("テンプレートを使用")
+                                        .foregroundColor(.orange)
+                                }.sheet(isPresented: $showTemplate) {
+                                    PostTemplate(content: $content, rate: $rate, starColor2: $starColor2, starColor3: $starColor3)
+                                        .accentColor(Color.orange)
+                                }.padding(.vertical)
+                                
                                 Button(action: {
-                                    self.rate = 2
-                                    self.changeStar()
-                                }){
-                                    Image(systemName: "star.fill")
-                                    .foregroundColor(starColor2)
+                                    self.showModal = true
+                                    
+                                }) {
+                                    Image(systemName: "questionmark.circle.fill")
+                                        .foregroundColor(.gray)
+                                }
+                            }.padding(10)
+                            
+                            Text("今日あったえらい出来事")
+                            TextField("例: 三食しっかり食べた！", text: $content)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.bottom, 30)
+                                .padding(.horizontal)
+                            
+                            Text("ひとこと")
+                            TextField("", text: $detail)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.bottom, 30)
+                                .padding(.horizontal)
+                            
+                            
+                            
+                            
+                            
+                            Text("えらい度")
+                            VStack{
+                                HStack{
+                                    Spacer()
+                                    
+                                    Button(action: {
+                                        self.rate = 1
+                                        self.changeStar()
+                                    }){
+                                        Image(systemName: "star.fill")
+                                        .foregroundColor(starColor1)
                                         .font(.title)
-                                    .padding(10)
-                                }
-                            
-                            
-                                Button(action: {
-                                    self.rate = 3
-                                    self.changeStar()
-                                }){
-                                    Image(systemName: "star.fill")
-                                    .foregroundColor(starColor3)
-                                    .font(.title)
-                                    .padding(10)
-                                }
+                                        .padding(10)
+                                    }
+                                
+                                    Button(action: {
+                                        self.rate = 2
+                                        self.changeStar()
+                                    }){
+                                        Image(systemName: "star.fill")
+                                        .foregroundColor(starColor2)
+                                            .font(.title)
+                                        .padding(10)
+                                    }
                                 
                                 
-                                Spacer()
+                                    Button(action: {
+                                        self.rate = 3
+                                        self.changeStar()
+                                    }){
+                                        Image(systemName: "star.fill")
+                                        .foregroundColor(starColor3)
+                                        .font(.title)
+                                        .padding(10)
+                                    }
+                                    
+                                    
+                                    Spacer()
+                                }
+                                
+                                Text(messages(rate: Int(rate)))
+                                
+                                
+                            }
+                            .padding(10)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                            .padding(.bottom, 30)
+                            
+                            
+                            HStack {
+                                Image(systemName: "calendar")
+                                    .resizable()
+                                    .frame(width: 25.0, height: 25.0, alignment: .leading)
+                                    .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
+                                DatePicker("日時", selection: $date)
+                                    .labelsHidden()
+                                    .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
                             }
                             
-                            Text(messages(rate: Int(rate)))
                             
                             
+                            Text("今日もお疲れ様！")
+                            .padding(20)
+                            
+                            Group {
+                                Button(action: {
+                                    PostEntity.create(in: self.viewContext,
+                                    content: self.content,
+                                    detail: self.detail,
+                                    rate: self.rate,
+                                    date: self.date)
+                                    self.save()
+                                    UserDefaults.standard.set(self.user.point + Int(self.rate), forKey: "point")
+                                    
+                                    UserDefaults.standard.set(self.user.total_point + Int(self.rate), forKey: "total_point")
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }) {
+                                    Text(" 投稿！ ")
+                                    .foregroundColor(Color.white)
+                                    .padding(.vertical, 12)
+                                    .padding(.horizontal, 60)
+                                    .background(Color.orange)
+                                    .cornerRadius(2)
+                
+                                }.padding(.bottom, 3)
+                                Button(action: {
+                                    shareOnTwitter(text: content)
+                                }) {
+                                    Text("Twitterでシェア")
+                                        .foregroundColor(Color.blue)
+                                        .fontWeight(.bold)
+                                }.padding(20)
+                            }
+                            
+                            
+                            
+                            
+                        } // VStack
+                        .onAppear{
+                            if rate == 1 {
+                                starColor2 = Color.gray
+                                starColor3 = Color.gray
+                            } else if rate == 2 {
+                                starColor2 = Color.orange
+                                starColor3 = Color.gray
+                            } else {
+                                starColor2 = Color.orange
+                                starColor3 = Color.orange
+                            }
                         }
-                        .padding(10)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .padding(.bottom, 30)
-                        
-                        HStack {
-                            Image(systemName: "calendar")
-                                .resizable()
-                                .frame(width: 25.0, height: 25.0, alignment: .leading)
-                                .foregroundColor(Color(red:0.64, green:0.5, blue: 0.33))
-                            DatePicker("日時", selection: $date)
-                                .labelsHidden()
-                                .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
-                        }
-                        
-                        
-                        
-                        Text("今日もお疲れ様！")
-                        .padding(20)
-                        
-                        Button(action: {
-                            shareOnTwitter(text: content)
-                        }) {
-                            Text("Twitterでシェア")
-                                .padding(.vertical, 12)
-                                .padding(.horizontal, 30)
-                                .background(Color.blue)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(2)
-                        }.padding(.bottom, 3)
-                        Button(action: {
-                            PostEntity.create(in: self.viewContext,
-                            content: self.content,
-                            detail: self.detail,
-                            rate: self.rate,
-                            date: self.date)
-                            self.save()
-                            UserDefaults.standard.set(self.user.point + Int(self.rate), forKey: "point")
-                            
-                            UserDefaults.standard.set(self.user.total_point + Int(self.rate), forKey: "total_point")
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Text(" 投稿！ ")
-                            .foregroundColor(Color.white)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 60)
-                            .background(Color.orange)
-                            .cornerRadius(2)
+                    }//Scroll View
+                    
+                )//.overlay
+                
+                
+                .navigationBarTitle("記録する", displayMode: .inline)
+                .navigationBarItems(trailing:
+                
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                    
+                }) {
+                    Image(systemName: "trash")
+                    .foregroundColor(Color.red)
+                })
+                
+            }
+            if showModal {
+                AboutTemplate(isPresented: $showModal)
+                    .accentColor(Color.orange)
+            }
         
-                        }.padding(.bottom, 10)
-                        
-                        
-                        
-                        
-                    } // VStack
-                }//Scroll View
-                
-            )//.overlay
-            
-            
-            .navigationBarTitle("投稿する")
-            .navigationBarItems(trailing: Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-                
-            }) {
-                Image(systemName: "trash")
-                .foregroundColor(Color.red)
-            })
-            
         }
         
     }
