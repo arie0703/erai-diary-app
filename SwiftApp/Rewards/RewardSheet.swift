@@ -63,8 +63,12 @@ struct RewardSheet: View {
                 }) {
                     Text("履歴")
                 }.sheet(isPresented: $showDones) {
-                    RewardDone()
-                        .environment(\.managedObjectContext, self.viewContext)
+                    ZStack{
+                        Color(red: red, green: green, blue: blue)
+                            .edgesIgnoringSafeArea(.all)
+                        RewardDone()
+                            .environment(\.managedObjectContext, self.viewContext)
+                    }
                 }
                 
                 Spacer()
@@ -86,21 +90,25 @@ struct RewardSheet: View {
             Text("えらいポイントを貯めて自分にご褒美！")
                 .padding(5)
             NavigationView {
-                List {
-                    ForEach(rewardList){ reward in
+                Color(red: red, green: green, blue: blue)
+                .edgesIgnoringSafeArea(.all)
+                .overlay(
+                    List {
+                        ForEach(rewardList){ reward in
+                            
+                            // ご褒美シート
+                            RewardRow(reward: reward)
+                                .listRowBackground(Color(red: red, green: green, blue: blue))
+                            
+                            
+                        }
                         
-                        // ご褒美シート
-                        RewardRow(reward: reward)
-                            .listRowBackground(Color(red: red, green: green, blue: blue))
-                        
-                        
+                        .onDelete{ indexSet in
+                            self.remove(indexSet: indexSet)
+                        }
+                         
                     }
-                    
-                    .onDelete{ indexSet in
-                        self.remove(indexSet: indexSet)
-                    }
-                     
-                }
+                )
                 .navigationBarHidden(true) //NavigationViewの上部空白を隠す
                 .onAppear {
                     //ここはCGFloat型なのでカラー変数は使えない
