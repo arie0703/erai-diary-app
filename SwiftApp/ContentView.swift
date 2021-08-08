@@ -58,6 +58,19 @@ struct ContentView: View {
             ZStack {
                 Color(red: red, green: green, blue: blue)
                     .edgesIgnoringSafeArea(.all)
+                ChallengeList()
+                    .environment(\.managedObjectContext, self.viewContext)
+            }
+            .tabItem {
+                VStack {
+                    Image(systemName: "person")
+                    Text("チャレンジ")
+                }
+            }.tag(3)
+            
+            ZStack {
+                Color(red: red, green: green, blue: blue)
+                    .edgesIgnoringSafeArea(.all)
                 MyPage()
                     .environment(\.managedObjectContext, self.viewContext)
             }
@@ -66,7 +79,7 @@ struct ContentView: View {
                     Image(systemName: "person")
                     Text("マイページ")
                 }
-            }.tag(3)
+            }.tag(4)
         }
         .accentColor(Color.orange)
         
