@@ -14,6 +14,8 @@
 		F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B2125D430A200B209C9 /* UserProfile.swift */; };
 		F7342B2D25D44AD300B209C9 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B2C25D44AD300B209C9 /* PostRow.swift */; };
 		F7342B3225D44CC500B209C9 /* RewardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B3125D44CC500B209C9 /* RewardRow.swift */; };
+		F746CB3526BE276600C47D72 /* ChallengeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F746CB3426BE276600C47D72 /* ChallengeList.swift */; };
+		F746CB3A26BE282600C47D72 /* ChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F746CB3926BE282600C47D72 /* ChallengeCard.swift */; };
 		F749BDEE25CE654100229985 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDED25CE654100229985 /* ImagePicker.swift */; };
 		F749BDF425CEBB0A00229985 /* UserDefault+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */; };
 		F74F8A1726AA8078001B47CD /* BarViewPerMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F8A1626AA8078001B47CD /* BarViewPerMonth.swift */; };
@@ -37,6 +39,8 @@
 		F78477DA2572806E00499835 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78477D92572806E00499835 /* CircleImage.swift */; };
 		F785E83D26A9C362003043B7 /* BarViewPerWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785E83C26A9C362003043B7 /* BarViewPerWeek.swift */; };
 		F78D28FC25E00A2B002024E4 /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D28FB25E00A2A002024E4 /* ColorSetting.swift */; };
+		F78FB5EE26BFF1F0003D5A98 /* CreateChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5ED26BFF1F0003D5A98 /* CreateChallenge.swift */; };
+		F78FB5F326BFF3B6003D5A98 /* ChallengeEntity+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5F226BFF3B6003D5A98 /* ChallengeEntity+Extention.swift */; };
 		F7A2E33A26ABAF9200FC20AB /* TodaysPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2E33926ABAF9200FC20AB /* TodaysPoint.swift */; };
 		F7AEB385268F5DD9009C4025 /* PointInt32toFloat.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB384268F5DD8009C4025 /* PointInt32toFloat.xcmappingmodel */; };
 		F7AEB38D268F61DF009C4025 /* ResetData.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB38C268F61DF009C4025 /* ResetData.xcmappingmodel */; };
@@ -80,6 +84,8 @@
 		F7342B2125D430A200B209C9 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		F7342B2C25D44AD300B209C9 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		F7342B3125D44CC500B209C9 /* RewardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardRow.swift; sourceTree = "<group>"; };
+		F746CB3426BE276600C47D72 /* ChallengeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeList.swift; sourceTree = "<group>"; };
+		F746CB3926BE282600C47D72 /* ChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCard.swift; sourceTree = "<group>"; };
 		F749BDED25CE654100229985 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extention.swift"; sourceTree = "<group>"; };
 		F74F8A1626AA8078001B47CD /* BarViewPerMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarViewPerMonth.swift; sourceTree = "<group>"; };
@@ -109,6 +115,9 @@
 		F78477D92572806E00499835 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		F785E83C26A9C362003043B7 /* BarViewPerWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarViewPerWeek.swift; sourceTree = "<group>"; };
 		F78D28FB25E00A2A002024E4 /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
+		F78FB5ED26BFF1F0003D5A98 /* CreateChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallenge.swift; sourceTree = "<group>"; };
+		F78FB5F226BFF3B6003D5A98 /* ChallengeEntity+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeEntity+Extention.swift"; sourceTree = "<group>"; };
+		F78FB5F726BFFBC2003D5A98 /* SwiftApp 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 6.xcdatamodel"; sourceTree = "<group>"; };
 		F7A2E33926ABAF9200FC20AB /* TodaysPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysPoint.swift; sourceTree = "<group>"; };
 		F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 3.xcdatamodel"; sourceTree = "<group>"; };
 		F7AEB383268F5C84009C4025 /* SwiftApp 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 4.xcdatamodel"; sourceTree = "<group>"; };
@@ -169,6 +178,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F746CB3326BE274000C47D72 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				F746CB3426BE276600C47D72 /* ChallengeList.swift */,
+				F746CB3926BE282600C47D72 /* ChallengeCard.swift */,
+				F78FB5ED26BFF1F0003D5A98 /* CreateChallenge.swift */,
+			);
+			path = Challenge;
 			sourceTree = "<group>";
 		};
 		F74F8A2326AA8C8E001B47CD /* BarView */ = {
@@ -251,6 +270,7 @@
 				F78477AD25727F0D00499835 /* ContentView.swift */,
 				F749BDED25CE654100229985 /* ImagePicker.swift */,
 				F78477AB25727F0D00499835 /* SceneDelegate.swift */,
+				F746CB3326BE274000C47D72 /* Challenge */,
 				F74F8A2326AA8C8E001B47CD /* BarView */,
 				F759D74B25D57485003301BC /* Posts */,
 				F75B349E25D5761B00F06DEB /* Rewards */,
@@ -300,6 +320,7 @@
 				F7199B4F258BA83300CCC3C2 /* Binding+Extention.swift */,
 				F749BDF325CEBB0A00229985 /* UserDefault+Extention.swift */,
 				F7D88B9226BD453900D23D21 /* TemplateEntity+Extension.swift */,
+				F78FB5F226BFF3B6003D5A98 /* ChallengeEntity+Extention.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -536,16 +557,20 @@
 				F7A2E33A26ABAF9200FC20AB /* TodaysPoint.swift in Sources */,
 				F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */,
 				F74F8A1726AA8078001B47CD /* BarViewPerMonth.swift in Sources */,
+				F746CB3A26BE282600C47D72 /* ChallengeCard.swift in Sources */,
 				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
 				F72593562588DA4000E3079D /* PostsEdit.swift in Sources */,
+				F78FB5EE26BFF1F0003D5A98 /* CreateChallenge.swift in Sources */,
 				F78477DA2572806E00499835 /* CircleImage.swift in Sources */,
 				F7D88BA826BD67A500D23D21 /* AboutTemplate.swift in Sources */,
 				F7AEB38D268F61DF009C4025 /* ResetData.xcmappingmodel in Sources */,
 				F77C09E625D1481600D0F7A7 /* RewardDone.swift in Sources */,
 				F77DA9BC25734B200095B6C3 /* PostsList.swift in Sources */,
+				F746CB3526BE276600C47D72 /* ChallengeList.swift in Sources */,
 				F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */,
 				F72D24B2269BAD2800D9715A /* BarGraph.swift in Sources */,
 				F77F7E8B257A62C700DAA12B /* EditUser.swift in Sources */,
+				F78FB5F326BFF3B6003D5A98 /* ChallengeEntity+Extention.swift in Sources */,
 				F74F8A1C26AA8165001B47CD /* BarViewPerDay.swift in Sources */,
 				F78477AC25727F0D00499835 /* SceneDelegate.swift in Sources */,
 				F7D88B9826BD475E00D23D21 /* CreateTemplate.swift in Sources */,
@@ -729,7 +754,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hitodeface.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -751,7 +776,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hitodeface.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -888,13 +913,14 @@
 		F77DA9C02573D1470095B6C3 /* SwiftApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F78FB5F726BFFBC2003D5A98 /* SwiftApp 6.xcdatamodel */,
 				F7D88BA026BD52E200D23D21 /* SwiftApp 5.xcdatamodel */,
 				F7AEB383268F5C84009C4025 /* SwiftApp 4.xcdatamodel */,
 				F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */,
 				F7D139DE2579274F00230F51 /* SwiftApp 2.xcdatamodel */,
 				F77DA9C12573D1470095B6C3 /* SwiftApp.xcdatamodel */,
 			);
-			currentVersion = F7D88BA026BD52E200D23D21 /* SwiftApp 5.xcdatamodel */;
+			currentVersion = F78FB5F726BFFBC2003D5A98 /* SwiftApp 6.xcdatamodel */;
 			path = SwiftApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
