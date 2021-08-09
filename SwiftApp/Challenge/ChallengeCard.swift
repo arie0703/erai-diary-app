@@ -13,8 +13,10 @@ import SwiftUI
 
 struct ChallengeCard: View {
     @ObservedObject var challenge: ChallengeEntity
+    @ObservedObject var user = UserProfile()
     @Environment(\.managedObjectContext) var viewContext
     @State var showingAlert: Bool = false
+    @State var showingEdit: Bool = false
     
     var start_of_today: Date = Calendar(identifier: .gregorian).startOfDay(for: Date())
     var end_of_today: Date = Calendar(identifier: .gregorian).date(bySettingHour: 23, minute: 59, second: 59, of: Date())!
@@ -35,6 +37,7 @@ struct ChallengeCard: View {
             return false
         }
     }
+    
 
     fileprivate func save() {
         do {
@@ -86,6 +89,10 @@ struct ChallengeCard: View {
                             }
                             challenge.clear_days += 1
                             challenge.updated_at = Date()
+                            if challenge.clear_days == challenge.goal { // 目標達成判定
+                                challenge.isDone = true
+                                UserDefaults.standard.set(self.user.point + Int(challenge.point), forKey: "point") //ポイント加算処理
+                            }
                             self.save()
                           })
                     )
@@ -94,11 +101,28 @@ struct ChallengeCard: View {
                 Text("今日は達成済み！")
             }
             
+            Button(action: {
+                self.showingEdit = true
+            }) {
+                Text("編集").foregroundColor(.gray)
+            }.sheet(isPresented: $showingEdit) {
+                EditChallenge(challenge: challenge, title: challenge.title ?? "", comment: challenge.comment ?? "", start_date: challenge.start_date!, end_date: challenge.end_date!, point_double: Double(challenge.point), goal_double: Double(challenge.goal))
+            }
+            
+            
             Spacer()
             
         }.padding(50)
         .background(Color.orange)
         .cornerRadius(12.0)
+        .onAppear {
+            if Calendar(identifier: .gregorian).startOfDay(for: Date()) > challenge.end_date! // もうチャレンジ期間を過ぎていたら
+            {
+                challenge.isDone = true // おしまい
+                self.save()
+            }
+        }
+        
     }
 }
 

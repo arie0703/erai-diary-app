@@ -12,6 +12,7 @@ import CoreData
 struct ChallengeList: View {
     @Environment(\.managedObjectContext) var viewContext
     @State var showCreateView = false
+    @State var showDoneList = false
     
     @FetchRequest(
     sortDescriptors: [NSSortDescriptor(keyPath: \ChallengeEntity.created_at,
@@ -21,11 +22,28 @@ struct ChallengeList: View {
     
     var challenges: FetchedResults<ChallengeEntity>
     
+    let red: Double = ColorSetting().red
+    let green: Double = ColorSetting().green
+    let blue: Double = ColorSetting().blue
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Text("チャレンジ(β版)").font(.title)
                 Spacer()
+                Button(action: {
+                    self.showDoneList = true
+                }) {
+                    Text("履歴")
+                }.sheet(isPresented: $showDoneList) {
+                    ZStack{
+                        Color(red: red, green: green, blue: blue)
+                            .edgesIgnoringSafeArea(.all)
+                        ChallengeDone().environment(\.managedObjectContext, self.viewContext)
+                            .accentColor(Color.orange)
+                    }
+                }
+                
                 Button(action: {
                     self.showCreateView = true
                 }) {

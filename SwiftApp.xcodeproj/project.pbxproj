@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F7199B50258BA83400CCC3C2 /* Binding+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7199B4F258BA83300CCC3C2 /* Binding+Extention.swift */; };
 		F72205E32577B3FB003DE067 /* RewardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72205E22577B3FB003DE067 /* RewardSheet.swift */; };
+		F724431326C0FB8D003C090A /* EditChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F724431226C0FB8D003C090A /* EditChallenge.swift */; };
 		F72593562588DA4000E3079D /* PostsEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72593552588DA4000E3079D /* PostsEdit.swift */; };
 		F72D24B2269BAD2800D9715A /* BarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72D24B1269BAD2700D9715A /* BarGraph.swift */; };
 		F7342B2225D430A200B209C9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7342B2125D430A200B209C9 /* UserProfile.swift */; };
@@ -42,6 +43,7 @@
 		F78FB5EE26BFF1F0003D5A98 /* CreateChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5ED26BFF1F0003D5A98 /* CreateChallenge.swift */; };
 		F78FB5F326BFF3B6003D5A98 /* ChallengeEntity+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5F226BFF3B6003D5A98 /* ChallengeEntity+Extention.swift */; };
 		F7A2E33A26ABAF9200FC20AB /* TodaysPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2E33926ABAF9200FC20AB /* TodaysPoint.swift */; };
+		F7AC314926C1413F003F1CCA /* ChallengeDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC314826C1413F003F1CCA /* ChallengeDone.swift */; };
 		F7AEB385268F5DD9009C4025 /* PointInt32toFloat.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB384268F5DD8009C4025 /* PointInt32toFloat.xcmappingmodel */; };
 		F7AEB38D268F61DF009C4025 /* ResetData.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F7AEB38C268F61DF009C4025 /* ResetData.xcmappingmodel */; };
 		F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB7EE2257769F9007CC57B /* MyPage.swift */; };
@@ -79,6 +81,7 @@
 		F3AA1E4D8FE5EBABD0FF9736 /* Pods-SwiftApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftApp.release.xcconfig"; path = "Target Support Files/Pods-SwiftApp/Pods-SwiftApp.release.xcconfig"; sourceTree = "<group>"; };
 		F7199B4F258BA83300CCC3C2 /* Binding+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extention.swift"; sourceTree = "<group>"; };
 		F72205E22577B3FB003DE067 /* RewardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardSheet.swift; sourceTree = "<group>"; };
+		F724431226C0FB8D003C090A /* EditChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChallenge.swift; sourceTree = "<group>"; };
 		F72593552588DA4000E3079D /* PostsEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEdit.swift; sourceTree = "<group>"; };
 		F72D24B1269BAD2700D9715A /* BarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
 		F7342B2125D430A200B209C9 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -119,6 +122,7 @@
 		F78FB5F226BFF3B6003D5A98 /* ChallengeEntity+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeEntity+Extention.swift"; sourceTree = "<group>"; };
 		F78FB5F726BFFBC2003D5A98 /* SwiftApp 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 6.xcdatamodel"; sourceTree = "<group>"; };
 		F7A2E33926ABAF9200FC20AB /* TodaysPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysPoint.swift; sourceTree = "<group>"; };
+		F7AC314826C1413F003F1CCA /* ChallengeDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDone.swift; sourceTree = "<group>"; };
 		F7AC46F725CC476F00959A3F /* SwiftApp 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 3.xcdatamodel"; sourceTree = "<group>"; };
 		F7AEB383268F5C84009C4025 /* SwiftApp 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 4.xcdatamodel"; sourceTree = "<group>"; };
 		F7AEB384268F5DD8009C4025 /* PointInt32toFloat.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = PointInt32toFloat.xcmappingmodel; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				F746CB3426BE276600C47D72 /* ChallengeList.swift */,
 				F746CB3926BE282600C47D72 /* ChallengeCard.swift */,
 				F78FB5ED26BFF1F0003D5A98 /* CreateChallenge.swift */,
+				F724431226C0FB8D003C090A /* EditChallenge.swift */,
+				F7AC314826C1413F003F1CCA /* ChallengeDone.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				F77DA9C42573D3400095B6C3 /* PostsNew.swift in Sources */,
 				F749BDEE25CE654100229985 /* ImagePicker.swift in Sources */,
 				F7199B50258BA83400CCC3C2 /* Binding+Extention.swift in Sources */,
+				F724431326C0FB8D003C090A /* EditChallenge.swift in Sources */,
 				F78D28FC25E00A2B002024E4 /* ColorSetting.swift in Sources */,
 				F72205E32577B3FB003DE067 /* RewardSheet.swift in Sources */,
 				F7342B2D25D44AD300B209C9 /* PostRow.swift in Sources */,
@@ -556,6 +563,7 @@
 				F75E164C25D8F3E000FAC2A2 /* Calender.swift in Sources */,
 				F7A2E33A26ABAF9200FC20AB /* TodaysPoint.swift in Sources */,
 				F78477AA25727F0D00499835 /* AppDelegate.swift in Sources */,
+				F7AC314926C1413F003F1CCA /* ChallengeDone.swift in Sources */,
 				F74F8A1726AA8078001B47CD /* BarViewPerMonth.swift in Sources */,
 				F746CB3A26BE282600C47D72 /* ChallengeCard.swift in Sources */,
 				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
