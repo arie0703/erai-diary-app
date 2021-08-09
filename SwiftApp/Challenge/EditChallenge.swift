@@ -1,25 +1,25 @@
 //
-//  CreateChallenge.swift
+//  EditChallenge.swift
 //  SwiftApp
 //
-//  Created by 有村海星 on 2021/08/08.
+//  Created by 有村海星 on 2021/08/09.
 //  Copyright © 2021 Kaisei Arimura. All rights reserved.
 //
-
 import SwiftUI
 import CoreData
 
-struct CreateChallenge: View {
+struct EditChallenge: View {
     
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var challenge: ChallengeEntity
     @State var showingAlert: Bool = false
-    @State var title: String = ""
-    @State var comment: String = ""
-    @State var start_date: Date = Date()
-    @State var end_date: Date = Date()
-    @State var point_double: Double = 1 //スライダー用
-    @State var goal_double: Double = 1
+    @State var title: String
+    @State var comment: String
+    @State var start_date: Date
+    @State var end_date: Date
+    @State var point_double: Double//スライダー用
+    @State var goal_double: Double
     @State var point: Int32 = 1
     @State var goal: Int32 = 1
     
@@ -32,10 +32,11 @@ struct CreateChallenge: View {
         }
     }
     
-    init(){
-        //formの背景色を設定できるように
-        UITableView.appearance().backgroundColor = .clear
+    fileprivate func delete() {
+        viewContext.delete(challenge)
+        save()
     }
+    
     
     let formRed: Double = ColorSetting().formRed
     let formGreen: Double = ColorSetting().formGreen
@@ -85,30 +86,8 @@ struct CreateChallenge: View {
                     Section(header: Text("コメント")){
                         TextField("", text: $comment)
                     }
-                    
                     Section(header: Text("チャレンジ期間")) {
-                        VStack {
-                            DatePicker("開始日時", selection: $start_date, displayedComponents: .date)
-                                .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
-                                .padding(.bottom, 10)
-                            DatePicker("終了日時", selection: $end_date, displayedComponents: .date)
-                                .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
-                            
-                            Text("チャレンジ期間は" + calcDateRemainder(firstDate: end_date, secondDate: start_date).description + "日間です")
-                            if calcDateRemainder(firstDate: end_date, secondDate: start_date) > 100 {
-                                Text("設定できるチャレンジ期間は最大100日です。")
-                                    .foregroundColor(.red)
-                                    .padding(3)
-                            } else if calcDateRemainder(firstDate: end_date, secondDate: start_date) < 3 {
-                                Text("チャレンジ期間は最低3日以上に設定してください。")
-                                    .foregroundColor(.red)
-                                    .padding(3)
-                            } else if start_date < Calendar(identifier: .gregorian).startOfDay(for: Date()) {
-                                Text("開始日を本日より前に設定することはできません。")
-                                    .foregroundColor(.red)
-                                    .padding(3)
-                            }
-                        }
+                        Text("チャレンジ期間は" + calcDateRemainder(firstDate: end_date, secondDate: start_date).description + "日間です")
                     }
                     
                     
@@ -151,23 +130,16 @@ struct CreateChallenge: View {
                             {
                                 self.showingAlert = true
                             } else {
-                                ChallengeEntity.create(in: self.viewContext,
-                                title: self.title,
-                                comment: self.comment,
-                                start_date: self.start_date,
-                                end_date: self.end_date,
-                                created_at: Date(),
-                                updated_at: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, //初期値は一日前の日付としておく
-                                continuation_days: 0,
-                                clear_days: 0,
-                                goal: Int32(self.goal_double),
-                                point: Int32(self.point_double),
-                                isDone: false)
+                                
+                                self.challenge.title = self.title
+                                self.challenge.comment = self.comment
+                                self.challenge.goal = Int32(self.goal_double)
+                                self.challenge.point = Int32(self.point_double)
                                 self.save()
                                 self.presentationMode.wrappedValue.dismiss()
                             }
                         }) {
-                            Text("追加！")
+                            Text("編集")
                         }.alert(isPresented: self.$showingAlert) {
                             Alert(
                                   title: Text("エラー"),
@@ -175,9 +147,18 @@ struct CreateChallenge: View {
                             )
                         }
                     }
+                    
+                    Section {
+                        Button(action: {
+                            self.delete()
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("削除")
+                        }
+                    }
                 }
             )
-            .navigationBarTitle("チャレンジを追加")
+            .navigationBarTitle("チャレンジを編集")
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
                 
@@ -185,6 +166,8 @@ struct CreateChallenge: View {
                 Image(systemName: "trash")
                 .foregroundColor(Color.red)
             })
+        }.onAppear {
+            UITableView.appearance().backgroundColor = .clear
         }
     }
     
