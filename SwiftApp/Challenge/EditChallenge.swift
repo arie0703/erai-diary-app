@@ -125,8 +125,7 @@ struct EditChallenge: View {
                         Button(action: {
                             if Int(goal_double) > calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) || // 目標日数がチャレンジ日数以上の時
                                 calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) > 100 || // チャレンジ期間が100日以上
-                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) < 3 ||// チャレンジ期間が３日未満
-                                self.start_date < Calendar(identifier: .gregorian).startOfDay(for: Date()) // 開始日が今日より前
+                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) < 3 // チャレンジ期間が３日未満
                             {
                                 self.showingAlert = true
                             } else {

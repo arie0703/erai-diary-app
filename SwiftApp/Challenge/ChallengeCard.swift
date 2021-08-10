@@ -38,6 +38,14 @@ struct ChallengeCard: View {
         }
     }
     
+    func getTextFromDate(date: Date) -> String {
+        
+        let formatter = DateFormatter()
+        formatter.locale = .current
+        formatter.dateFormat = "M/d"
+        return formatter.string(from: date)
+    }
+    
 
     fileprivate func save() {
         do {
@@ -48,72 +56,97 @@ struct ChallengeCard: View {
         }
     }
     
+    let brown: Color = Color(red:0.58, green:0.4, blue: 0.29)
+    let darkbrown: Color = Color(red:0.29, green:0.2, blue: 0.15)
+    
     
     var body: some View {
         VStack {
-            Text(challenge.title ?? "")
-                .font(.title)
-            Text(challenge.comment ?? "")
-                .padding(.bottom, 10)
+            HStack { // 右上に設定ボタン
+                Spacer()
+                Button(action: {
+                    self.showingEdit = true
+                }) {
+                    Image(systemName: "gearshape.fill").foregroundColor(brown)
+                }.sheet(isPresented: $showingEdit) {
+                    EditChallenge(challenge: challenge, title: challenge.title ?? "", comment: challenge.comment ?? "", start_date: challenge.start_date!, end_date: challenge.end_date!, point_double: Double(challenge.point), goal_double: Double(challenge.goal))
+                }
+                
+            }
+            Group {
+                Text(challenge.title ?? "") // title
+                    .font(.title)
+                    .padding(.bottom, 2)
+                    
+                Text(challenge.comment ?? "") // comment
+                    .padding(.bottom, 3)
+            }.foregroundColor(darkbrown)
+            
+            HStack { //チャレンジ期間
+                Group {
+                    Image(systemName: "calendar")
+                    Text(getTextFromDate(date: challenge.start_date!) +  "~" + getTextFromDate(date: challenge.end_date!))
+                        
+                }.foregroundColor(darkbrown)
+            }.padding(.bottom, 10)
+            
             if Date() >= challenge.start_date ?? Date() && Date() <= challenge.end_date ?? Date() {
-                Text("達成日数")
-                Text(challenge.clear_days.description + "/" + challenge.goal.description).font(.title)
-                Text(challenge.continuation_days.description + "日継続中！")
-                    .padding(.bottom, 10)
-                Text(challenge.created_at!.description)
-                Text(challenge.updated_at!.description)
+                
+                Group {
+                
+                    Text(challenge.clear_days.description + "/" + challenge.goal.description).font(.title)
+                    Text(challenge.continuation_days.description + "日継続中！")
+                        .padding(.bottom, 10)
+                }.foregroundColor(darkbrown)
+                
+                if challenge.updated_at! < start_of_today  {
+                    //今日中に達成報告されていなかったら、達成報告ボタンを出す
+                
+                    Button(action: {
+                        self.showingAlert = true
+                    }) {
+                        Text("Done!")
+                    }.alert(isPresented: self.$showingAlert) {
+                        Alert(
+                              title: Text("達成報告"),
+                              message: Text("完了済みにしますか？"),
+                              primaryButton: .cancel(Text("キャンセル")),
+                              secondaryButton: .default(Text("はい"),
+                              action:
+                              {
+                                if isContinual(date: challenge.updated_at!) == true {
+                                    challenge.continuation_days += 1
+                                } else {
+                                    challenge.continuation_days = 0
+                                }
+                                challenge.clear_days += 1
+                                challenge.updated_at = Date()
+                                if challenge.clear_days == challenge.goal { // 目標達成判定
+                                    challenge.isDone = true
+                                    UserDefaults.standard.set(self.user.point + Int(challenge.point), forKey: "point") //ポイント加算処理
+                                }
+                                self.save()
+                              })
+                        )
+                    }
+                    
+                } else {
+                    Text("今日は達成済み！")
+                        .foregroundColor(darkbrown)
+                }
+                
+                
             } else {
                 Text("開始前だよ")
+                    .foregroundColor(darkbrown)
                     .padding(.bottom, 10)
             }
-            
-            if challenge.updated_at! < start_of_today  {
-                //今日中に達成報告されていなかったら、達成報告ボタンを出す
-            
-                Button(action: {
-                    self.showingAlert = true
-                }) {
-                    Text("Done!").foregroundColor(.red)
-                }.alert(isPresented: self.$showingAlert) {
-                    Alert(
-                          title: Text("達成報告"),
-                          message: Text("完了済みにしますか？"),
-                          primaryButton: .cancel(Text("キャンセル")),
-                          secondaryButton: .default(Text("はい"),
-                          action:
-                          {
-                            if isContinual(date: challenge.updated_at!) == true {
-                                challenge.continuation_days += 1
-                            } else {
-                                challenge.continuation_days = 0
-                            }
-                            challenge.clear_days += 1
-                            challenge.updated_at = Date()
-                            if challenge.clear_days == challenge.goal { // 目標達成判定
-                                challenge.isDone = true
-                                UserDefaults.standard.set(self.user.point + Int(challenge.point), forKey: "point") //ポイント加算処理
-                            }
-                            self.save()
-                          })
-                    )
-                }
-            } else {
-                Text("今日は達成済み！")
-            }
-            
-            Button(action: {
-                self.showingEdit = true
-            }) {
-                Text("編集").foregroundColor(.gray)
-            }.sheet(isPresented: $showingEdit) {
-                EditChallenge(challenge: challenge, title: challenge.title ?? "", comment: challenge.comment ?? "", start_date: challenge.start_date!, end_date: challenge.end_date!, point_double: Double(challenge.point), goal_double: Double(challenge.goal))
-            }
-            
             
             Spacer()
             
-        }.padding(50)
-        .background(Color.orange)
+        }.padding(10)
+        .frame(width: 250, height: 300)
+        .background(Color(red: 1, green: 0.82, blue: 0.58))
         .cornerRadius(12.0)
         .onAppear {
             if Calendar(identifier: .gregorian).startOfDay(for: Date()) > challenge.end_date! // もうチャレンジ期間を過ぎていたら
@@ -122,6 +155,7 @@ struct ChallengeCard: View {
                 self.save()
             }
         }
+        
         
     }
 }

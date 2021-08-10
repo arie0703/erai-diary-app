@@ -13,6 +13,7 @@ struct ChallengeList: View {
     @Environment(\.managedObjectContext) var viewContext
     @State var showCreateView = false
     @State var showDoneList = false
+    @State var showModal = false
     
     @FetchRequest(
     sortDescriptors: [NSSortDescriptor(keyPath: \ChallengeEntity.created_at,
@@ -30,7 +31,15 @@ struct ChallengeList: View {
         VStack(alignment: .leading) {
             HStack {
                 Text("チャレンジ(β版)").font(.title)
+                Button(action: {
+                    self.showModal = true
+                    
+                }) {
+                    Image(systemName: "questionmark.circle.fill")
+                        .foregroundColor(.gray)
+                }
                 Spacer()
+                
                 Button(action: {
                     self.showDoneList = true
                 }) {
@@ -65,7 +74,16 @@ struct ChallengeList: View {
                     }
                 }
             }
+            
+            Spacer()
+            
         }.padding(10)
+        
+        if showModal {
+            AboutChallenge(isPresented: $showModal)
+                .accentColor(Color.orange)
+        }
+        
     }
 }
 
