@@ -52,6 +52,7 @@
 		F7D88B9326BD453900D23D21 /* TemplateEntity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D88B9226BD453900D23D21 /* TemplateEntity+Extension.swift */; };
 		F7D88B9826BD475E00D23D21 /* CreateTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D88B9726BD475E00D23D21 /* CreateTemplate.swift */; };
 		F7D88BA826BD67A500D23D21 /* AboutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D88BA726BD67A500D23D21 /* AboutTemplate.swift */; };
+		F7D8ACFE26C2A1C400755D96 /* AboutChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D8ACFD26C2A1C400755D96 /* AboutChallenge.swift */; };
 		F7FB2EB425D962F0007BDA98 /* PostsSortedByDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FB2EB325D962F0007BDA98 /* PostsSortedByDate.swift */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +137,7 @@
 		F7D88B9726BD475E00D23D21 /* CreateTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTemplate.swift; sourceTree = "<group>"; };
 		F7D88BA026BD52E200D23D21 /* SwiftApp 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftApp 5.xcdatamodel"; sourceTree = "<group>"; };
 		F7D88BA726BD67A500D23D21 /* AboutTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTemplate.swift; sourceTree = "<group>"; };
+		F7D8ACFD26C2A1C400755D96 /* AboutChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutChallenge.swift; sourceTree = "<group>"; };
 		F7FB2EB325D962F0007BDA98 /* PostsSortedByDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsSortedByDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +194,7 @@
 				F78FB5ED26BFF1F0003D5A98 /* CreateChallenge.swift */,
 				F724431226C0FB8D003C090A /* EditChallenge.swift */,
 				F7AC314826C1413F003F1CCA /* ChallengeDone.swift */,
+				F7D8ACFD26C2A1C400755D96 /* AboutChallenge.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				F746CB3A26BE282600C47D72 /* ChallengeCard.swift in Sources */,
 				F7CB7EE3257769F9007CC57B /* MyPage.swift in Sources */,
 				F72593562588DA4000E3079D /* PostsEdit.swift in Sources */,
+				F7D8ACFE26C2A1C400755D96 /* AboutChallenge.swift in Sources */,
 				F78FB5EE26BFF1F0003D5A98 /* CreateChallenge.swift in Sources */,
 				F78477DA2572806E00499835 /* CircleImage.swift in Sources */,
 				F7D88BA826BD67A500D23D21 /* AboutTemplate.swift in Sources */,

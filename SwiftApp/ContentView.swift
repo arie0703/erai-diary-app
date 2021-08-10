@@ -63,7 +63,7 @@ struct ContentView: View {
             }
             .tabItem {
                 VStack {
-                    Image(systemName: "person")
+                    Image(systemName: "flame")
                     Text("チャレンジ")
                 }
             }.tag(3)
