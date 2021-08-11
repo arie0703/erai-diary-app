@@ -11,9 +11,9 @@ import SwiftUI
 struct ChallengeDone: View {
     
     @Environment(\.managedObjectContext) var viewContext
-    
     //モーダルの処理
     @Environment(\.presentationMode) var presentationMode
+    @State var showDetail = false
     
     @FetchRequest(
     sortDescriptors: [NSSortDescriptor(keyPath: \ChallengeEntity.created_at,
@@ -48,26 +48,29 @@ struct ChallengeDone: View {
     let blue: Double = ColorSetting().blue
     
     var body: some View {
+    
         NavigationView {
-            List {
-                ForEach(challenges){ challenge in
-                    VStack{
-                        Text(challenge.title ?? "").font(.title)
-                        Text(challenge.comment ?? "")
-                        Text("達成状況")
-                        Text(challenge.clear_days.description + "/" + challenge.goal.description + "日達成")
-                        
-                        
+            ZStack {
+                Color(red: red, green: green, blue: blue)
+                    .edgesIgnoringSafeArea(.all)
+                VStack {
+                    Text("終了済みのチャレンジを表示します。").padding(15)
+                    
+                    if challenges.count > 1 {
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(challenges){ challenge in
+                                    ChallengeCard(challenge: challenge)
+                                }
+                            }.padding(10)
+                        }
+                    } else if challenges.count == 1 {
+                        ChallengeCard(challenge: challenges[0])
                     }
-                    .padding(5)
-                    .listRowBackground(Color(red: red, green: green, blue: blue))
+                    Spacer()
                 }
-                .onDelete{ indexSet in
-                    self.remove(indexSet: indexSet)
-                }
-                 
             }
-            .navigationBarTitle("チャレンジ履歴")
+            .navigationBarTitle("チャレンジ履歴", displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
                 
@@ -75,9 +78,12 @@ struct ChallengeDone: View {
                 Image(systemName: "xmark")
                 .foregroundColor(Color.gray)
             })
+            
+            
 
             
         }
+        
         
         
     }

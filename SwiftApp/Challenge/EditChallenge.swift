@@ -23,6 +23,8 @@ struct EditChallenge: View {
     @State var point: Int32 = 1
     @State var goal: Int32 = 1
     
+    @State var showingDeleteAlert = false
+    
     fileprivate func save() {
         do {
             try  self.viewContext.save()
@@ -149,8 +151,7 @@ struct EditChallenge: View {
                     
                     Section {
                         Button(action: {
-                            self.delete()
-                            self.presentationMode.wrappedValue.dismiss()
+                            self.showingDeleteAlert = true
                         }) {
                             Text("削除")
                         }
@@ -165,6 +166,17 @@ struct EditChallenge: View {
                 Image(systemName: "trash")
                 .foregroundColor(Color.red)
             })
+            
+            .actionSheet(isPresented: $showingDeleteAlert) {
+            ActionSheet(title: Text("チャレンジを削除"), message: Text("このチャレンジを削除します。よろしいですか？"), buttons: [
+                .destructive(Text("削除")) {
+                    self.delete()
+                    self.presentationMode.wrappedValue.dismiss()
+                },
+                .cancel(Text("キャンセル"))
+            
+            ])
+            }
         }.onAppear {
             UITableView.appearance().backgroundColor = .clear
         }
