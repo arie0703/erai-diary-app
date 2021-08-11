@@ -45,12 +45,10 @@ struct ChallengeList: View {
                 }) {
                     Text("履歴")
                 }.sheet(isPresented: $showDoneList) {
-                    ZStack{
-                        Color(red: red, green: green, blue: blue)
-                            .edgesIgnoringSafeArea(.all)
-                        ChallengeDone().environment(\.managedObjectContext, self.viewContext)
-                            .accentColor(Color.orange)
-                    }
+
+                    ChallengeDone().environment(\.managedObjectContext, self.viewContext)
+                        .accentColor(Color.orange)
+                    
                 }
                 
                 Button(action: {
@@ -66,13 +64,18 @@ struct ChallengeList: View {
             Text("色々なことの継続にチャレンジ！")
                 .padding(10)
             
-            
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(challenges){ challenge in
-                        ChallengeCard(challenge: challenge)
+            if challenges.count > 1 {
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(challenges){ challenge in
+                            ChallengeCard(challenge: challenge)
+                        }
                     }
                 }
+            } else if challenges.count == 1 {
+                ChallengeCard(challenge: challenges[0])
+            } else {
+                Text("まだチャレンジはありません").foregroundColor(.gray).padding(5)
             }
             
             Spacer()
