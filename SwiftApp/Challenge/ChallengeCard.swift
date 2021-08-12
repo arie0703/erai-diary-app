@@ -74,7 +74,7 @@ struct ChallengeCard: View {
                     }) {
                         Image(systemName: "gearshape.fill").foregroundColor(brown)
                     }.sheet(isPresented: $showingEdit) {
-                        EditChallenge(challenge: challenge, title: challenge.title ?? "", comment: challenge.comment ?? "", start_date: challenge.start_date!, end_date: challenge.end_date!, point_double: Double(challenge.point), goal_double: Double(challenge.goal)).accentColor(Color.orange)
+                        EditChallenge(challenge: challenge, title: challenge.title ?? "", comment: challenge.comment ?? "", start_date: challenge.start_date!, end_date: challenge.end_date!, point_double: Double(challenge.point), goal_double: Double(challenge.goal), clear_days: challenge.clear_days).accentColor(Color.orange)
                     }
                 } else { // 終了済みのチャレンジを表示しているときは削除ボタンを出す
                     Button(action: {
@@ -156,7 +156,7 @@ struct ChallengeCard: View {
                     Group {
                         Text("目標達成！おめでとう！")
                             .padding(.bottom, 2)
-                        Text(challenge.goal.description + "ポイント獲得！")
+                        Text(challenge.point.description + "ポイント獲得！")
                     }
                         .foregroundColor(darkbrown)
                         
@@ -173,7 +173,8 @@ struct ChallengeCard: View {
         .background(Color(red: 1, green: 0.82, blue: 0.58))
         .cornerRadius(12.0)
         .onAppear {
-            if Calendar(identifier: .gregorian).startOfDay(for: Date()) > challenge.end_date! // もうチャレンジ期間を過ぎていたら
+            if Calendar(identifier: .gregorian).startOfDay(for: Date()) > challenge.end_date! || // もうチャレンジ期間を過ぎていたら
+                challenge.clear_days >= challenge.goal // 達成済み日数が目標日数に達していたら
             {
                 challenge.isDone = true // おしまい
                 self.save()

@@ -84,6 +84,7 @@ struct RewardSheet: View {
                             .edgesIgnoringSafeArea(.all)
                         RewardNew()
                             .environment(\.managedObjectContext, self.viewContext)
+                            .accentColor(Color.orange)
                     }
                 }
             }

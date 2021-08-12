@@ -15,6 +15,8 @@ struct PostsEdit: View {
     @State var rate: Int32
     @State var date: Date
     
+    @State var showingAlert = false
+    
     @State var showingSheet = false
     
     @Environment(\.managedObjectContext) var viewContext
@@ -181,25 +183,29 @@ struct PostsEdit: View {
                         Group {
                         
                             Button(action: {
-                                if(self.user.point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
-                                    UserDefaults.standard.set(0 , forKey: "point")
+                                if self.content == "" {
+                                    self.showingAlert = true
                                 } else {
-                                UserDefaults.standard.set(self.user.point +  (Int(self.rate) - Int(self.post.rate)) , forKey: "point")
+                                    if(self.user.point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
+                                        UserDefaults.standard.set(0 , forKey: "point")
+                                    } else {
+                                    UserDefaults.standard.set(self.user.point +  (Int(self.rate) - Int(self.post.rate)) , forKey: "point")
+                                    }
+                                    
+                                    if(self.user.total_point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
+                                        UserDefaults.standard.set(0 , forKey: "total_point")
+                                    } else {
+                                        UserDefaults.standard.set(self.user.total_point + (Int(self.rate) - Int(self.post.rate)), forKey: "total_point")
+                                    }
+                                    
+                                    self.post.content = self.content
+                                    self.post.detail = self.detail
+                                    self.post.date = self.date
+                                    //avoidMinusPoint(point: Int32(UserProfile().point)) //　投稿削除・編集などによりえらいポイントが負の数になるのを防ぐ
+                                    self.post.rate = self.rate
+                                    self.save()
+                                    self.presentationMode.wrappedValue.dismiss()
                                 }
-                                
-                                if(self.user.total_point +  (Int(self.rate) - Int(self.post.rate)) < 0) {
-                                    UserDefaults.standard.set(0 , forKey: "total_point")
-                                } else {
-                                    UserDefaults.standard.set(self.user.total_point + (Int(self.rate) - Int(self.post.rate)), forKey: "total_point")
-                                }
-                                
-                                self.post.content = self.content
-                                self.post.detail = self.detail
-                                self.post.date = self.date
-                                //avoidMinusPoint(point: Int32(UserProfile().point)) //　投稿削除・編集などによりえらいポイントが負の数になるのを防ぐ
-                                self.post.rate = self.rate
-                                self.save()
-                                self.presentationMode.wrappedValue.dismiss()
                             }) {
                                 Text("編集")
                                     .padding(.vertical, 12)
@@ -207,7 +213,13 @@ struct PostsEdit: View {
                                     .background(Color.orange)
                                     .foregroundColor(Color.white)
                                     .cornerRadius(2)
+                            }.alert(isPresented: self.$showingAlert) {
+                                Alert(
+                                      title: Text("エラー"),
+                                      message: Text("「今日あったえらい出来事」を入力してください。")
+                                )
                             }
+                            
                             Button(action:{
                                 shareOnTwitter(text: content)
                             }) {
