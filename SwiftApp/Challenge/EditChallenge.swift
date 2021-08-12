@@ -20,6 +20,7 @@ struct EditChallenge: View {
     @State var end_date: Date
     @State var point_double: Double//スライダー用
     @State var goal_double: Double
+    @State var clear_days: Int32
     @State var point: Int32 = 1
     @State var goal: Int32 = 1
     
@@ -89,7 +90,11 @@ struct EditChallenge: View {
                         TextField("", text: $comment)
                     }
                     Section(header: Text("チャレンジ期間")) {
-                        Text("チャレンジ期間は" + calcDateRemainder(firstDate: end_date, secondDate: start_date).description + "日間です")
+                        VStack(alignment: .leading) {
+                            Text("チャレンジ期間は" + (calcDateRemainder(firstDate: end_date, secondDate: start_date) + 1).description + "日間です")
+                            Text("(残り" + (calcDateRemainder(firstDate: end_date, secondDate: Date()) + 1).description + "日)")
+                            Text("※チャレンジ期間は途中で変更できません").font(.footnote)
+                        }
                     }
                     
                     
@@ -100,8 +105,13 @@ struct EditChallenge: View {
                                 Stepper(value: $goal_double, in: 1...100) {
                                     Text("\(goal_double, specifier: "%.0f") 日")
                                 }
-                                if Int(goal_double) > calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) {
+                                if Int(goal_double) > calcDateRemainder(firstDate: end_date, secondDate: start_date) + 1 {
                                     Text("目標日数がチャレンジ期間を超えています")
+                                        .foregroundColor(.red)
+                                        .padding(3)
+                                }
+                                if Int(clear_days) > Int(goal_double) {
+                                    Text("目標日数が既に達成した日数を下回っています")
                                         .foregroundColor(.red)
                                         .padding(3)
                                 }
@@ -125,9 +135,10 @@ struct EditChallenge: View {
                 
                     Section{
                         Button(action: {
-                            if Int(goal_double) > calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) || // 目標日数がチャレンジ日数以上の時
-                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) > 100 || // チャレンジ期間が100日以上
-                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) < 3 // チャレンジ期間が３日未満
+                            if Int(goal_double) > calcDateRemainder(firstDate: end_date, secondDate: start_date) + 1 || // 目標日数がチャレンジ日数以上の時
+                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) + 1 > 100 || // チャレンジ期間が100日以上
+                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) + 1 < 3 || // チャレンジ期間が３日未満
+                                Int(clear_days) > Int(goal_double) // 目標日数が既に達成した日数を下回っている場合
                             {
                                 self.showingAlert = true
                             } else {

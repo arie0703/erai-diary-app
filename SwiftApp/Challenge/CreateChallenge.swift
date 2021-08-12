@@ -94,12 +94,12 @@ struct CreateChallenge: View {
                             DatePicker("終了日時", selection: $end_date, displayedComponents: .date)
                                 .accentColor(Color(red:0.58, green:0.4, blue: 0.29))
                             
-                            Text("チャレンジ期間は" + calcDateRemainder(firstDate: end_date, secondDate: start_date).description + "日間です")
-                            if calcDateRemainder(firstDate: end_date, secondDate: start_date) > 100 {
+                            Text("チャレンジ期間は" + (calcDateRemainder(firstDate: end_date, secondDate: start_date) + 1).description + "日間です")
+                            if calcDateRemainder(firstDate: end_date, secondDate: start_date) + 1 > 100 {
                                 Text("設定できるチャレンジ期間は最大100日です。")
                                     .foregroundColor(.red)
                                     .padding(3)
-                            } else if calcDateRemainder(firstDate: end_date, secondDate: start_date) < 3 {
+                            } else if calcDateRemainder(firstDate: end_date, secondDate: start_date) + 1 < 3 {
                                 Text("チャレンジ期間は最低3日以上に設定してください。")
                                     .foregroundColor(.red)
                                     .padding(3)
@@ -119,7 +119,7 @@ struct CreateChallenge: View {
                                 Stepper(value: $goal_double, in: 1...100) {
                                     Text("\(goal_double, specifier: "%.0f") 日")
                                 }
-                                if Int(goal_double) > calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) {
+                                if Int(goal_double) > calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) + 1 {
                                     Text("目標日数がチャレンジ期間を超えています")
                                         .foregroundColor(.red)
                                         .padding(3)
@@ -144,9 +144,9 @@ struct CreateChallenge: View {
                 
                     Section{
                         Button(action: {
-                            if Int(goal_double) > calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) || // 目標日数がチャレンジ日数以上の時
-                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) > 100 || // チャレンジ期間が100日以上
-                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) < 3 ||// チャレンジ期間が３日未満
+                            if Int(goal_double) > calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) + 1 || // 目標日数がチャレンジ日数以上の時
+                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) + 1 > 100 || // チャレンジ期間が100日以上
+                                calcDateRemainder(firstDate: self.end_date, secondDate: self.start_date) + 1 < 3 ||// チャレンジ期間が３日未満
                                 self.start_date < Calendar(identifier: .gregorian).startOfDay(for: Date()) // 開始日が今日より前
                             {
                                 self.showingAlert = true

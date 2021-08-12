@@ -17,6 +17,8 @@ struct PostsNew: View {
     @State var showTemplate: Bool = false
     @State var showModal: Bool = false
     
+    @State var showingAlert = false
+    
     @Environment(\.managedObjectContext) var viewContext
     
     //モーダルの処理
@@ -204,16 +206,20 @@ struct PostsNew: View {
                             
                             Group {
                                 Button(action: {
-                                    PostEntity.create(in: self.viewContext,
-                                    content: self.content,
-                                    detail: self.detail,
-                                    rate: self.rate,
-                                    date: self.date)
-                                    self.save()
-                                    UserDefaults.standard.set(self.user.point + Int(self.rate), forKey: "point")
-                                    
-                                    UserDefaults.standard.set(self.user.total_point + Int(self.rate), forKey: "total_point")
-                                    self.presentationMode.wrappedValue.dismiss()
+                                    if self.content == "" { // バリデーション
+                                        self.showingAlert = true
+                                    } else {
+                                        PostEntity.create(in: self.viewContext,
+                                        content: self.content,
+                                        detail: self.detail,
+                                        rate: self.rate,
+                                        date: self.date)
+                                        self.save()
+                                        UserDefaults.standard.set(self.user.point + Int(self.rate), forKey: "point")
+                                        
+                                        UserDefaults.standard.set(self.user.total_point + Int(self.rate), forKey: "total_point")
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }
                                 }) {
                                     Text(" 投稿！ ")
                                     .foregroundColor(Color.white)
@@ -223,6 +229,13 @@ struct PostsNew: View {
                                     .cornerRadius(2)
                 
                                 }.padding(.bottom, 3)
+                                
+                                .alert(isPresented: self.$showingAlert) {
+                                    Alert(
+                                          title: Text("エラー"),
+                                          message: Text("「今日あったえらい出来事」を入力してください。")
+                                    )
+                                }
                                 Button(action: {
                                     shareOnTwitter(text: content)
                                 }) {

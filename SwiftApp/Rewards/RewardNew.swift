@@ -13,6 +13,7 @@ struct RewardNew: View {
     @State var content: String = ""
     @State var point_double: Double = 1
     @State var point: Int32 = 0
+    @State var showingAlert = false
     
     @Environment(\.managedObjectContext) var viewContext
     
@@ -64,15 +65,24 @@ struct RewardNew: View {
                 
                     Section{
                         Button(action: {
-                            self.point = Int32(self.point_double)
-                            RewardEntity.create(in: self.viewContext,
-                            content: self.content,
-                            point: self.point,
-                            isDone: false)
-                            self.save()
-                            self.presentationMode.wrappedValue.dismiss()
+                            if self.content == "" {
+                                self.showingAlert = true
+                            } else {
+                                self.point = Int32(self.point_double)
+                                RewardEntity.create(in: self.viewContext,
+                                content: self.content,
+                                point: self.point,
+                                isDone: false)
+                                self.save()
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
                         }) {
                             Text("追加！")
+                        }.alert(isPresented: self.$showingAlert) {
+                            Alert(
+                                  title: Text("エラー"),
+                                  message: Text("ごほうび内容を入力してください。")
+                            )
                         }
                     }
                 }
